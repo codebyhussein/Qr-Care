@@ -1,4 +1,4 @@
-# qr_care
+#  Qr Care
 
 A new Flutter project.
 
