@@ -6,10 +6,11 @@ import 'package:qr_care/core/app_color.dart';
 import 'package:qr_care/core/app_constant.dart';
 import 'package:qr_care/core/app_widgets.dart';
 import 'package:qr_care/features/forgetPassword/presentation/widgets/custom_appbar_forget_password.dart';
-import 'package:qr_care/features/login/presentation/screens/login_screen.dart';
+
 import 'package:qr_care/features/widgets/CustomTextFormField.dart';
 import 'package:qr_care/features/widgets/defult_button.dart';
 
+// ignore: must_be_immutable
 class ChangePasswordScreen extends StatefulWidget {
   ChangePasswordScreen({super.key});
   bool isLoading = false;
@@ -19,8 +20,8 @@ class ChangePasswordScreen extends StatefulWidget {
 }
 
 class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
-  TextEditingController NewPasswordController = TextEditingController();
-  TextEditingController ConfirmPasswordController = TextEditingController();
+  TextEditingController newPasswordController = TextEditingController();
+  TextEditingController confirmPasswordController = TextEditingController();
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
 
   @override
@@ -67,7 +68,7 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
                   errorMassage: 'please enter new password',
                   regEx: AppConst.passwordPattern,
                   hintText: '                   New Password',
-                  nameofController: NewPasswordController,
+                  nameofController: newPasswordController,
                   isvisble: false,
                   keyBoredType: TextInputType.visiblePassword,
                   prefixIcon: const Icon(IconlyLight.lock),
@@ -79,7 +80,7 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
                   errorMassage: 'password not matched',
                   regEx: AppConst.passwordPattern,
                   hintText: '                Confirm Password',
-                  nameofController: ConfirmPasswordController,
+                  nameofController: confirmPasswordController,
                   isvisble: false,
                   keyBoredType: TextInputType.visiblePassword,
                   prefixIcon: const Icon(IconlyLight.lock),
