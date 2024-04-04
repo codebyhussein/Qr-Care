@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:qr_care/config/Localization/Constraine.dart';
 import 'package:qr_care/core/app_color.dart';
 import 'package:qr_care/core/app_constant.dart';
 import 'package:qr_care/features/home/features/information/presentation/widgets/item_builder.dart';
@@ -110,7 +111,7 @@ class _ScanScreenState extends State<ScanScreen> {
                             isScanning = true;
                           });
                         },
-                        text: 'Scan',
+                        text: getTranslated("ScanQr", context)!,
                       )
                     ],
                   ),
@@ -180,3 +181,4 @@ class _ScanScreenState extends State<ScanScreen> {
     );
   }
 }
+

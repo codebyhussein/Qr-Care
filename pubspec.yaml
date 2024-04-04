@@ -47,6 +47,8 @@ dependencies:
   share_plus: ^7.2.2
   shared_preferences: ^2.2.2
   smooth_page_indicator: ^1.1.0
+  flutter_localizations:
+    sdk: flutter
 
 dev_dependencies:
   flutter_lints: ^3.0.0
@@ -68,6 +70,7 @@ flutter:
     - assets/images/
     - assets/svg/
     - assets/fonts/
+    - assets/Lang/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

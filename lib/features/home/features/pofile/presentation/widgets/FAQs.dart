@@ -21,10 +21,11 @@ class Faqs extends StatelessWidget {
         Row(
           children: [
             Padding(
-              padding: EdgeInsets.only(left: 7.w),
+              padding: EdgeInsetsDirectional.only(start: 7.w),
               child: CustomText(
                 text: title,
-                alignment: Alignment.topLeft,
+                alignment: AlignmentDirectional.topStart,
+
                 color: Colors.grey,
               ),
             ),

@@ -1,6 +1,7 @@
  
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:qr_care/config/Localization/Constraine.dart';
 import 'package:qr_care/core/app_color.dart';
 
 class ResendCodeWidget extends StatelessWidget {
@@ -16,7 +17,7 @@ class ResendCodeWidget extends StatelessWidget {
           Column(
             children: [
               Text(
-                'Resend Code',
+               getTranslated("ResendCode", context)!,
                 style: TextStyle(
                     color: AppColors.mainColor,
                     fontFamily: 'Montserrat meduim',

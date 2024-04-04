@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:iconly/iconly.dart';
+import 'package:qr_care/config/Localization/Constraine.dart';
 import 'package:qr_care/config/routes/app_routes.dart';
 import 'package:qr_care/core/app_color.dart';
 import 'package:qr_care/core/app_constant.dart';
@@ -39,7 +40,7 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
                   height: 30.h,
                 ),
                 CustomAppBar(
-                  title: 'Change Password',
+                  title: getTranslated("ChangePassword", context)!,
                 ),
                 SizedBox(
                   height: 40.h,
@@ -57,16 +58,16 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
                 Center(
                   child: AppWidgets.defultTextRegister(
                     text:
-                        'Reset your password to recover\naccess to your account',
+                    getTranslated("resetPassword", context)!,
                   ),
                 ),
                 SizedBox(
                   height: 20.h,
                 ),
                 CustomTextFormField(
-                  errorMassage: 'please enter new password',
+                  errorMassage: getTranslated("errorNewPassword", context)!,
                   regEx: AppConst.passwordPattern,
-                  hintText: '                   New Password',
+                  hintText: getTranslated("NewPassword", context)!,
                   nameofController: NewPasswordController,
                   isvisble: false,
                   keyBoredType: TextInputType.visiblePassword,
@@ -76,9 +77,9 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
                   height: 10.h,
                 ),
                 CustomTextFormField(
-                  errorMassage: 'password not matched',
+                  errorMassage:getTranslated("errorConfirm", context)!,
                   regEx: AppConst.passwordPattern,
-                  hintText: '                Confirm Password',
+                  hintText:getTranslated("ConfirmPassword", context)!,
                   nameofController: ConfirmPasswordController,
                   isvisble: false,
                   keyBoredType: TextInputType.visiblePassword,
@@ -92,7 +93,7 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
                         onPressed: () {
                           Navigator.pushNamed(context, Routes.loginRoute);
                         },
-                        text: 'Confirm'))
+                        text: getTranslated("Send", context)!))
               ],
             ),
           ),

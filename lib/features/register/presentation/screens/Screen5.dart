@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:qr_care/config/Localization/Constraine.dart';
 import 'package:qr_care/config/routes/app_routes.dart';
-import 'package:qr_care/core/app_constant.dart';
 import 'package:qr_care/core/app_widgets.dart';
 import 'package:qr_care/core/assets/assets_manager.dart';
 import 'package:qr_care/features/register/presentation/widgets/custom_appbar_register_screen.dart';
 import 'package:qr_care/features/register/presentation/widgets/dialog_widget.dart';
 import 'package:qr_care/features/register/presentation/widgets/parent_builder.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 class Screen5 extends StatefulWidget {
   Screen5({super.key});
@@ -30,21 +29,21 @@ class _Screen5State extends State<Screen5> {
                 height: 60.h,
               ),
               AppWidgets.defultTextRegister(
-                text: 'Type of account',
+                text: getTranslated("TypeOfAccount", context)!,
               ),
               SizedBox(
                 height: 10.h,
               ),
               AppWidgets.defultdesrptionRegister(
-                  text: 'Choose type of your account'),
+                  text: getTranslated("Choosetypeofyouraccount", context)!),
               SizedBox(
                 height: 30.h,
               ),
               ParentBuilder(
                 isparent: widget.isparent,
-                title: 'Parent',
+                title: getTranslated("parent", context)!,
                 description:
-                    'A parent can easily access\nmedical records and\ninformation about himself and\ntheir sons and daughters by\nscanning a QR with the help of\nHospitals or the Ministry of\nHealth.',
+                getTranslated("descParent", context)!,
                 image: AppAssets.parentImage,
                 onPressed: () {
                   setState(() {
@@ -79,9 +78,9 @@ class _Screen5State extends State<Screen5> {
                     );
                   },
                   isparent: !widget.isparent,
-                  title: 'Non-Parent',
+                  title: getTranslated("nonParent", context)!,
                   description:
-                      'A Non-Parent can easily access\nmedical records and\ninformation about himself and\ntheir sons and daughters by\nscanning a QR with the help of\nHospitals or the Ministry of\nHealth.',
+                  getTranslated("descNonParent", context)!,
                   image: AppAssets.nonParentImage),
             ],
           ),

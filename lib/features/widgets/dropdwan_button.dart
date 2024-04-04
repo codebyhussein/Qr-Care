@@ -21,7 +21,7 @@ Widget DefaultDropdown(
           boxShadow: const [AppColors.defaultBoxShadow]),
       child: Center(
           child: DropdownButtonFormField2<String>(
-        isExpanded: false,
+        isExpanded: true,
         decoration: const InputDecoration(border: InputBorder.none),
         hint: Text(
           hintText,

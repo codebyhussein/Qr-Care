@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:qr_care/config/Localization/Constraine.dart';
 import 'package:qr_care/core/app_widgets.dart';
 
 class onboarding2 extends StatelessWidget {
@@ -19,7 +20,7 @@ class onboarding2 extends StatelessWidget {
         ),
         AppWidgets.defultdesrption(
           text:
-              'Make sure your personal information\nis accurate and up-to-date. And if you\ntake care of your children',
+             getTranslated("onBoardingTwo", context)!
         )
       ],
     );

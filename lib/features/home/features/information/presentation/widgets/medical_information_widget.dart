@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_expanded_tile/flutter_expanded_tile.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:qr_care/config/Localization/Constraine.dart';
 import 'package:qr_care/core/app_color.dart';
 import 'package:qr_care/features/home/features/information/presentation/widgets/item_builder.dart';
 
@@ -28,7 +29,7 @@ class MedicalInformationWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 15),
+      padding:  EdgeInsetsDirectional.symmetric(horizontal: 15),
       child: ExpandedTile(
         theme: ExpandedTileThemeData(
           headerColor: Colors.white,
@@ -40,7 +41,7 @@ class MedicalInformationWidget extends StatelessWidget {
         ),
         controller: controller,
         title: Text(
-          'Medical information',
+          getTranslated("Medicalinformation", context)!,
           textAlign: TextAlign.left,
           style: TextStyle(
             color: const Color.fromRGBO(0, 72, 84, 1),

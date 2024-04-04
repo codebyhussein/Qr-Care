@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:qr_care/config/Localization/Constraine.dart';
 import 'package:qr_care/config/routes/app_routes.dart';
 import 'package:qr_care/core/app_color.dart';
 import 'package:qr_care/features/home/features/scan_qr/presentation/widgets/defult_botton.dart';
@@ -24,16 +25,16 @@ class LogOut extends StatelessWidget {
           mainAxisSize: MainAxisSize.min,
           children: [
             CustomText(
-              text: "Log out?",
-              alignment: Alignment.center,
+              text: getTranslated("logOut", context)!,
+              alignment: AlignmentDirectional.center,
               color: Colors.white,
             ),
             SizedBox(
               height: 20.h,
             ),
             CustomText(
-              text: "Are you sure want to log out?",
-              alignment: Alignment.center,
+              text: getTranslated("sureLogOut", context)!,
+              alignment: AlignmentDirectional.center,
               color: Colors.white,
               fontSize: 10.sp,
             ),
@@ -50,7 +51,7 @@ class LogOut extends StatelessWidget {
                     onPressed: () {
                       Navigator.pop(context);
                     },
-                    text: "Cancel",
+                    text: getTranslated("Cancel", context)!,
                     colorButton: Colors.white,
                     colorText: AppColors.mainColor,
                     fontSize: 12.sp),
@@ -58,7 +59,7 @@ class LogOut extends StatelessWidget {
                     onPressed: () async {
                       Navigator.pushNamed(context, Routes.loginRoute);
                     },
-                    text: "Log Out",
+                    text: getTranslated("LogOut", context)!,
                     colorButton: Colors.red,
                     colorText: Colors.white,
                     fontSize: 12.sp),

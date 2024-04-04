@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:qr_care/core/app_color.dart';
-import 'package:qr_care/core/app_widgets.dart';
 import 'package:qr_care/features/forgetPassword/presentation/widgets/custom_appbar_forget_password.dart';
 import 'package:qr_care/features/widgets/add_chid_widget.dart';
 

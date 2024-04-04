@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:qr_care/config/Localization/Constraine.dart';
 import 'package:qr_care/core/app_widgets.dart';
 
 class onboarding1 extends StatelessWidget {
@@ -19,7 +20,7 @@ class onboarding1 extends StatelessWidget {
         ),
         AppWidgets.defultdesrption(
           text:
-              'Simply create your CareLink account\nand fill in basic information, such as a\npersonal ID.',
+              "${getTranslated("onBoardingOne", context)}",
         )
       ],
     );

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:iconly/iconly.dart';
+import 'package:qr_care/config/Localization/Constraine.dart';
 import 'package:qr_care/core/app_color.dart';
 import 'package:qr_care/core/app_constant.dart';
 import 'package:qr_care/core/app_widgets.dart';
@@ -50,23 +51,22 @@ class _DialogWidgetState extends State<DialogWidget> {
                       )),
                 ),
                 AppWidgets.titleDialog(
-                    text: 'Your app ID has been created which is'),
+                    text: getTranslated("idCreated", context)!),
                 Text(widget.text,
                     style: const TextStyle(fontWeight: FontWeight.bold)),
                 SizedBox(
                   height: 30.h,
                 ),
                 AppWidgets.descriptionDialog(
-                    text: 'Your app ID has been created which is'),
+                    text: getTranslated("idCreated", context)!),
                 SizedBox(
                   height: 20.h,
                 ),
                 CustomTextFormField(
-                  errorMassage: 'please enter vaild password',
+                  errorMassage: getTranslated("validPassWord", context)!,
                   regEx: AppConst.passwordPattern,
-                  helpText:
-                      "Min. 8 chars, 1 upper, 1 lower, 1 number, 1 special char.",
-                  hintText: 'Password',
+                  helpText: getTranslated("helperPassWord", context)!,
+                  hintText: getTranslated("passWord", context)!,
                   nameofController: widget.passwordController,
                   isvisble: !widget.passwordVisiable,
                   keyBoredType: TextInputType.visiblePassword,
@@ -86,9 +86,9 @@ class _DialogWidgetState extends State<DialogWidget> {
                   height: 10.h,
                 ),
                 CustomTextFormField(
-                  errorMassage: 'password not matched',
+                  errorMassage: getTranslated("errorConfirm", context)!,
                   regEx: AppConst.passwordPattern,
-                  hintText: 'Confirm Password',
+                  hintText: getTranslated("ConfirmPassword", context)!,
                   nameofController: widget.ConfirmPasswordController,
                   isvisble: !widget.confirmPasswordVisiable,
                   keyBoredType: TextInputType.visiblePassword,
@@ -142,7 +142,7 @@ class _DialogWidgetState extends State<DialogWidget> {
                         }
                       },
                       child: Text(
-                        'Confirm',
+                        getTranslated("confirm", context)!,
                         textAlign: TextAlign.center,
                         style: TextStyle(
                             color: const Color(0xff004854),

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:iconly/iconly.dart';
+import 'package:qr_care/config/Localization/Constraine.dart';
 import 'package:qr_care/config/routes/app_routes.dart';
 import 'package:qr_care/core/app_color.dart';
 import 'package:qr_care/core/app_constant.dart';
@@ -27,6 +28,26 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
 
   @override
   Widget build(BuildContext context) {
+    List<String> cities = [
+      getTranslated("Cairo", context)!,
+      getTranslated("Giza", context)!,
+      getTranslated( "Luxor", context)!,
+      getTranslated("Alexandria", context)!,
+      getTranslated("PortSaid", context)!,
+      getTranslated("Ismailia", context)!,
+      getTranslated( "Mansoura", context)!,
+      getTranslated( "Tanta", context)!,
+
+    ];
+     List<String> jobs = [
+      getTranslated("Doctor", context)!,
+      getTranslated("AdministrativeServices", context)!,
+      getTranslated("OfficeServices", context)!,
+      getTranslated("Others", context)!,
+
+    ];
+
+
     return Scaffold(
       backgroundColor: AppColors.backgroundColor,
       body: SingleChildScrollView(
@@ -36,72 +57,72 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
               height: 30.h,
             ),
             CustomAppBar(
-              title: 'My Account',
+              title: getTranslated("MyAccount", context)!,
             ),
             SizedBox(
               height: 10.h,
             ),
-            titleWidget(text: "Governorate"),
+            titleWidget(text: getTranslated("governorate", context)!),
             SizedBox(
               height: 6.h,
             ),
             DefaultDropdown(
-                hintText: 'Select Government',
-                errorMassage: 'Please Choose a job',
+                hintText: getTranslated("chooseGovernorate", context)!,
+                errorMassage: getTranslated("errorMessageJob", context)!,
                 controllerName: governmentController,
-                listName: AppConst.cities,
+                listName: cities,
                 onChanged: (value) {
                   governmentController.text = value!;
                 }),
             SizedBox(
               height: 10.h,
             ),
-            titleWidget(text: "City"),
+            titleWidget(text: getTranslated("city", context)!),
             SizedBox(
               height: 6.h,
             ),
             DefaultDropdown(
-                hintText: 'Select City',
-                errorMassage: 'Please Choose City',
+                hintText:  getTranslated("selectCity", context)!,
+                errorMassage: getTranslated("errorMessageCity", context)!,
                 controllerName: centerController,
-                listName: AppConst.cities,
+                listName:cities,
                 onChanged: (value) {
                   cityController.text = value!;
                 }),
             SizedBox(
               height: 10.h,
             ),
-            titleWidget(text: "Center"),
+            titleWidget(text: getTranslated("center", context)!,),
             SizedBox(
               height: 6.h,
             ),
             DefaultDropdown(
-                hintText: 'Select Center',
-                errorMassage: 'Please Choose a Center',
+                hintText: getTranslated("selectCenter", context)!,
+                errorMassage: getTranslated("errorMessageCenter", context)!,
                 controllerName: centerController,
-                listName: AppConst.cities,
+                listName:cities,
                 onChanged: (value) {
                   centerController.text = value!;
                 }),
             SizedBox(
               height: 10.h,
             ),
-            titleWidget(text: "Job"),
+            titleWidget(text: getTranslated("job", context)!),
             SizedBox(
               height: 6.h,
             ),
             DefaultDropdown(
-                hintText: 'Choose a job',
-                errorMassage: 'Please Choose a job',
+                hintText: getTranslated("chooseJob", context)!,
+                errorMassage: getTranslated("errorMessageJob", context)!,
                 controllerName: jobController,
-                listName: AppConst.jops,
+                listName: jobs,
                 onChanged: (value) {
                   jobController.text = value!;
                 }),
             SizedBox(
               height: 10.h,
             ),
-            titleWidget(text: "Contact"),
+            titleWidget(text: getTranslated("contact", context)!),
             SizedBox(
               height: 6.h,
             ),
@@ -110,8 +131,8 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
               child: CustomTextFormField(
                   regEx: AppConst.phonePattern,
                   prefixIcon: const Icon(IconlyLight.call),
-                  hintText: 'Phone',
-                  errorMassage: 'Please Enter Your  Phone Number',
+                  hintText: getTranslated("phone", context)!,
+                  errorMassage: getTranslated("errorMessagePhone", context)!,
                   nameofController: phoneController,
                   keyBoredType: TextInputType.number,
                   isvisble: false),
@@ -119,7 +140,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
             SizedBox(
               height: 10.h,
             ),
-            titleWidget(text: "Emergency Contact"),
+            titleWidget(text: getTranslated("emergencyContact", context)!),
             SizedBox(
               height: 6.h,
             ),
@@ -128,9 +149,9 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
               child: CustomTextFormField(
                 regEx: AppConst.phonePattern,
                 prefixIcon: const Icon(IconlyLight.call),
-                hintText: 'Phone-Home',
+                hintText: getTranslated("PhoneHome", context)!,
                 errorMassage:
-                    'Please Enter Mobile  number of Emergency Contact',
+                getTranslated("errorMessagePhone", context)!   ,
                 nameofController: MobileController,
                 keyBoredType: TextInputType.number,
                 isvisble: false,
@@ -140,7 +161,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
               height: 25.h,
             ),
             DefultButtonLayoutScreen(
-              text: "Save",
+              text: getTranslated("save", context)!,
               onPressed: () {
                 Navigator.pushNamed(context, Routes.homeScreenRoute);
               },

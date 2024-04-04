@@ -1,5 +1,7 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:qr_care/config/Localization/Constraine.dart';
 import 'package:qr_care/config/routes/app_routes.dart';
 import 'package:qr_care/core/app_constant.dart';
 import 'package:qr_care/core/app_widgets.dart';
@@ -30,6 +32,13 @@ class _Screen2State extends State<Screen2> {
 
   @override
   Widget build(BuildContext context) {
+    List<String> jobs = [
+      getTranslated("Doctor", context)!,
+      getTranslated("AdministrativeServices", context)!,
+      getTranslated("OfficeServices", context)!,
+      getTranslated("Others", context)!,
+
+    ];
     return Scaffold(
       body: SingleChildScrollView(
         child: Form(
@@ -42,19 +51,19 @@ class _Screen2State extends State<Screen2> {
                 height: 30.h,
               ),
               AppWidgets.defultTextRegister(
-                text: 'What is Your ID number and\nyour job?',
+                text: getTranslated("jobs", context)!,
               ),
               SizedBox(
                 height: 15.h,
               ),
               AppWidgets.defultdesrptionRegister(
                   text:
-                      'Please, for better experience provide us\nwith this further information'),
+                  getTranslated("jobDesc", context)!),
               Padding(
-                padding: EdgeInsets.only(top: 50.h, left: 15.w),
+                padding: EdgeInsetsDirectional.only(top: 50.h, start: 15.w),
                 child: Align(
-                  alignment: Alignment.topLeft,
-                  child: AppWidgets.defultText(text: 'ID Number'),
+                  alignment: AlignmentDirectional.topStart,
+                  child: AppWidgets.defultText(text: getTranslated("iD", context)!),
                 ),
               ),
               SizedBox(
@@ -63,9 +72,9 @@ class _Screen2State extends State<Screen2> {
               Padding(
                 padding: EdgeInsets.symmetric(horizontal: 15.w),
                 child: CustomTextFormField(
-                    hintText: "ID",
-                    helpText: 'ID Must be 14 digits',
-                    errorMassage: 'Please Enter ID Number',
+                    hintText: getTranslated("iD", context)!,
+                    helpText: getTranslated("helpMessageId", context)!,
+                    errorMassage: getTranslated("errorMessageId", context)!,
                     regEx: AppConst.idPattern,
                     nameofController: idController,
                     keyBoredType: TextInputType.number,
@@ -73,20 +82,20 @@ class _Screen2State extends State<Screen2> {
               ),
               const CustomUpload(),
               Padding(
-                padding: EdgeInsets.only(top: 19.h, left: 15.w),
+                padding: EdgeInsetsDirectional.only(top: 19.h, start: 15.w),
                 child: Align(
-                  alignment: Alignment.topLeft,
-                  child: AppWidgets.defultText(text: 'JOP'),
+                  alignment: AlignmentDirectional.topStart,
+                  child: AppWidgets.defultText(text: getTranslated("job", context)!),
                 ),
               ),
               SizedBox(
                 height: 8.h,
               ),
               DefaultDropdown(
-                  hintText: 'Choose a job',
-                  errorMassage: 'Please Choose a job',
+                  hintText: getTranslated("chooseJob", context)!,
+                  errorMassage: getTranslated("errorMessageJob", context)!,
                   controllerName: jopController,
-                  listName: AppConst.jops,
+                  listName: jobs,
                   onChanged: (value) {
                     jopController.text = value!;
                   }),
@@ -94,7 +103,7 @@ class _Screen2State extends State<Screen2> {
                 height: 85.h,
               ),
               DefultButton(
-                text: "Next",
+                text: getTranslated("next", context)!,
                 onPressed: () {
                   Navigator.pushNamed(context, Routes.registerRoute3);
                 },

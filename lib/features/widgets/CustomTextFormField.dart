@@ -14,7 +14,7 @@ class CustomTextFormField extends StatefulWidget {
     this.suffixIcon,
     required this.isvisble,
     required this.errorMassage,
-    this.helpText = '',
+    this.helpText ,
     this.height = 46,
   });
   String hintText;
@@ -26,7 +26,7 @@ class CustomTextFormField extends StatefulWidget {
   Widget? suffixIcon;
   bool isvisble = false;
   String errorMassage;
-  String? helpText = '';
+  String? helpText;
   double? height = 46.h;
 
   @override

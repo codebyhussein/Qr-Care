@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:path_provider/path_provider.dart';
+import 'package:qr_care/config/Localization/Constraine.dart';
 import 'package:qr_care/core/app_color.dart';
 import 'package:qr_care/features/home/features/scan_qr/presentation/widgets/defult_botton.dart';
 import 'package:qr_care/features/home/widgets/custom_appbar.dart';
@@ -91,7 +92,7 @@ class _QrScreenState extends State<QrScreen> {
           ),
           DefultButtonLayoutScreen(
             onPressed: _shareQrCodeImage,
-            text: 'Share',
+            text: getTranslated("Share", context)!,
           ),
         ],
       ),

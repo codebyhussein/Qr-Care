@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_verification_code/flutter_verification_code.dart';
 import 'package:iconly/iconly.dart';
+import 'package:qr_care/config/Localization/Constraine.dart';
 import 'package:qr_care/config/routes/app_routes.dart';
 import 'package:qr_care/core/app_color.dart';
 import 'package:qr_care/core/app_widgets.dart';
@@ -37,7 +38,7 @@ class _VerificationScreenState extends State<VerificationScreen> {
                   height: 30.h,
                 ),
                 CustomAppBar(
-                  title: 'Verification',
+                  title: getTranslated("Verification", context)!,
                 ),
                 SizedBox(
                   height: 40.h,
@@ -54,7 +55,7 @@ class _VerificationScreenState extends State<VerificationScreen> {
                 ),
                 Center(
                   child: AppWidgets.defultTextRegister(
-                    text: 'Please check phone a\n4 digit code',
+                    text: getTranslated("checkDigit", context)!,
                   ),
                 ),
                 SizedBox(
@@ -100,7 +101,7 @@ class _VerificationScreenState extends State<VerificationScreen> {
                           Navigator.pushNamed(
                               context, Routes.changePasswordRoute);
                         },
-                        text: 'Send'))
+                        text: getTranslated("ConfirmPassword", context)!))
               ],
             ),
           ),

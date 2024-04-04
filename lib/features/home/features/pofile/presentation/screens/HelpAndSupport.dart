@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:iconly/iconly.dart';
+import 'package:qr_care/config/Localization/Constraine.dart';
 import 'package:qr_care/core/app_widgets.dart';
 import 'package:qr_care/features/forgetPassword/presentation/widgets/custom_appbar_forget_password.dart';
 import 'package:qr_care/features/home/features/pofile/presentation/widgets/FAQs.dart';
@@ -28,34 +29,33 @@ class _HelpAndSupportState extends State<HelpAndSupport> {
               height: 30.h,
             ),
             CustomAppBar(
-              title: "Help & Support",
+              title: getTranslated("helpSupport", context)!,
             ),
             SizedBox(
               height: 28.h,
             ),
             Padding(
-              padding: EdgeInsets.only(left: 10.w),
+              padding: EdgeInsetsDirectional.only(start: 10.w),
               child: AppWidgets.title(
                   sizeBox: 90.h,
-                  textAlign: TextAlign.left,
-                  text:
-                      "We are here to assist you with\n anything and everything in\n QR Care",
+                  textAlign: TextAlign.start,
+                  text: getTranslated("helpOne", context)!,
                   fontSize: 17.sp),
             ),
             Padding(
-              padding: EdgeInsets.only(left: 10.w),
+              padding: EdgeInsetsDirectional.only(start: 10.w),
               child: AppWidgets.description(
+                  alignmentDirectional: AlignmentDirectional.topStart,
                   textAlign: TextAlign.start,
-                  text:
-                      "QR Care collaborates with governmental\n institutions to gather and manage its data.\n With regular updates and secure handling, the\n app improves its interaction with service\n providers, ensuring a comprehensive user\n experience.",
+                  text: getTranslated("helpTwo", context)!,
                   fontSize: 14.sp,
                   colorText: Colors.grey),
             ),
             Padding(
-              padding: const EdgeInsets.only(left: 10),
+              padding:  EdgeInsetsDirectional.only(start: 10),
               child: AppWidgets.title(
                   textAlign: TextAlign.start,
-                  text: "Frequently Asked Questions (FAQs)"),
+                  text: getTranslated("helpThree", context)!),
             ),
             Faqs(
                 onPressed: () {
@@ -64,9 +64,8 @@ class _HelpAndSupportState extends State<HelpAndSupport> {
                   });
                 },
                 isVisible: isVisible,
-                content:
-                    "You can create an account by following\n the simple steps when opening\n the app for the first time.",
-                title: "How do I create a QR Care account?"),
+                content: getTranslated("helpFour", context)!,
+                title: getTranslated("helpFive", context)!),
             Faqs(
                 onPressed: () {
                   setState(() {
@@ -74,9 +73,8 @@ class _HelpAndSupportState extends State<HelpAndSupport> {
                   });
                 },
                 isVisible: isVisible1,
-                content:
-                    "How secure is my data with QR Care? Rest assured, we prioritize the security and confidentiality of your health information. Learn more in our Privacy Policy.",
-                title: "How can I update my personal information?"),
+                content: getTranslated("helpSix", context)!,
+                title: getTranslated("helpSeven", context)!),
             Faqs(
                 onPressed: () {
                   setState(() {
@@ -84,22 +82,21 @@ class _HelpAndSupportState extends State<HelpAndSupport> {
                   });
                 },
                 isVisible: isVisible2,
-                content:
-                    "Rest assured, we prioritize the security and confidentiality of your health information. Learn more in our Privacy Policy.",
-                title: "How secure is my data with QR Care?"),
+                content: getTranslated("helpEight", context)!,
+                title: getTranslated("helpNine", context)!),
             Padding(
-              padding: EdgeInsets.only(left: 10.0.w),
+              padding: EdgeInsetsDirectional.only(start: 10.0.w),
               child: AppWidgets.title(
                   sizeBox: 30.h,
                   textAlign: TextAlign.start,
-                  text: "Contact Us"),
+                  text: getTranslated("contactUs", context)!),
             ),
             Padding(
-              padding: EdgeInsets.only(left: 10.w),
+              padding: EdgeInsetsDirectional.only(start: 10.w),
               child: AppWidgets.description(
+                  alignmentDirectional: AlignmentDirectional.topStart,
                   textAlign: TextAlign.start,
-                  text:
-                      "For personalized support and any inquiries you may have, feel free to reach out to us:",
+                  text: getTranslated("helpTen", context)!,
                   fontSize: 12.sp,
                   colorText: Colors.grey),
             ),
@@ -113,48 +110,49 @@ class _HelpAndSupportState extends State<HelpAndSupport> {
                 ),
                 AppWidgets.title(
                     textAlign: TextAlign.start,
-                    text: "Email:",
+                    text: getTranslated("email", context)!,
                     fontSize: 12.sp,
                     sizeBox: 18),
                 AppWidgets.description(
+                    alignmentDirectional: AlignmentDirectional.topStart,
                     textAlign: TextAlign.start,
-                    text: "support@QR Care.com",
+                    text: " support@QR Care.com",
                     fontSize: 12.sp,
                     colorText: Colors.grey),
               ],
             ),
             Padding(
-              padding: EdgeInsets.only(left: 10.w, top: 12.h),
+              padding: EdgeInsetsDirectional.only(start: 10.w, top: 12.h),
               child: AppWidgets.title(
                   textAlign: TextAlign.start,
-                  text: "Report an Issue",
+                  text: getTranslated("helpEleven", context)!,
                   fontSize: 12.sp,
                   sizeBox: 18),
             ),
             Padding(
-              padding: EdgeInsets.only(top: 5.h, left: 10.w),
+              padding: EdgeInsetsDirectional.only(top: 5.h, start: 10.w),
               child: AppWidgets.description(
+                  alignmentDirectional: AlignmentDirectional.topStart,
                   textAlign: TextAlign.start,
-                  text:
-                      "Encountered a problem or have a suggestion? Let us know through our Issue Report Form.",
+                  text: getTranslated("helpTwelve", context)!,
                   fontSize: 12.sp,
                   colorText: Colors.grey),
             ),
             Padding(
-              padding: EdgeInsets.only(left: 10.w, top: 12.h),
+              padding: EdgeInsetsDirectional.only(start: 10.w, top: 12.h),
               child: AppWidgets.title(
                   textAlign: TextAlign.start,
-                  text: "Latest Updates",
+                  text: getTranslated("helpThirteen", context)!,
                   fontSize: 12.sp,
                   sizeBox: 18),
             ),
             Padding(
-              padding: EdgeInsets.only(top: 5.h, left: 10.w),
+              padding: EdgeInsetsDirectional.only(top: 5.h, start: 10.w),
               child: AppWidgets.description(
                   textAlign: TextAlign.start,
+                  alignmentDirectional: AlignmentDirectional.topStart,
                   text:
-                      "Stay informed about the latest features and improvements on QR Care by checking our Update page",
-                  fontSize: 10.sp,
+                  getTranslated("helpFourteen", context)!        ,          fontSize: 10.sp,
                   colorText: Colors.grey),
             ),
           ],

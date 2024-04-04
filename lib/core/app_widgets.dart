@@ -103,15 +103,21 @@ class AppWidgets {
           {required TextAlign textAlign,
           required String text,
           required double fontSize,
+            required AlignmentDirectional alignmentDirectional,
           Color? colorText}) =>
-      Text(
-        text,
-        textAlign: textAlign,
-        style: TextStyle(
-          color: colorText ?? const Color.fromRGBO(0, 72, 84, 1),
-          fontFamily: 'Montserrat meduim',
-          fontSize: 12.sp,
-          fontWeight: FontWeight.bold,
+      Align(
+        alignment: alignmentDirectional,
+        child: Text(
+          text,
+
+          textAlign: textAlign,
+
+          style: TextStyle(
+            color: colorText ?? const Color.fromRGBO(0, 72, 84, 1),
+            fontFamily: 'Montserrat meduim',
+            fontSize: 12.sp,
+            fontWeight: FontWeight.bold,
+          ),
         ),
       );
 }

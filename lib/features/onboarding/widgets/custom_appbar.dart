@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:qr_care/config/Localization/Constraine.dart';
 import 'package:qr_care/core/app_color.dart';
 
 class CustomAppBarAppOnboardingScreen extends StatelessWidget {
@@ -32,7 +33,7 @@ class CustomAppBarAppOnboardingScreen extends StatelessWidget {
                   controller.jumpToPage(2);
                 },
                 child: Text(
-                  'Skip',
+                  getTranslated("Skip", context)!,
                   style: TextStyle(
                       color: Colors.grey,
                       fontFamily: 'Montserrat',
