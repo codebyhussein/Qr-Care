@@ -1,10 +1,9 @@
 import 'dart:io';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:qr_care/config/Localization/Constraine.dart';
 import 'package:qr_care/core/app_color.dart';
-import 'package:qr_care/core/app_constant.dart';
 import 'package:qr_care/core/app_widgets.dart';
 
 class CustomCard extends StatefulWidget {
@@ -36,7 +35,7 @@ class _CustomCardState extends State<CustomCard> {
       child: Row(
         children: [
           Padding(
-            padding: EdgeInsets.only(left: 15.w),
+            padding: EdgeInsetsDirectional.only(start: 15.w),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -48,26 +47,29 @@ class _CustomCardState extends State<CustomCard> {
                   height: 25.h,
                 ),
                 AppWidgets.title(
-                    text: 'ID:',
+                    text: getTranslated("ID", context)!,
                     fontSize: 14.sp,
                     textAlign: TextAlign.left,
                     sizeBox: 25.h),
                 SizedBox(
                     width: 120.w,
                     child: AppWidgets.description(
+                      alignmentDirectional: AlignmentDirectional.topStart,
                       colorText: Colors.grey,
                       textAlign: TextAlign.left,
                       text: widget.textId,
                       fontSize: 12.sp,
                     )),
                 AppWidgets.title(
-                    text: 'Age:',
+                    text: getTranslated("Age", context)!,
                     fontSize: 14.sp,
                     textAlign: TextAlign.left,
                     sizeBox: 25.h),
                 SizedBox(
                     width: 120.w,
                     child: AppWidgets.description(
+                      alignmentDirectional: AlignmentDirectional.topStart,
+
                       colorText: Colors.grey,
                       textAlign: TextAlign.left,
                       text: widget.ageValue,
@@ -87,7 +89,7 @@ class _CustomCardState extends State<CustomCard> {
               }
             },
             child: Padding(
-              padding: const EdgeInsets.only(left: 10),
+              padding:  EdgeInsetsDirectional.only(start: 5.w),
               child: CircleAvatar(
                 radius: 60,
                 backgroundColor: const Color(0xffD9D9D9),

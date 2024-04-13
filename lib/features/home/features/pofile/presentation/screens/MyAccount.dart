@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:iconly/iconly.dart';
+import 'package:qr_care/config/Localization/Constraine.dart';
 import 'package:qr_care/config/routes/app_routes.dart';
 import 'package:qr_care/core/app_color.dart';
 import 'package:qr_care/features/forgetPassword/presentation/widgets/custom_appbar_forget_password.dart';
@@ -13,6 +14,7 @@ class MyAccount extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
     return Scaffold(
       backgroundColor: AppColors.backgroundColor,
       body: SafeArea(
@@ -22,12 +24,12 @@ class MyAccount extends StatelessWidget {
               height: 30.h,
             ),
             CustomAppBar(
-              title: 'Edit My Account',
+              title: getTranslated("EditMyAccount", context)!,
             ),
             SizedBox(
               height: 15.h,
             ),
-            titleWidget(text: "Governorate"),
+            titleWidget(text: getTranslated("governorate", context)!),
             SizedBox(
               height: 6.h,
             ),
@@ -39,7 +41,7 @@ class MyAccount extends StatelessWidget {
             SizedBox(
               height: 10.h,
             ),
-            titleWidget(text: "City"),
+            titleWidget(text: getTranslated("city", context)!),
             SizedBox(
               height: 6.h,
             ),
@@ -51,7 +53,7 @@ class MyAccount extends StatelessWidget {
             SizedBox(
               height: 10.h,
             ),
-            titleWidget(text: "Center"),
+            titleWidget(text:getTranslated("center", context)!),
             SizedBox(
               height: 6.h,
             ),
@@ -63,7 +65,7 @@ class MyAccount extends StatelessWidget {
             SizedBox(
               height: 10.h,
             ),
-            titleWidget(text: "Job"),
+            titleWidget(text:  getTranslated("job", context)!),
             SizedBox(
               height: 6.h,
             ),
@@ -76,7 +78,7 @@ class MyAccount extends StatelessWidget {
             SizedBox(
               height: 10.h,
             ),
-            titleWidget(text: "Contact"),
+            titleWidget(text:  getTranslated("contact", context)!),
             SizedBox(
               height: 6.h,
             ),
@@ -89,7 +91,7 @@ class MyAccount extends StatelessWidget {
             SizedBox(
               height: 10.h,
             ),
-            titleWidget(text: "Emergency Contact"),
+            titleWidget(text:getTranslated("emergencyContact", context)!),
             SizedBox(
               height: 6.h,
             ),
@@ -103,7 +105,7 @@ class MyAccount extends StatelessWidget {
               height: 45.h,
             ),
             DefultButtonLayoutScreen(
-              text: "Edit",
+              text: getTranslated("edit", context)!,
               onPressed: () {
                 Navigator.pushNamed(context, Routes.editProfileRoute);
               },

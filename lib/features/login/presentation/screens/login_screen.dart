@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:iconly/iconly.dart';
+import 'package:qr_care/config/Localization/Constraine.dart';
 import 'package:qr_care/config/routes/app_routes.dart';
 import 'package:qr_care/core/app_color.dart';
 import 'package:qr_care/core/app_constant.dart';
@@ -51,15 +52,15 @@ class _LoginScreenState extends State<LoginScreen> {
               SizedBox(
                 height: 36.h,
               ),
-              AppWidgets.defultText(text: 'ID'),
+              AppWidgets.defultText(text: getTranslated("ID", context)!),
               SizedBox(
                 height: 10.h,
               ),
               CustomTextFormField(
                 regEx: r'\w+\d{4}\.com$',
-                helpText: "like : username****.com",
-                errorMassage: 'Please enter a vaild App ID',
-                hintText: 'App ID',
+                helpText: getTranslated("helpId", context)!,
+                errorMassage: getTranslated("errorValid", context)!,
+                hintText: getTranslated("ID", context)!,
                 nameofController: idController,
                 isvisble: false,
                 keyBoredType: TextInputType.emailAddress,
@@ -68,16 +69,16 @@ class _LoginScreenState extends State<LoginScreen> {
               SizedBox(
                 height: 23.h,
               ),
-              AppWidgets.defultText(text: 'Password'),
+              AppWidgets.defultText(text: getTranslated("passWord", context)!),
               SizedBox(
                 height: 10.h,
               ),
               CustomTextFormField(
                 helpText:
-                    "Min. 8 chars, 1 upper, 1 lower, 1 number, 1 special char.",
-                hintText: 'Password',
+                 getTranslated("helperPassWord", context),
+                hintText: getTranslated("passWord", context)!,
                 regEx: AppConst.passwordPattern,
-                errorMassage: 'Please enter a vaild password',
+                errorMassage: getTranslated("errorMessagePassWord", context)!,
                 suffixIcon: IconButton(
                     color: AppColors.mainColor,
                     onPressed: () {
@@ -108,7 +109,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     // if (formKey.currentState!.validate()) {}
                     Navigator.pushNamed(context, Routes.homeScreenRoute);
                   },
-                  text: 'login',
+                  text: getTranslated("login", context)!,
                 ),
               ),
               SizedBox(

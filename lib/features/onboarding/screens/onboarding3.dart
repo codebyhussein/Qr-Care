@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:qr_care/config/Localization/Constraine.dart';
 import 'package:qr_care/core/app_widgets.dart';
 
 class onboarding3 extends StatelessWidget {
@@ -19,7 +20,7 @@ class onboarding3 extends StatelessWidget {
         ),
         AppWidgets.defultdesrption(
           text:
-              'Create your own QR code and if you\nhave children create their QR code\nthat carries your information',
+              getTranslated("onBoardingThree", context)!,
         )
       ],
     );

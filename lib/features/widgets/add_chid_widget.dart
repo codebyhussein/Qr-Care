@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:qr_care/config/Localization/Constraine.dart';
 import 'package:qr_care/config/routes/app_routes.dart';
 import 'package:qr_care/core/app_color.dart';
 import 'package:qr_care/core/app_widgets.dart';
@@ -34,7 +35,7 @@ class AddChildWidget extends StatelessWidget {
                       color: AppColors.mainColor,
                     ))),
             SizedBox(height: 6.h),
-            AppWidgets.defultText(text: 'Add a child'),
+            AppWidgets.defultText(text: getTranslated("addChild", context)!),
           ],
         ),
       ),

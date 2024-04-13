@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_expanded_tile/flutter_expanded_tile.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:qr_care/config/Localization/Constraine.dart';
 import 'package:qr_care/core/app_color.dart';
 import 'package:qr_care/core/app_constant.dart';
 import 'package:qr_care/core/assets/assets_manager.dart';
@@ -23,7 +24,7 @@ class InfoScreen extends StatelessWidget {
                 height: 30.h,
               ),
               CustomAppBarLayoutScreen(
-                title: 'Information',
+                title: getTranslated("Information", context)!,
               ),
               SizedBox(
                 height: 42.h,

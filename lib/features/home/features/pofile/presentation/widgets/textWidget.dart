@@ -5,9 +5,9 @@ import 'package:qr_care/core/app_color.dart';
 import '../../../../widgets/CustomText.dart';
 
 Widget titleWidget({required String text}) => Padding(
-      padding: EdgeInsets.only(top: 10.h, left: 20.w),
+      padding: EdgeInsetsDirectional.only(top: 10.h, start: 20.w),
       child: CustomText(
-        alignment: Alignment.topLeft,
+        alignment: AlignmentDirectional.topStart,
         text: text,
         color: AppColors.mainColor,
         fontWeight: FontWeight.w600,

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:iconly/iconly.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:qr_care/config/Localization/Constraine.dart';
 import 'dart:io';
 import 'dart:async';
 
@@ -23,7 +24,7 @@ class CustomUpload extends StatelessWidget {
         padding: EdgeInsets.only(top: 25.h),
         child: Container(
           height: 24.h,
-          width: 119.w,
+          width: 135.w,
           decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(8),
               color: Colors.white,
@@ -32,10 +33,10 @@ class CustomUpload extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               SizedBox(width: 20.w),
-              const Text(
-                'Upload ID',
+               Text(
+                getTranslated("UploadID", context)!,
                 textAlign: TextAlign.center,
-                style: TextStyle(
+                style:const TextStyle(
                     color: Color.fromRGBO(158, 158, 158, 0.800000011920929),
                     fontFamily: 'Montserrat',
                     fontSize: 12,

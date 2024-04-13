@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:qr_care/config/Localization/Constraine.dart';
 
 class SignupWidget extends StatelessWidget {
   SignupWidget({super.key, required this.onPressed});
@@ -10,7 +11,7 @@ class SignupWidget extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         Text(
-          'Don’t have an account?',
+          getTranslated("Donthaveanaccount", context)!,
           textAlign: TextAlign.center,
           style: TextStyle(
             fontFamily: 'Montserrat meduim',
@@ -21,7 +22,7 @@ class SignupWidget extends StatelessWidget {
         TextButton(
           onPressed: onPressed,
           child: Text(
-            'Sign up',
+            getTranslated("SignUp", context)!,
             textAlign: TextAlign.center,
             style: TextStyle(
               fontFamily: 'Montserrat meduim',

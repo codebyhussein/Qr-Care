@@ -19,7 +19,7 @@ class DefultButtonLayoutScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       height: 38.h,
-      width: 90.w,
+      width: 100.w,
       decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(12),
           boxShadow: const [AppColors.defaultBoxShadow],

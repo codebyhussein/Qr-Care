@@ -2,7 +2,10 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
+ 
+import 'package:iconly/iconly.dart';
+import 'package:qr_care/config/Localization/Constraine.dart';
+ 
 import 'package:qr_care/config/routes/app_routes.dart';
 import 'package:qr_care/core/app_color.dart';
 import 'package:qr_care/core/app_constant.dart';
@@ -39,7 +42,7 @@ class _ForgetPasswordScreenState extends State<ForgetPasswordScreen> {
                   height: 30.h,
                 ),
                 CustomAppBar(
-                  title: 'Forget Password',
+                  title: getTranslated("ForgetPassword", context)!,
                 ),
                 SizedBox(
                   height: 40.h,
@@ -56,7 +59,7 @@ class _ForgetPasswordScreenState extends State<ForgetPasswordScreen> {
                 ),
                 Center(
                   child: AppWidgets.defultTextRegister(
-                    text: 'Forget your password',
+                    text: getTranslated("Forgetyourpassword", context)!,
                   ),
                 ),
                 SizedBox(
@@ -64,20 +67,20 @@ class _ForgetPasswordScreenState extends State<ForgetPasswordScreen> {
                 ),
                 Center(
                   child: AppWidgets.defultdesrptionRegister(
-                    text: 'Enter Phone number to restore\nyour account',
+                    text: getTranslated("descPhoneNumber", context)!,
                   ),
                 ),
                 SizedBox(
                   height: 30.h,
                 ),
-                AppWidgets.defultText(text: 'Enter Phone Number'),
+                AppWidgets.defultText(text:getTranslated("EnterPhoneNumber", context)!),
                 SizedBox(
                   height: 10.h,
                 ),
                 CustomTextFormField(
-                  errorMassage: 'please enter a phone number',
+                  errorMassage: getTranslated("errorMessagePhoneNumber", context)!,
                   regEx: AppConst.phonePattern,
-                  hintText: 'Enter Phone Number',
+                  hintText: getTranslated("EnterPhoneNumber", context)!,
                   nameofController: phoneController,
                   isvisble: false,
                   keyBoredType: TextInputType.number,
@@ -92,7 +95,7 @@ class _ForgetPasswordScreenState extends State<ForgetPasswordScreen> {
                           Navigator.pushNamed(
                               context, Routes.resetPasswordRoute);
                         },
-                        text: 'Send'))
+                        text: getTranslated("Send", context)!))
               ],
             ),
           ),

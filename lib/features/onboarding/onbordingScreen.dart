@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:qr_care/config/Localization/Constraine.dart';
 import 'package:qr_care/config/routes/app_routes.dart';
 import 'package:qr_care/features/login/presentation/screens/login_screen.dart';
 
@@ -85,7 +86,7 @@ class _OnBoradingScreenState extends State<OnBoradingScreen> {
                             onPressed: () {
                               Navigator.pushNamed(context, Routes.loginRoute);
                             },
-                            text: 'Get Stared')
+                            text: getTranslated("getStarted", context)!)
                       ],
                     ))
                 : Smooth_Page_Indicator(

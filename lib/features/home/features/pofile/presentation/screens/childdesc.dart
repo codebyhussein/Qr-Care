@@ -6,6 +6,7 @@ import 'package:flutter/rendering.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:path_provider/path_provider.dart';
+import 'package:qr_care/config/Localization/Constraine.dart';
 import 'package:qr_care/core/app_color.dart';
 import 'package:qr_care/features/forgetPassword/presentation/widgets/custom_appbar_forget_password.dart';
 import 'package:qr_care/features/home/features/pofile/presentation/widgets/CustomCard.dart';
@@ -43,7 +44,7 @@ class _ChildDescriptionState extends State<ChildDescription> {
             height: 30.h,
           ),
           CustomAppBar(
-            title: 'First child',
+            title: getTranslated("FirstChild", context)!,
           ),
           SizedBox(
             height: 35.h,
@@ -76,7 +77,7 @@ class _ChildDescriptionState extends State<ChildDescription> {
           SizedBox(
             height: 54.h,
           ),
-          DefultButtonLayoutScreen(onPressed: _shareQrCodeImage, text: 'Share')
+          DefultButtonLayoutScreen(onPressed: _shareQrCodeImage, text: getTranslated("Share", context)!)
         ],
       ),
     );
