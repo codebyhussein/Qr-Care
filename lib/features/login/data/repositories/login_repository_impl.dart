@@ -1,15 +1,19 @@
 import 'package:qr_care/features/login/data/datasources/login_local_data_source.dart';
 
+
 import 'package:qr_care/features/login/data/datasources/login_remote_data_source.dart';
 
+
 import 'package:qr_care/features/login/domain/entities/user_entity.dart';
+
 
 import 'package:qr_care/features/login/domain/repositories/login_repository.dart';
 
 
 class LoginRepositoryImpl implements LoginRepository {
 
-  final AuthRemoteDataSource remoteDataSource;
+  final LoginRemoteDataSource remoteDataSource;
+
 
   final LoginLocalDataSource localDataSource;
 
