@@ -7,10 +7,11 @@ import 'package:qr_care/core/app_color.dart';
 import 'package:qr_care/core/app_constant.dart';
 import 'package:qr_care/core/app_widgets.dart';
 import 'package:qr_care/features/forgetPassword/presentation/widgets/custom_appbar_forget_password.dart';
-import 'package:qr_care/features/login/presentation/screens/login_screen.dart';
+
 import 'package:qr_care/features/widgets/CustomTextFormField.dart';
 import 'package:qr_care/features/widgets/defult_button.dart';
 
+// ignore: must_be_immutable
 class ChangePasswordScreen extends StatefulWidget {
   ChangePasswordScreen({super.key});
   bool isLoading = false;
@@ -57,27 +58,17 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
                 ),
                 Center(
                   child: AppWidgets.defultTextRegister(
-                    text:
-                    getTranslated("resetPassword", context)!,
+                    text: getTranslated("resetPassword", context)!,
                   ),
                 ),
                 SizedBox(
                   height: 20.h,
                 ),
                 CustomTextFormField(
+                  hintText: getTranslated("NewPassword", context)!,
+                  nameofController: NewPasswordController,
                   errorMassage: getTranslated("errorNewPassword", context)!,
-<<<<<<< HEAD
                   regEx: AppConst.passwordPattern,
-                  hintText: getTranslated("NewPassword", context)!,
-                  nameofController: NewPasswordController,
-=======
- 
-                  
-            
-                  hintText: getTranslated("NewPassword", context)!,
-                  nameofController: NewPasswordController,
- 
->>>>>>> bcdc97f29adf2fd19fd3c9bfa06f47e2d35979bb
                   isvisble: false,
                   keyBoredType: TextInputType.visiblePassword,
                   prefixIcon: const Icon(IconlyLight.lock),
@@ -86,18 +77,10 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
                   height: 10.h,
                 ),
                 CustomTextFormField(
-                  errorMassage:getTranslated("errorConfirm", context)!,
+                  hintText: getTranslated("ConfirmPassword", context)!,
+                  nameofController: ConfirmPasswordController,
+                  errorMassage: getTranslated("errorConfirm", context)!,
                   regEx: AppConst.passwordPattern,
-<<<<<<< HEAD
-                  hintText:getTranslated("ConfirmPassword", context)!,
-                  nameofController: ConfirmPasswordController,
-=======
- 
- 
-                  hintText:getTranslated("ConfirmPassword", context)!,
-                  nameofController: ConfirmPasswordController,
- 
->>>>>>> bcdc97f29adf2fd19fd3c9bfa06f47e2d35979bb
                   isvisble: false,
                   keyBoredType: TextInputType.visiblePassword,
                   prefixIcon: const Icon(IconlyLight.lock),
