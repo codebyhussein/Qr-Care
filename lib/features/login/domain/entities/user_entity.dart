@@ -2,33 +2,48 @@ class UserEntity {
 
   final int? id;
 
+
   final String? accountId;
+
 
   final String? nationalId;
 
+
   final String? confirmPassword;
+
 
   final String? job;
 
+
   final String? gender;
+
 
   final String? government;
 
+
   final String? city;
+
 
   final String? governmentCity;
 
+
   final String? governmentCenter;
+
 
   final String? contact;
 
+
   final String? emergencyContact;
+
 
   final String? emergencyName;
 
+
   final String? userImage;
 
+
   final DateTime? dateOfBirth;
+
 
   final DateTime? createdAt;
 
@@ -106,10 +121,6 @@ class UserEntity {
 
   );
 
-
-  // An entity can be an object with methods, or it can be a set of
-
-  // data structures and functions.
 
   bool get isEmpty => this == UserEntity.empty;
 
