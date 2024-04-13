@@ -1,7 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+
 import 'package:iconly/iconly.dart';
 import 'package:qr_care/config/Localization/Constraine.dart';
+
+import 'package:iconly/iconly.dart';
+import 'package:qr_care/config/Localization/Constraine.dart';
+
 import 'package:qr_care/config/routes/app_routes.dart';
 import 'package:qr_care/core/app_color.dart';
 import 'package:qr_care/core/app_constant.dart';
@@ -70,12 +75,14 @@ class _ForgetPasswordScreenState extends State<ForgetPasswordScreen> {
                 SizedBox(
                   height: 30.h,
                 ),
-                AppWidgets.defultText(text:getTranslated("EnterPhoneNumber", context)!),
+                AppWidgets.defultText(
+                    text: getTranslated("EnterPhoneNumber", context)!),
                 SizedBox(
                   height: 10.h,
                 ),
                 CustomTextFormField(
-                  errorMassage: getTranslated("errorMessagePhoneNumber", context)!,
+                  errorMassage:
+                      getTranslated("errorMessagePhoneNumber", context)!,
                   regEx: AppConst.phonePattern,
                   hintText: getTranslated("EnterPhoneNumber", context)!,
                   nameofController: phoneController,

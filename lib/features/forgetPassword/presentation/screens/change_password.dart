@@ -66,9 +66,18 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
                 ),
                 CustomTextFormField(
                   errorMassage: getTranslated("errorNewPassword", context)!,
+<<<<<<< HEAD
                   regEx: AppConst.passwordPattern,
                   hintText: getTranslated("NewPassword", context)!,
                   nameofController: NewPasswordController,
+=======
+ 
+                  
+            
+                  hintText: getTranslated("NewPassword", context)!,
+                  nameofController: NewPasswordController,
+ 
+>>>>>>> bcdc97f29adf2fd19fd3c9bfa06f47e2d35979bb
                   isvisble: false,
                   keyBoredType: TextInputType.visiblePassword,
                   prefixIcon: const Icon(IconlyLight.lock),
@@ -79,8 +88,16 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
                 CustomTextFormField(
                   errorMassage:getTranslated("errorConfirm", context)!,
                   regEx: AppConst.passwordPattern,
+<<<<<<< HEAD
                   hintText:getTranslated("ConfirmPassword", context)!,
                   nameofController: ConfirmPasswordController,
+=======
+ 
+ 
+                  hintText:getTranslated("ConfirmPassword", context)!,
+                  nameofController: ConfirmPasswordController,
+ 
+>>>>>>> bcdc97f29adf2fd19fd3c9bfa06f47e2d35979bb
                   isvisble: false,
                   keyBoredType: TextInputType.visiblePassword,
                   prefixIcon: const Icon(IconlyLight.lock),
