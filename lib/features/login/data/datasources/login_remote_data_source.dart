@@ -1,7 +1,7 @@
 import 'package:qr_care/features/login/data/models/user_model.dart';
 
 
-abstract class AuthRemoteDataSource {
+abstract class LoginRemoteDataSource {
 
   Stream<UserModel?> get user;
 
