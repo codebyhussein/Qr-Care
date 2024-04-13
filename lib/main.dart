@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:qr_care/app.dart';
 import 'package:qr_care/core/Services/LocalService/Cache_Helper.dart';
 
+ 
 // import 'package:http/http.dart' as http;
 
 void main() async {
@@ -15,5 +16,7 @@ void main() async {
   // print('Response status: ${response.statusCode}');
   // print('Response body: ${response.body}');
 
+ 
+ 
   runApp(const QrCare());
 }
