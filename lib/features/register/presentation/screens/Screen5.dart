@@ -4,6 +4,7 @@ import 'package:qr_care/config/Localization/Constraine.dart';
 import 'package:qr_care/config/routes/app_routes.dart';
 import 'package:qr_care/core/app_widgets.dart';
 import 'package:qr_care/core/assets/assets_manager.dart';
+import 'package:qr_care/features/home/features/chaildern/presentation/screens/empty_childern_information_screen.dart';
 import 'package:qr_care/features/register/presentation/widgets/custom_appbar_register_screen.dart';
 import 'package:qr_care/features/register/presentation/widgets/dialog_widget.dart';
 import 'package:qr_care/features/register/presentation/widgets/parent_builder.dart';
@@ -49,11 +50,7 @@ class _Screen5State extends State<Screen5> {
                   setState(() {
                     widget.isparent = !widget.isparent;
                   });
-                  // Navigator.push(
-                  //     context,
-                  //     MaterialPageRoute(
-                  //         builder: (context) =>
-                  //             const EmptyChaildernInformationScreen()));
+                  Navigator.pushNamed(context, Routes.addChildRoute);
                 },
               ),
               SizedBox(

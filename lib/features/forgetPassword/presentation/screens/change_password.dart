@@ -7,10 +7,11 @@ import 'package:qr_care/core/app_color.dart';
 import 'package:qr_care/core/app_constant.dart';
 import 'package:qr_care/core/app_widgets.dart';
 import 'package:qr_care/features/forgetPassword/presentation/widgets/custom_appbar_forget_password.dart';
-import 'package:qr_care/features/login/presentation/screens/login_screen.dart';
+
 import 'package:qr_care/features/widgets/CustomTextFormField.dart';
 import 'package:qr_care/features/widgets/defult_button.dart';
 
+// ignore: must_be_immutable
 class ChangePasswordScreen extends StatefulWidget {
   ChangePasswordScreen({super.key});
   bool isLoading = false;
@@ -20,8 +21,8 @@ class ChangePasswordScreen extends StatefulWidget {
 }
 
 class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
-  TextEditingController NewPasswordController = TextEditingController();
-  TextEditingController ConfirmPasswordController = TextEditingController();
+  TextEditingController newPasswordController = TextEditingController();
+  TextEditingController confirmPasswordController = TextEditingController();
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
 
   @override
@@ -66,9 +67,12 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
                 ),
                 CustomTextFormField(
                   errorMassage: getTranslated("errorNewPassword", context)!,
-                  regEx: AppConst.passwordPattern,
+ 
+                  
+            
                   hintText: getTranslated("NewPassword", context)!,
                   nameofController: NewPasswordController,
+ 
                   isvisble: false,
                   keyBoredType: TextInputType.visiblePassword,
                   prefixIcon: const Icon(IconlyLight.lock),
@@ -79,8 +83,11 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
                 CustomTextFormField(
                   errorMassage:getTranslated("errorConfirm", context)!,
                   regEx: AppConst.passwordPattern,
+ 
+ 
                   hintText:getTranslated("ConfirmPassword", context)!,
                   nameofController: ConfirmPasswordController,
+ 
                   isvisble: false,
                   keyBoredType: TextInputType.visiblePassword,
                   prefixIcon: const Icon(IconlyLight.lock),
