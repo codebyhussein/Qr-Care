@@ -21,8 +21,8 @@ class ChangePasswordScreen extends StatefulWidget {
 }
 
 class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
-  TextEditingController newPasswordController = TextEditingController();
-  TextEditingController confirmPasswordController = TextEditingController();
+  TextEditingController NewPasswordController = TextEditingController();
+  TextEditingController ConfirmPasswordController = TextEditingController();
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
 
   @override
@@ -58,8 +58,7 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
                 ),
                 Center(
                   child: AppWidgets.defultTextRegister(
-                    text:
-                    getTranslated("resetPassword", context)!,
+                    text: getTranslated("resetPassword", context)!,
                   ),
                 ),
                 SizedBox(
@@ -67,12 +66,9 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
                 ),
                 CustomTextFormField(
                   errorMassage: getTranslated("errorNewPassword", context)!,
- 
-                  
-            
+                  regEx: AppConst.passwordPattern,
                   hintText: getTranslated("NewPassword", context)!,
                   nameofController: NewPasswordController,
- 
                   isvisble: false,
                   keyBoredType: TextInputType.visiblePassword,
                   prefixIcon: const Icon(IconlyLight.lock),
@@ -81,13 +77,10 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
                   height: 10.h,
                 ),
                 CustomTextFormField(
-                  errorMassage:getTranslated("errorConfirm", context)!,
+                  errorMassage: getTranslated("errorConfirm", context)!,
                   regEx: AppConst.passwordPattern,
- 
- 
-                  hintText:getTranslated("ConfirmPassword", context)!,
+                  hintText: getTranslated("ConfirmPassword", context)!,
                   nameofController: ConfirmPasswordController,
- 
                   isvisble: false,
                   keyBoredType: TextInputType.visiblePassword,
                   prefixIcon: const Icon(IconlyLight.lock),
