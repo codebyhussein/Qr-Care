@@ -7,7 +7,6 @@ import 'package:qr_care/config/routes/app_routes.dart';
 import 'package:qr_care/core/app_color.dart';
 import 'package:qr_care/core/app_constant.dart';
 import 'package:qr_care/core/app_widgets.dart';
-
 import 'package:qr_care/features/forgetPassword/presentation/widgets/custom_appbar_forget_password.dart';
 import 'package:qr_care/features/widgets/CustomTextFormField.dart';
 import 'package:qr_care/features/widgets/defult_button.dart';
@@ -63,11 +62,29 @@ class _ForgetPasswordScreenState extends State<ForgetPasswordScreen> {
                 SizedBox(
                   height: 10.h,
                 ),
-                Center(
-                  child: AppWidgets.defultdesrptionRegister(
-                    text: getTranslated("descPhoneNumber", context)!,
-                  ),
+
+                Stack(
+                  alignment: Alignment.center,
+                  children: [
+                    Center(
+                      child: AppWidgets.defultdesrptionRegister(
+                        text: getTranslated("descPhoneNumber", context)!,
+                      ),
+                    ),
+                    if (widget.isLoading)
+                      Center(
+                        child: SizedBox(
+                          height: 25.h,
+                          width: 25.w,
+                          child: CircularProgressIndicator(
+                            backgroundColor: Colors.transparent,
+                            color: AppColors.mainColor,
+                          ),
+                        ),
+                      ),
+                  ],
                 ),
+
                 SizedBox(
                   height: 30.h,
                 ),
@@ -76,6 +93,7 @@ class _ForgetPasswordScreenState extends State<ForgetPasswordScreen> {
                 SizedBox(
                   height: 10.h,
                 ),
+
                 CustomTextFormField(
                   errorMassage:
                       getTranslated("errorMessagePhoneNumber", context)!,
@@ -89,15 +107,41 @@ class _ForgetPasswordScreenState extends State<ForgetPasswordScreen> {
                 SizedBox(
                   height: 80.h,
                 ),
+                // Center(
+                //     child: DefultButton(
+                //         onPressed: () {
+                //           if (formKey.currentState!.validate()) {
+                //             Navigator.pushNamed(
+                //                 context, Routes.resetPasswordRoute);
+                //           }
+                //         },
+                //         text: getTranslated("Send", context)!)),
                 Center(
-                    child: DefultButton(
-                        onPressed: () {
+                  child: Stack(
+                    alignment: Alignment.center,
+                    children: [
+                      DefultButton(
+                        onPressed: () async {
+                          setState(() {
+                            widget.isLoading = true;
+                          });
+
                           if (formKey.currentState!.validate()) {
+                            await Future.delayed(
+                                const Duration(milliseconds: 500));
                             Navigator.pushNamed(
                                 context, Routes.resetPasswordRoute);
                           }
+
+                          setState(() {
+                            widget.isLoading = false;
+                          });
                         },
-                        text: getTranslated("Send", context)!))
+                        text: getTranslated("Send", context)!,
+                      ),
+                    ],
+                  ),
+                ),
               ],
             ),
           ),
