@@ -2,8 +2,9 @@ import 'package:flutter/material.dart';
 
 class AppConst {
   static const idPattern = r'^\d{14}$';
-  static String passwordPattern =
-      r'^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[!@#\$&*~]).{8,}$';
+  // static String passwordPattern =
+  //     r'^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[!@#\$&*~]).{8,}$';
+  static String passwordPattern = r'^[0-9]*$';
 
   static String phonePattern = r"^01[0125][0-9]{8}";
 
