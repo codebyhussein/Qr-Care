@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:http/http.dart' as http;
+import 'package:qr_care/core/Services/Api/app_url.dart';
 import 'package:qr_care/features/login/data/models/user_model.dart';
 
 abstract class LoginRemoteDataSource {
@@ -31,7 +32,7 @@ class LoginRemoteDataSourceImpl implements LoginRemoteDataSource {
     required String password,
   }) async {
     final response = await _client.post(
-      Uri.parse('http://10.0.2.2/grd/auth/login.php'),
+      Uri.parse(ApiUrl.loginUrl),
       body: {'account_id': id, 'password': password},
     );
 
