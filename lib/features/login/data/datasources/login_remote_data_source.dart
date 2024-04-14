@@ -1,18 +1,46 @@
+import 'dart:convert';
+
+import 'package:http/http.dart' as http;
 import 'package:qr_care/features/login/data/models/user_model.dart';
 
-
 abstract class LoginRemoteDataSource {
-
   Stream<UserModel?> get user;
 
-
   Future<UserModel> signIn({
-
     required String id,
-
     required String password,
-
   });
-
 }
 
+class LoginRemoteDataSourceImpl implements LoginRemoteDataSource {
+  final http.Client _client;
+
+  const LoginRemoteDataSourceImpl({
+    required http.Client client,
+  }) : _client = client;
+
+  @override
+  Stream<UserModel?> get user {
+    // TODO: Implement the get user stream.
+    throw UnimplementedError();
+  }
+
+  @override
+  Future<UserModel> signIn({
+    required String id,
+    required String password,
+  }) async {
+    final response = await _client.post(
+      Uri.parse('http://10.0.2.2/grd/auth/login.php'),
+      body: {'account_id': id, 'password': password},
+    );
+
+    if (response.statusCode == 200) {
+      final json = jsonDecode(response.body);
+      final user = UserModel.fromJson(json);
+      return user;
+    } else {
+      throw Exception('Failed to sign in');
+    }
+  }
+}

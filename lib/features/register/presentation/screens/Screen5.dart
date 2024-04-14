@@ -42,18 +42,13 @@ class _Screen5State extends State<Screen5> {
               ParentBuilder(
                 isparent: widget.isparent,
                 title: getTranslated("parent", context)!,
-                description:
-                getTranslated("descParent", context)!,
+                description: getTranslated("descParent", context)!,
                 image: AppAssets.parentImage,
                 onPressed: () {
                   setState(() {
                     widget.isparent = !widget.isparent;
                   });
-                  // Navigator.push(
-                  //     context,
-                  //     MaterialPageRoute(
-                  //         builder: (context) =>
-                  //             const EmptyChaildernInformationScreen()));
+                  Navigator.pushNamed(context, Routes.addChildRoute);
                 },
               ),
               SizedBox(
@@ -79,8 +74,7 @@ class _Screen5State extends State<Screen5> {
                   },
                   isparent: !widget.isparent,
                   title: getTranslated("nonParent", context)!,
-                  description:
-                  getTranslated("descNonParent", context)!,
+                  description: getTranslated("descNonParent", context)!,
                   image: AppAssets.nonParentImage),
             ],
           ),
