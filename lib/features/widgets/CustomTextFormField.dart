@@ -67,7 +67,7 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
                 ? widget.height! + heightErrorMessage
                 : widget.height! + helpMessage,
             child: TextFormField(
-              enabled: widget.enable == null ? true : widget.enable!,
+              // enabled: widget.enable == null ? true : widget.enable!,
               autovalidateMode: AutovalidateMode.onUserInteraction,
               controller: widget.nameofController,
               keyboardType: widget.keyBoredType,
