@@ -5,8 +5,10 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:qr_care/config/Localization/AppLocalizations.dart';
 import 'package:qr_care/config/Localization/cubit/change_lang_cubit.dart';
 import 'package:qr_care/config/routes/app_routes.dart';
+import 'package:qr_care/features/login/injection_container.dart' as injection;
 
 import 'package:qr_care/config/themes/app_themes.dart';
+import 'package:qr_care/features/login/presentation/cubit/login_cubit.dart';
 
 import 'package:qr_care/features/splash/splash_screen.dart';
 
@@ -15,9 +17,16 @@ class QrCare extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) =>
-          ChangeLangCubit()..appLanguage(EventToChangeLang.initChangeLange),
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider<LoginCubit>(
+          create: (BuildContext context) => injection.getIt<LoginCubit>(),
+        ),
+        BlocProvider<ChangeLangCubit>(
+          create: (context) =>
+              ChangeLangCubit()..appLanguage(EventToChangeLang.initChangeLange),
+        )
+      ],
       child: BlocBuilder<ChangeLangCubit, ChangeLangState>(
         builder: (context, state) {
           if (state is ChangeLang) {
