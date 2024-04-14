@@ -14,7 +14,7 @@ class CustomTextFormField extends StatefulWidget {
     this.suffixIcon,
     required this.isvisble,
     required this.errorMassage,
-    this.helpText ,
+    this.helpText,
     this.height = 46,
   });
   String hintText;
@@ -68,7 +68,7 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
                 : widget.height! + helpMessage,
             child: TextFormField(
               enabled: widget.enable == null ? true : widget.enable!,
-              //  autovalidateMode: AutovalidateMode.onUserInteraction,
+              autovalidateMode: AutovalidateMode.onUserInteraction,
               controller: widget.nameofController,
               keyboardType: widget.keyBoredType,
               obscureText: widget.isvisble,
