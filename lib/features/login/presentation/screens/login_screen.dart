@@ -194,7 +194,7 @@ class LoginScreen extends StatefulWidget {
 class _LoginScreenState extends State<LoginScreen> {
   TextEditingController idController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
-  final GlobalKey<FormState> formKey = GlobalKey<FormState>();
+  GlobalKey<FormState> formKey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
@@ -202,11 +202,7 @@ class _LoginScreenState extends State<LoginScreen> {
       backgroundColor: AppColors.backgroundColor,
       body: BlocConsumer<LoginCubit, LoginState>(
         listener: (context, state) {
-          if (state is LoginLoading) {
-            CircularProgressIndicator(
-              color: AppColors.mainColor,
-            );
-          } else if (state is LoginSuccess) {
+          if (state is LoginSuccess) {
             ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
                 content: Text('login success...',
                     style: TextStyle(color: Colors.white))));
@@ -218,108 +214,117 @@ class _LoginScreenState extends State<LoginScreen> {
           }
         },
         builder: (context, state) {
-          return Padding(
-            padding: EdgeInsets.symmetric(horizontal: 15.w),
-            child: SingleChildScrollView(
-              child: Form(
-                key: formKey,
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    SizedBox(
-                      height: 120.h,
-                    ),
-                    Center(
-                      child: SvgPicture.asset(
-                        AppAssets.logo_Path,
-                        height: 192.h,
-                        width: 192.w,
+          if (state is LoginLoading) {
+            return Center(
+              child: CircularProgressIndicator(
+                color: AppColors.mainColor,
+              ),
+            );
+          } else {
+            return Padding(
+              padding: EdgeInsets.symmetric(horizontal: 15.w),
+              child: SingleChildScrollView(
+                child: Form(
+                  key: formKey,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      SizedBox(
+                        height: 120.h,
                       ),
-                    ),
-                    SizedBox(
-                      height: 36.h,
-                    ),
-                    AppWidgets.defultText(text: getTranslated("ID", context)!),
-                    SizedBox(
-                      height: 10.h,
-                    ),
-                    CustomTextFormField(
-                      regEx: r'[a-zA-Z]+_[0-9a-fA-F]{8}\.com$',
-                      helpText: getTranslated("helpId", context)!,
-                      errorMassage: getTranslated("errorValid", context)!,
-                      hintText: getTranslated("ID", context)!,
-                      nameofController: idController,
-                      isvisble: false,
-                      keyBoredType: TextInputType.emailAddress,
-                      prefixIcon: const Icon(IconlyLight.profile),
-                    ),
-                    SizedBox(
-                      height: 23.h,
-                    ),
-                    AppWidgets.defultText(
-                        text: getTranslated("passWord", context)!),
-                    SizedBox(
-                      height: 10.h,
-                    ),
-                    CustomTextFormField(
-                      helpText: getTranslated("helperPassWord", context),
-                      hintText: getTranslated("passWord", context)!,
-                      regEx: AppConst.passwordPattern,
-                      errorMassage:
-                          getTranslated("errorMessagePassWord", context)!,
-                      suffixIcon: IconButton(
-                          color: AppColors.mainColor,
-                          onPressed: () {
-                            setState(() {
-                              widget.isvisable = !widget.isvisable;
-                            });
-                          },
-                          icon: widget.isvisable
-                              ? const Icon(Icons.visibility_outlined)
-                              : const Icon(Icons.visibility_off_rounded)),
-                      nameofController: passwordController,
-                      isvisble: !widget.isvisable,
-                      keyBoredType: TextInputType.visiblePassword,
-                      prefixIcon: const Icon(IconlyLight.lock),
-                    ),
-                    SizedBox(
-                      height: 11.h,
-                    ),
-                    ForgetPasswordWidget(
-                      onPressed: () {
-                        Navigator.pushNamed(
-                            context, Routes.forgetPasswordRoute);
-                      },
-                    ),
-                    SizedBox(
-                      height: 40.h,
-                    ),
-                    Center(
-                      child: DefultButton(
+                      Center(
+                        child: SvgPicture.asset(
+                          AppAssets.logo_Path,
+                          height: 192.h,
+                          width: 192.w,
+                        ),
+                      ),
+                      SizedBox(
+                        height: 36.h,
+                      ),
+                      AppWidgets.defultText(
+                          text: getTranslated("ID", context)!),
+                      SizedBox(
+                        height: 10.h,
+                      ),
+                      CustomTextFormField(
+                        regEx: r'[a-zA-Z]+_[0-9a-fA-F]{8}\.com$',
+                        helpText: getTranslated("helpId", context)!,
+                        errorMassage: getTranslated("errorValidId", context)!,
+                        hintText: getTranslated("ID", context)!,
+                        nameofController: idController,
+                        isvisble: false,
+                        keyBoredType: TextInputType.emailAddress,
+                        prefixIcon: const Icon(IconlyLight.profile),
+                      ),
+                      SizedBox(
+                        height: 23.h,
+                      ),
+                      AppWidgets.defultText(
+                          text: getTranslated("passWord", context)!),
+                      SizedBox(
+                        height: 10.h,
+                      ),
+                      CustomTextFormField(
+                        helpText: getTranslated("helperPassWord", context),
+                        hintText: getTranslated("passWord", context)!,
+                        regEx: AppConst.passwordPattern,
+                        errorMassage:
+                            getTranslated("errorMessagePassWord", context)!,
+                        suffixIcon: IconButton(
+                            color: AppColors.mainColor,
+                            onPressed: () {
+                              setState(() {
+                                widget.isvisable = !widget.isvisable;
+                              });
+                            },
+                            icon: widget.isvisable
+                                ? const Icon(Icons.visibility_outlined)
+                                : const Icon(Icons.visibility_off_rounded)),
+                        nameofController: passwordController,
+                        isvisble: !widget.isvisable,
+                        keyBoredType: TextInputType.visiblePassword,
+                        prefixIcon: const Icon(IconlyLight.lock),
+                      ),
+                      SizedBox(
+                        height: 11.h,
+                      ),
+                      ForgetPasswordWidget(
                         onPressed: () {
-                          if (formKey.currentState!.validate()) {
-                            BlocProvider.of<LoginCubit>(context).signIn(
-                              id: idController.text,
-                              password: passwordController.text,
-                            );
-                          }
+                          Navigator.pushNamed(
+                              context, Routes.forgetPasswordRoute);
                         },
-                        text: getTranslated("login", context)!,
                       ),
-                    ),
-                    SizedBox(
-                      height: 24.h,
-                    ),
-                    SignupWidget(
-                      onPressed: () {
-                        Navigator.pushNamed(context, Routes.registerRoute1);
-                      },
-                    )
-                  ],
+                      SizedBox(
+                        height: 40.h,
+                      ),
+                      Center(
+                        child: DefultButton(
+                          onPressed: () {
+                            if (formKey.currentState!.validate()) {
+                              BlocProvider.of<LoginCubit>(context).signIn(
+                                id: idController.text,
+                                password: passwordController.text,
+                              );
+                            }
+                          },
+                          text: getTranslated("login", context)!,
+                        ),
+                      ),
+                      SizedBox(
+                        height: 24.h,
+                      ),
+                      SignupWidget(
+                        onPressed: () {
+                          Navigator.pushNamed(context, Routes.registerRoute1);
+                        },
+                      )
+                    ],
+                  ),
                 ),
               ),
-            ),
-          );
+            );
+          }
         },
       ),
     );
