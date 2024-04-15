@@ -2,6 +2,7 @@ import 'package:get_it/get_it.dart';
 import 'package:qr_care/features/login/data/datasources/login_local_data_source.dart';
 import 'package:qr_care/features/login/data/datasources/login_remote_data_source.dart';
 import 'package:qr_care/features/login/data/repositories/login_repository_impl.dart';
+import 'package:qr_care/features/login/domain/entities/user_entity.dart';
 import 'package:qr_care/features/login/domain/repositories/login_repository.dart';
 import 'package:qr_care/features/login/domain/usecases/login_use_case.dart';
 import 'package:qr_care/features/login/presentation/cubit/login_cubit.dart';
@@ -17,7 +18,7 @@ void setup() async {
 
   // usecase
   getIt.registerLazySingleton(() => LoginUseCase(loginRepository: getIt()));
-
+  getIt.registerSingleton<UserEntity>(UserEntity());
 // Repositoy
   getIt.registerLazySingleton<LoginRepository>(() =>
       LoginRepositoryImpl(remoteDataSource: getIt(), localDataSource: getIt()));
