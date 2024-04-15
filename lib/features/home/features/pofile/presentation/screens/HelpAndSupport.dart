@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:iconly/iconly.dart';
 import 'package:qr_care/config/Localization/Constraine.dart';
 import 'package:qr_care/core/app_widgets.dart';
-import 'package:qr_care/features/forgetPassword/presentation/widgets/custom_appbar_forget_password.dart';
+import 'package:qr_care/features/forgetPassword/presentation/widgets/custom_appbar.dart';
 import 'package:qr_care/features/home/features/pofile/presentation/widgets/FAQs.dart';
 
 class HelpAndSupport extends StatefulWidget {
@@ -52,7 +51,7 @@ class _HelpAndSupportState extends State<HelpAndSupport> {
                   colorText: Colors.grey),
             ),
             Padding(
-              padding:  EdgeInsetsDirectional.only(start: 10),
+              padding: const EdgeInsetsDirectional.only(start: 10),
               child: AppWidgets.title(
                   textAlign: TextAlign.start,
                   text: getTranslated("helpThree", context)!),
@@ -151,8 +150,8 @@ class _HelpAndSupportState extends State<HelpAndSupport> {
               child: AppWidgets.description(
                   textAlign: TextAlign.start,
                   alignmentDirectional: AlignmentDirectional.topStart,
-                  text:
-                  getTranslated("helpFourteen", context)!        ,          fontSize: 10.sp,
+                  text: getTranslated("helpFourteen", context)!,
+                  fontSize: 10.sp,
                   colorText: Colors.grey),
             ),
           ],

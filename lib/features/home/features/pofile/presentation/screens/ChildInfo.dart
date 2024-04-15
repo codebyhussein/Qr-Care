@@ -2,8 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:qr_care/config/Localization/Constraine.dart';
 import 'package:qr_care/core/app_color.dart';
-
-import 'package:qr_care/features/forgetPassword/presentation/widgets/custom_appbar_forget_password.dart';
+import 'package:qr_care/features/forgetPassword/presentation/widgets/custom_appbar.dart';
 import 'package:qr_care/features/home/features/pofile/presentation/screens/childdesc.dart';
 import 'package:qr_care/features/home/layout_screen.dart';
 import 'package:qr_care/features/widgets/add_chid_widget.dart';
@@ -32,7 +31,8 @@ class ChildrenInfo extends StatelessWidget {
                 SizedBox(
                   height: 30.h,
                 ),
-                CustomAppBar(title: getTranslated("ChildrenInformation", context)!),
+                CustomAppBar(
+                    title: getTranslated("ChildrenInformation", context)!),
                 SizedBox(height: 152.h),
 
                 Container(

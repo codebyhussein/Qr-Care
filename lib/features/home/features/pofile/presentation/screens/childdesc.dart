@@ -4,16 +4,15 @@ import 'dart:typed_data';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:qr_care/config/Localization/Constraine.dart';
 import 'package:qr_care/core/app_color.dart';
-import 'package:qr_care/features/forgetPassword/presentation/widgets/custom_appbar_forget_password.dart';
 import 'package:qr_care/features/home/features/pofile/presentation/widgets/CustomCard.dart';
 import 'package:qr_care/features/home/features/scan_qr/presentation/widgets/defult_botton.dart';
 import 'package:qr_flutter/qr_flutter.dart';
 import 'package:share_plus/share_plus.dart';
 import 'dart:ui' as ui;
+import '../../../../../forgetPassword/presentation/widgets/custom_appbar.dart';
 
 class ChildDescription extends StatefulWidget {
   const ChildDescription({super.key});
@@ -77,7 +76,9 @@ class _ChildDescriptionState extends State<ChildDescription> {
           SizedBox(
             height: 54.h,
           ),
-          DefultButtonLayoutScreen(onPressed: _shareQrCodeImage, text: getTranslated("Share", context)!)
+          DefultButtonLayoutScreen(
+              onPressed: _shareQrCodeImage,
+              text: getTranslated("Share", context)!)
         ],
       ),
     );
