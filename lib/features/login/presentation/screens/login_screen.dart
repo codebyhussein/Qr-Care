@@ -178,9 +178,6 @@ import 'package:qr_care/features/widgets/defult_button.dart';
 import 'package:qr_care/features/login/presentation/widgets/forget_password_widget.dart';
 import 'package:qr_care/features/login/presentation/widgets/sign_up_widget.dart';
 import 'package:qr_care/features/login/presentation/cubit/login_cubit.dart';
-import 'package:qr_care/features/widgets/failure_widget.dart';
-import 'package:qr_care/features/widgets/loading_widget.dart';
-import 'package:qr_care/features/widgets/success_widget.dart';
 
 class LoginScreen extends StatefulWidget {
   LoginScreen({super.key});
@@ -206,7 +203,8 @@ class _LoginScreenState extends State<LoginScreen> {
             ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
                 content: Text('login success...',
                     style: TextStyle(color: Colors.white))));
-            Navigator.pushNamed(context, Routes.homeScreenRoute);
+            Navigator.pushNamed(context, Routes.homeScreenRoute,
+                arguments: state.user);
           } else if (state is LoginFailure) {
             ScaffoldMessenger.of(context).showSnackBar(SnackBar(
                 content: Text(state.errorMessage,
