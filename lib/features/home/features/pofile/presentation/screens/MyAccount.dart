@@ -4,7 +4,7 @@ import 'package:iconly/iconly.dart';
 import 'package:qr_care/config/Localization/Constraine.dart';
 import 'package:qr_care/config/routes/app_routes.dart';
 import 'package:qr_care/core/app_color.dart';
-import 'package:qr_care/features/forgetPassword/presentation/widgets/custom_appbar_forget_password.dart';
+import 'package:qr_care/features/forgetPassword/presentation/widgets/custom_appbar.dart';
 import 'package:qr_care/features/home/features/pofile/presentation/widgets/CustomButton.dart';
 import 'package:qr_care/features/home/features/pofile/presentation/widgets/textWidget.dart';
 import 'package:qr_care/features/home/features/scan_qr/presentation/widgets/defult_botton.dart';
@@ -14,7 +14,6 @@ class MyAccount extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
     return Scaffold(
       backgroundColor: AppColors.backgroundColor,
       body: SafeArea(
@@ -53,7 +52,7 @@ class MyAccount extends StatelessWidget {
             SizedBox(
               height: 10.h,
             ),
-            titleWidget(text:getTranslated("center", context)!),
+            titleWidget(text: getTranslated("center", context)!),
             SizedBox(
               height: 6.h,
             ),
@@ -65,7 +64,7 @@ class MyAccount extends StatelessWidget {
             SizedBox(
               height: 10.h,
             ),
-            titleWidget(text:  getTranslated("job", context)!),
+            titleWidget(text: getTranslated("job", context)!),
             SizedBox(
               height: 6.h,
             ),
@@ -78,7 +77,7 @@ class MyAccount extends StatelessWidget {
             SizedBox(
               height: 10.h,
             ),
-            titleWidget(text:  getTranslated("contact", context)!),
+            titleWidget(text: getTranslated("contact", context)!),
             SizedBox(
               height: 6.h,
             ),
@@ -91,7 +90,7 @@ class MyAccount extends StatelessWidget {
             SizedBox(
               height: 10.h,
             ),
-            titleWidget(text:getTranslated("emergencyContact", context)!),
+            titleWidget(text: getTranslated("emergencyContact", context)!),
             SizedBox(
               height: 6.h,
             ),

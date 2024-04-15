@@ -6,7 +6,7 @@ import 'package:qr_care/config/routes/app_routes.dart';
 import 'package:qr_care/core/app_color.dart';
 import 'package:qr_care/core/app_constant.dart';
 import 'package:qr_care/core/app_widgets.dart';
-import 'package:qr_care/features/forgetPassword/presentation/widgets/custom_appbar_forget_password.dart';
+import 'package:qr_care/features/forgetPassword/presentation/widgets/custom_appbar.dart';
 
 import 'package:qr_care/features/widgets/CustomTextFormField.dart';
 import 'package:qr_care/features/widgets/defult_button.dart';
@@ -65,12 +65,10 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
                   height: 20.h,
                 ),
                 CustomTextFormField(
- 
                   hintText: getTranslated("NewPassword", context)!,
                   nameofController: NewPasswordController,
                   errorMassage: getTranslated("errorNewPassword", context)!,
                   regEx: AppConst.passwordPattern,
- 
                   isvisble: false,
                   keyBoredType: TextInputType.visiblePassword,
                   prefixIcon: const Icon(IconlyLight.lock),
@@ -79,12 +77,10 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
                   height: 10.h,
                 ),
                 CustomTextFormField(
- 
                   hintText: getTranslated("ConfirmPassword", context)!,
                   nameofController: ConfirmPasswordController,
                   errorMassage: getTranslated("errorConfirm", context)!,
                   regEx: AppConst.passwordPattern,
- 
                   isvisble: false,
                   keyBoredType: TextInputType.visiblePassword,
                   prefixIcon: const Icon(IconlyLight.lock),

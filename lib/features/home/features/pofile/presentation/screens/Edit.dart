@@ -5,7 +5,7 @@ import 'package:qr_care/config/Localization/Constraine.dart';
 import 'package:qr_care/config/routes/app_routes.dart';
 import 'package:qr_care/core/app_color.dart';
 import 'package:qr_care/core/app_constant.dart';
-import 'package:qr_care/features/forgetPassword/presentation/widgets/custom_appbar_forget_password.dart';
+import 'package:qr_care/features/forgetPassword/presentation/widgets/custom_appbar.dart';
 import 'package:qr_care/features/home/features/pofile/presentation/widgets/textWidget.dart';
 import 'package:qr_care/features/home/features/scan_qr/presentation/widgets/defult_botton.dart';
 import 'package:qr_care/features/widgets/CustomTextFormField.dart';
@@ -31,22 +31,19 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
     List<String> cities = [
       getTranslated("Cairo", context)!,
       getTranslated("Giza", context)!,
-      getTranslated( "Luxor", context)!,
+      getTranslated("Luxor", context)!,
       getTranslated("Alexandria", context)!,
       getTranslated("PortSaid", context)!,
       getTranslated("Ismailia", context)!,
-      getTranslated( "Mansoura", context)!,
-      getTranslated( "Tanta", context)!,
-
+      getTranslated("Mansoura", context)!,
+      getTranslated("Tanta", context)!,
     ];
-     List<String> jobs = [
+    List<String> jobs = [
       getTranslated("Doctor", context)!,
       getTranslated("AdministrativeServices", context)!,
       getTranslated("OfficeServices", context)!,
       getTranslated("Others", context)!,
-
     ];
-
 
     return Scaffold(
       backgroundColor: AppColors.backgroundColor,
@@ -82,17 +79,19 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
               height: 6.h,
             ),
             DefaultDropdown(
-                hintText:  getTranslated("selectCity", context)!,
+                hintText: getTranslated("selectCity", context)!,
                 errorMassage: getTranslated("errorMessageCity", context)!,
                 controllerName: centerController,
-                listName:cities,
+                listName: cities,
                 onChanged: (value) {
                   cityController.text = value!;
                 }),
             SizedBox(
               height: 10.h,
             ),
-            titleWidget(text: getTranslated("center", context)!,),
+            titleWidget(
+              text: getTranslated("center", context)!,
+            ),
             SizedBox(
               height: 6.h,
             ),
@@ -100,7 +99,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                 hintText: getTranslated("selectCenter", context)!,
                 errorMassage: getTranslated("errorMessageCenter", context)!,
                 controllerName: centerController,
-                listName:cities,
+                listName: cities,
                 onChanged: (value) {
                   centerController.text = value!;
                 }),
@@ -150,8 +149,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                 regEx: AppConst.phonePattern,
                 prefixIcon: const Icon(IconlyLight.call),
                 hintText: getTranslated("PhoneHome", context)!,
-                errorMassage:
-                getTranslated("errorMessagePhone", context)!   ,
+                errorMassage: getTranslated("errorMessagePhone", context)!,
                 nameofController: MobileController,
                 keyBoredType: TextInputType.number,
                 isvisble: false,
