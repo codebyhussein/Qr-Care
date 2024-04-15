@@ -27,27 +27,6 @@ class LoginRemoteDataSourceImpl implements LoginRemoteDataSource {
   }
 
   @override
-//   Future<UserModel> signIn({
-//     required String id,
-//     required String password,
-//   }) async {
-//     final response = await _client.post(
-//       Uri.parse(ApiUrl.loginUrl),
-//       body: {'account_id': id, 'password': password},
-//     );
-
-//     if (response.statusCode == 200) {
-//       final json = jsonDecode(response.body);
-//       if(json['status'=='fail']){
-
-//       }
-//       final user = UserModel.fromJson(json);
-//       return user;
-//     } else {
-//       throw Exception('Failed to sign in');
-//     }
-//   }
-// }
   Future<UserModel> signIn({
     required String id,
     required String password,
@@ -60,12 +39,13 @@ class LoginRemoteDataSourceImpl implements LoginRemoteDataSource {
     if (response.statusCode == 200) {
       final json = jsonDecode(response.body);
       if (json['status'] == 'fail') {
-        throw Exception(json['message']);
+        final errorMessage = json['message'];
+        return Future.error(errorMessage);
       }
       final user = UserModel.fromJson(json);
       return user;
     } else {
-      throw Exception('Failed to sign in');
+      return Future.error('Failed to sign in');
     }
   }
 }
