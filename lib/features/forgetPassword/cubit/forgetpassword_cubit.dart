@@ -3,6 +3,8 @@ import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:http/http.dart' as http;
 import 'package:qr_care/core/Services/Api/app_url.dart';
+import 'package:qr_care/features/login/injection_container.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 part 'forgetpassword_state.dart';
 
 class ForgetpasswordCubit extends Cubit<ForgetpasswordState> {
@@ -20,7 +22,13 @@ class ForgetpasswordCubit extends Cubit<ForgetpasswordState> {
       if (response.statusCode == 200) {
         final jsonResponse = json.decode(response.body);
         if (jsonResponse['status'] == "success") {
-          emit(const ForgetpasswordSuccess(msg: 'Please check your code in'));
+          emit(ForgetpasswordSuccess(msg: jsonResponse['message']));
+
+          final sharedPreferences = getIt<SharedPreferences>();
+          sharedPreferences.setString(
+              'verification_code', jsonResponse['verification_code']);
+          sharedPreferences.setString(
+              'phone_number', jsonResponse['phone_number']);
         } else {
           emit(const ForgetpasswordFailure(
               errorMessage: "please enter correct phone"));

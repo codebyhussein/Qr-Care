@@ -90,17 +90,6 @@ class _ForgetPasswordScreenState extends State<ForgetPasswordScreen> {
                             text: getTranslated("descPhoneNumber", context)!,
                           ),
                         ),
-                        // if (widget.isLoading)
-                        //   Center(
-                        //     child: SizedBox(
-                        //       height: 25.h,
-                        //       width: 25.w,
-                        //       child: CircularProgressIndicator(
-                        //         backgroundColor: Colors.transparent,
-                        //         color: AppColors.mainColor,
-                        //       ),
-                        //     ),
-                        //   ),
                       ],
                     ),
                     SizedBox(
