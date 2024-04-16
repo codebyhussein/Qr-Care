@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:qr_care/app.dart';
 import 'package:qr_care/core/Services/LocalService/Cache_Helper.dart';
+import 'package:qr_care/core/Services/notifi_service.dart';
 import 'package:qr_care/features/login/injection_container.dart' as injection;
 
 void main() async {
@@ -8,6 +9,6 @@ void main() async {
 
   await CacheHelper.init();
   injection.setup();
-
+  await NotificationService().initNotification();
   runApp(const QrCare());
 }
