@@ -6,6 +6,8 @@ import 'package:qr_care/config/Localization/AppLocalizations.dart';
 import 'package:qr_care/config/Localization/cubit/change_lang_cubit.dart';
 import 'package:qr_care/config/routes/app_routes.dart';
 import 'package:qr_care/features/forgetPassword/cubit/forgetpassword_cubit.dart';
+import 'package:qr_care/features/forgetPassword/cubit/resetpassword_cubit.dart';
+import 'package:qr_care/features/forgetPassword/cubit/verificationpassword_cubit.dart';
 import 'package:qr_care/features/login/injection_container.dart' as injection;
 
 import 'package:qr_care/config/themes/app_themes.dart';
@@ -25,6 +27,12 @@ class QrCare extends StatelessWidget {
         ),
         BlocProvider<ForgetpasswordCubit>(
           create: (BuildContext context) => ForgetpasswordCubit(),
+        ),
+        BlocProvider<ResetpasswordCubit>(
+          create: (BuildContext context) => ResetpasswordCubit(),
+        ),
+        BlocProvider<VerificationpasswordCubit>(
+          create: (BuildContext context) => VerificationpasswordCubit(),
         ),
         BlocProvider<ChangeLangCubit>(
           create: (context) =>
