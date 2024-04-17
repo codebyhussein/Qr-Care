@@ -80,7 +80,11 @@ class _Screen2State extends State<Screen2> {
                     keyBoredType: TextInputType.number,
                     isvisble: false),
               ),
-              const CustomUpload(),
+               CustomUpload(
+                 onPressed: () {
+
+                 },
+               ),
               Padding(
                 padding: EdgeInsetsDirectional.only(top: 19.h, start: 15.w),
                 child: Align(

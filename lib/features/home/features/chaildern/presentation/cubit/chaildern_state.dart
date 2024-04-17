@@ -8,3 +8,17 @@ abstract class ChaildernState extends Equatable {
 }
 
 class ChaildernInitial extends ChaildernState {}
+
+class LoadingAddChild extends ChaildernState {}
+
+class SuccessAddChild extends ChaildernState {}
+
+class ErrorAddChild extends ChaildernState {
+  final String error;
+
+  const ErrorAddChild({required this.error});
+}
+
+class SuccessSelectChildImage extends ChaildernState {}
+
+class SuccessSelectIdImage extends ChaildernState {}

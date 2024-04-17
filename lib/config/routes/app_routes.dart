@@ -98,8 +98,8 @@ class AppRoutes {
   static Route? undefindRoutes() {
     return MaterialPageRoute(
         builder: (context) => const Scaffold(
-              backgroundColor: Colors.white,
-              body: Text('Routes is not available'),
-            ));
+          backgroundColor: Colors.white,
+          body: Text('Routes is not available'),
+        ));
   }
 }

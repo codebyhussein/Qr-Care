@@ -2,17 +2,20 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 import 'package:qr_care/config/Localization/AppLocalizations.dart';
 import 'package:qr_care/config/Localization/cubit/change_lang_cubit.dart';
 import 'package:qr_care/config/routes/app_routes.dart';
+import 'package:qr_care/core/ServicesLocator.dart';
 import 'package:qr_care/features/forgetPassword/cubit/forgetpassword_cubit.dart';
 import 'package:qr_care/features/forgetPassword/cubit/resetpassword_cubit.dart';
 import 'package:qr_care/features/forgetPassword/cubit/verificationpassword_cubit.dart';
+import 'package:qr_care/features/home/Data/Repo/AddChildRepoImplementation.dart';
+import 'package:qr_care/features/home/features/chaildern/presentation/cubit/chaildern_cubit.dart';
+import 'package:qr_care/features/home/features/pofile/presentation/cubit/pofile_cubit.dart';
 import 'package:qr_care/features/login/injection_container.dart' as injection;
-
 import 'package:qr_care/config/themes/app_themes.dart';
 import 'package:qr_care/features/login/presentation/cubit/login_cubit.dart';
-
 import 'package:qr_care/features/splash/splash_screen.dart';
 
 class QrCare extends StatelessWidget {
@@ -37,7 +40,15 @@ class QrCare extends StatelessWidget {
         BlocProvider<ChangeLangCubit>(
           create: (context) =>
               ChangeLangCubit()..appLanguage(EventToChangeLang.initChangeLange),
-        )
+        ),
+        BlocProvider<ChaildernCubit>(
+            create: (context) => ChaildernCubit(
+                addChildRepo:
+                    ServicesLocator.getIt.get<AddChildRepoImplementation>())),
+        BlocProvider<PofileCubit>(
+            create: (context) => PofileCubit(
+                addChildRepo:
+                    ServicesLocator.getIt.get<AddChildRepoImplementation>())),
       ],
       child: BlocBuilder<ChangeLangCubit, ChangeLangState>(
         builder: (context, state) {
@@ -47,7 +58,7 @@ class QrCare extends StatelessWidget {
               minTextAdapt: true,
               splitScreenMode: true,
               builder: (_, child) {
-                return MaterialApp(
+                return GetMaterialApp(
                   locale: Locale(state.language),
                   supportedLocales: const [
                     Locale("en"),
@@ -84,7 +95,7 @@ class QrCare extends StatelessWidget {
             minTextAdapt: true,
             splitScreenMode: true,
             builder: (_, child) {
-              return MaterialApp(
+              return GetMaterialApp(
                 supportedLocales: const [
                   Locale("en"),
                   Locale("ar"),

@@ -8,3 +8,10 @@ abstract class PofileState extends Equatable {
 }
 
 class PofileInitial extends PofileState {}
+class SuccessEditUser extends PofileState {}
+class LoadingEditUser extends PofileState {}
+class ErrorEditUser extends PofileState {
+  final String error;
+
+  const ErrorEditUser({required this.error});
+}

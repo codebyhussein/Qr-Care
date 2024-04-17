@@ -9,17 +9,19 @@ import 'dart:async';
 import 'package:qr_care/core/app_color.dart';
 
 class CustomUpload extends StatelessWidget {
-  const CustomUpload({super.key});
-
+   CustomUpload({super.key,required this.onPressed});
+  void Function()? onPressed;
   @override
   Widget build(BuildContext context) {
     return IconButton(
-      onPressed: () async {
-        final ImagePicker picker = ImagePicker();
+      onPressed:onPressed,
 
-        final XFile? image =
-            await picker.pickImage(source: ImageSource.gallery);
-      },
+      //     () async {
+      //   final ImagePicker picker = ImagePicker();
+      //
+      //   final XFile? image =
+      //       await picker.pickImage(source: ImageSource.gallery);
+      // },
       icon: Padding(
         padding: EdgeInsets.only(top: 25.h),
         child: Container(
