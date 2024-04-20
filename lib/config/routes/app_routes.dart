@@ -17,6 +17,7 @@ import 'package:qr_care/features/register/presentation/screens/Screen2.dart';
 import 'package:qr_care/features/register/presentation/screens/Screen3.dart';
 import 'package:qr_care/features/register/presentation/screens/Screen4.dart';
 import 'package:qr_care/features/register/presentation/screens/Screen5.dart';
+import 'package:qr_care/features/register/presentation/screens/Screen6.dart';
 import 'package:qr_care/features/splash/splash_screen.dart';
 
 class Routes {
@@ -29,6 +30,7 @@ class Routes {
   static const String registerRoute3 = '/register3';
   static const String registerRoute4 = '/register4';
   static const String registerRoute5 = '/register5';
+  static const String registerRoute6 = '/register6';
   static const String profileRoute = '/profile';
   static const String editProfileRoute = '/editProfile';
   static const String changePasswordRoute = '/changePassword';
@@ -58,9 +60,11 @@ class AppRoutes {
         return MaterialPageRoute(builder: (context) => LoginScreen());
 
       case Routes.changePasswordRoute:
-        return MaterialPageRoute(builder: (context) => ChangePasswordScreen());
+        return MaterialPageRoute(
+            builder: (context) => const ChangePasswordScreen());
       case Routes.forgetPasswordRoute:
-        return MaterialPageRoute(builder: (context) => ForgetPasswordScreen());
+        return MaterialPageRoute(
+            builder: (context) => const ForgetPasswordScreen());
       case Routes.resetPasswordRoute:
         return MaterialPageRoute(builder: (context) => VerificationScreen());
 
@@ -75,6 +79,8 @@ class AppRoutes {
         return MaterialPageRoute(builder: (context) => Screen4());
       case Routes.registerRoute5:
         return MaterialPageRoute(builder: (context) => Screen5());
+      case Routes.registerRoute6:
+        return MaterialPageRoute(builder: (context) => Screen6());
       case Routes.homeScreenRoute:
         return MaterialPageRoute(builder: (context) => LayoutScreen());
       case Routes.profileRoute:
@@ -98,8 +104,8 @@ class AppRoutes {
   static Route? undefindRoutes() {
     return MaterialPageRoute(
         builder: (context) => const Scaffold(
-          backgroundColor: Colors.white,
-          body: Text('Routes is not available'),
-        ));
+              backgroundColor: Colors.white,
+              body: Text('Routes is not available'),
+            ));
   }
 }
