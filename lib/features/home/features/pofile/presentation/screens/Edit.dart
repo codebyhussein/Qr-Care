@@ -4,7 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:iconly/iconly.dart';
 import 'package:qr_care/config/Localization/Constraine.dart';
-import 'package:qr_care/config/routes/app_routes.dart';
+
 import 'package:qr_care/core/app_color.dart';
 import 'package:qr_care/core/app_constant.dart';
 import 'package:qr_care/features/forgetPassword/presentation/widgets/custom_appbar.dart';
@@ -179,7 +179,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                   if (state is ErrorEditUser) {
                     Get.snackbar("error", state.error.toString());
                   } else if (state is SuccessEditUser) {
-                  Navigator.pop(context);
+                    Navigator.pop(context);
                   }
                 },
                 builder: (context, state) {
@@ -187,16 +187,16 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                   return DefultButtonLayoutScreen(
                     text: getTranslated("save", context)!,
                     onPressed: () {
-                     if(formKey.currentState!.validate()){
-                       cubit.editAccount(
-                           accountId: "doctor_660877b5.com",
-                           government: governmentController.text,
-                           city: cityController.text,
-                           governmentCenter: centerController.text,
-                           job: jobController.text,
-                           contact: phoneController.text,
-                           emergencyContact: MobileController.text);
-                     }
+                      if (formKey.currentState!.validate()) {
+                        cubit.editAccount(
+                            accountId: "doctor_660877b5.com",
+                            government: governmentController.text,
+                            city: cityController.text,
+                            governmentCenter: centerController.text,
+                            job: jobController.text,
+                            contact: phoneController.text,
+                            emergencyContact: MobileController.text);
+                      }
                     },
                   );
                 },

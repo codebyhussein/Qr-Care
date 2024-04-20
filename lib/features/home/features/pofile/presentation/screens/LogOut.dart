@@ -5,7 +5,6 @@ import 'package:qr_care/config/routes/app_routes.dart';
 import 'package:qr_care/core/app_color.dart';
 import 'package:qr_care/features/home/features/scan_qr/presentation/widgets/defult_botton.dart';
 import 'package:qr_care/features/home/widgets/CustomText.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 class LogOut extends StatelessWidget {
   const LogOut({super.key});

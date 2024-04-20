@@ -6,7 +6,7 @@ import 'package:qr_care/config/routes/app_routes.dart';
 import 'package:qr_care/core/animation.dart';
 import 'package:qr_care/features/home/features/pofile/presentation/screens/AboutApp.dart';
 import 'package:qr_care/features/home/features/pofile/presentation/screens/AccountSetting.dart';
-import 'package:qr_care/features/home/features/pofile/presentation/screens/ChildInfo.dart';
+
 import 'package:qr_care/features/home/features/pofile/presentation/screens/HelpAndSupport.dart';
 import 'package:qr_care/features/home/features/pofile/presentation/screens/LogOut.dart';
 import 'package:qr_care/features/home/features/pofile/presentation/widgets/CustomButton.dart';
@@ -83,7 +83,7 @@ class ContentProfile extends StatelessWidget {
         ),
         CustomButton(
           icon: IconlyLight.logout,
-          text:getTranslated("Logout", context)!,
+          text: getTranslated("Logout", context)!,
           onPressed: () {
             showDialog(
               context: context,
