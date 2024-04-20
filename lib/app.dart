@@ -13,9 +13,10 @@ import 'package:qr_care/features/forgetPassword/cubit/verificationpassword_cubit
 import 'package:qr_care/features/home/Data/Repo/AddChildRepoImplementation.dart';
 import 'package:qr_care/features/home/features/chaildern/presentation/cubit/chaildern_cubit.dart';
 import 'package:qr_care/features/home/features/pofile/presentation/cubit/pofile_cubit.dart';
-import 'package:qr_care/features/login/injection_container.dart' as injection;
+import 'package:qr_care/core/injection_container.dart' as injection;
 import 'package:qr_care/config/themes/app_themes.dart';
 import 'package:qr_care/features/login/presentation/cubit/login_cubit.dart';
+import 'package:qr_care/features/register/presentation/cubit/register_cubit.dart';
 import 'package:qr_care/features/splash/splash_screen.dart';
 
 class QrCare extends StatelessWidget {
@@ -25,6 +26,9 @@ class QrCare extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [
+        BlocProvider<RegisterCubit>(
+          create: (BuildContext context) => injection.getIt<RegisterCubit>(),
+        ),
         BlocProvider<LoginCubit>(
           create: (BuildContext context) => injection.getIt<LoginCubit>(),
         ),
