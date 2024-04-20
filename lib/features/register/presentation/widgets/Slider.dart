@@ -19,9 +19,9 @@ class _CustomeSliderState extends State<CustomSlider> {
                 disabledActiveTrackColor: Color(0xff004854),
                 thumbShape: RoundSliderOverlayShape()),
             child:
-                Slider(max: 4, min: 0, value: widget.value, onChanged: null)),
+                Slider(max: 5, min: 0, value: widget.value, onChanged: null)),
         Text(
-          "${widget.value.toInt()}/4",
+          "${widget.value.toInt()}/5",
           style: const TextStyle(fontWeight: FontWeight.w700),
         )
       ],
