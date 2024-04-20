@@ -5,7 +5,7 @@ import 'package:qr_care/core/BlocObserve.dart';
 import 'package:qr_care/core/Services/LocalService/Cache_Helper.dart';
 import 'package:qr_care/core/Services/notifi_service.dart';
 import 'package:qr_care/core/ServicesLocator.dart';
-import 'package:qr_care/features/login/injection_container.dart' as injection;
+import 'package:qr_care/core/injection_container.dart' as injection;
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
