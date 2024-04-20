@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:qr_care/config/Localization/Constraine.dart';
 import 'package:qr_care/config/routes/app_routes.dart';
+import 'package:qr_care/core/Services/LocalService/Cache_Helper.dart';
 import 'package:qr_care/core/app_widgets.dart';
 import 'package:qr_care/core/assets/assets_manager.dart';
 import 'package:qr_care/features/register/presentation/widgets/CustomImage.dart';
@@ -39,8 +40,7 @@ class _Screen1State extends State<Screen1> {
               height: 15.h,
             ),
             AppWidgets.defultdesrptionRegister(
-                text:
-                    getTranslated("descGender", context)!),
+                text: getTranslated("descGender", context)!),
             SizedBox(
               height: 30.h,
             ),
@@ -90,9 +90,13 @@ class _Screen1State extends State<Screen1> {
               height: 170.h,
             ),
             DefultButton(
-              text:getTranslated("next", context)!,
-              onPressed: () {
-                Navigator.pushNamed(context, Routes.registerRoute2);
+              text: getTranslated("next", context)!,
+              onPressed: () async {
+                if (formKey.currentState!.validate()) {
+                  await CacheHelper.saveData(
+                      key: 'gender', value: widget.isMale ? 'male' : 'female');
+                  Navigator.pushNamed(context, Routes.registerRoute2);
+                }
               },
             ),
           ],
