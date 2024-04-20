@@ -41,12 +41,12 @@ class UserModel extends UserEntity {
             : EnteredValues.fromJson(json["entered_values"]),
       );
 
-  UserModel toJson() {
-    return UserModel(
-      status: status,
-      message: message,
-      enteredValues: enteredValues,
-    );
+  Map<String, dynamic> toJson() {
+    return {
+      "status": status,
+      "message": message,
+      "entered_values": enteredValues,
+    };
   }
 }
 

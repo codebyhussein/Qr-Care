@@ -3,7 +3,7 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 
 class ApiUrl {
-  static const String baseUrl = 'http://10.0.2.2/grd/grd';
+  static const String baseUrl = 'http://10.0.2.2/grd';
 
   static const String loginUrl = '$baseUrl/auth/login.php';
   static const String registerUrl = '$baseUrl/auth/signup.php';

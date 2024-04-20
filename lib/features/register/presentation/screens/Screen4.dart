@@ -4,6 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:iconly/iconly.dart';
 import 'package:qr_care/config/Localization/Constraine.dart';
 import 'package:qr_care/config/routes/app_routes.dart';
+import 'package:qr_care/core/Services/LocalService/Cache_Helper.dart';
 import 'package:qr_care/core/app_constant.dart';
 import 'package:qr_care/core/app_widgets.dart';
 import 'package:qr_care/features/register/presentation/widgets/Slider.dart';
@@ -19,7 +20,7 @@ class Screen4 extends StatefulWidget {
 }
 
 class _Screen2State extends State<Screen4> {
-  TextEditingController phoneController = TextEditingController();
+  TextEditingController contactController = TextEditingController();
   TextEditingController nameController = TextEditingController();
   TextEditingController MobileController = TextEditingController();
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
@@ -67,7 +68,7 @@ class _Screen2State extends State<Screen4> {
                         hintText: getTranslated("phone", context)!,
                         errorMassage:
                             getTranslated("errorMessagePhone", context)!,
-                        nameofController: phoneController,
+                        nameofController: contactController,
                         keyBoredType: TextInputType.number,
                         isvisble: false),
                     AppWidgets.defultText(
@@ -109,9 +110,17 @@ class _Screen2State extends State<Screen4> {
                 ),
               ),
               DefultButton(
-                text: 'Next',
-                onPressed: () {
-                  Navigator.pushNamed(context, Routes.registerRoute5);
+                text: getTranslated("next", context)!,
+                onPressed: () async {
+                  if (formKey.currentState!.validate()) {
+                    await CacheHelper.saveData(
+                        key: 'contact', value: contactController.text);
+                    await CacheHelper.saveData(
+                        key: 'emergncy_name', value: nameController.text);
+                    await CacheHelper.saveData(
+                        key: 'mobile', value: MobileController.text);
+                    Navigator.pushNamed(context, Routes.registerRoute5);
+                  }
                 },
               ),
             ],

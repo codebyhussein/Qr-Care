@@ -3,7 +3,7 @@ import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:http/http.dart' as http;
 import 'package:qr_care/core/Services/Api/app_url.dart';
-import 'package:qr_care/features/login/injection_container.dart';
+import 'package:qr_care/core/injection_container.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 part 'forgetpassword_state.dart';
 

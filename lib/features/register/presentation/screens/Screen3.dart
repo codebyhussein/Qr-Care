@@ -4,6 +4,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:iconly/iconly.dart';
 import 'package:qr_care/config/Localization/Constraine.dart';
 import 'package:qr_care/config/routes/app_routes.dart';
+import 'package:qr_care/core/Services/LocalService/Cache_Helper.dart';
 import 'package:qr_care/core/app_constant.dart';
 import 'package:qr_care/core/app_widgets.dart';
 import 'package:qr_care/features/register/presentation/widgets/Slider.dart';
@@ -20,7 +21,7 @@ class Screen3 extends StatefulWidget {
 }
 
 class _Screen2State extends State<Screen3> {
-  TextEditingController idController = TextEditingController();
+  TextEditingController governorateController = TextEditingController();
   TextEditingController cityController = TextEditingController();
   TextEditingController centerController = TextEditingController();
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
@@ -29,13 +30,12 @@ class _Screen2State extends State<Screen3> {
     List<String> cities = [
       getTranslated("Cairo", context)!,
       getTranslated("Giza", context)!,
-      getTranslated( "Luxor", context)!,
+      getTranslated("Luxor", context)!,
       getTranslated("Alexandria", context)!,
       getTranslated("PortSaid", context)!,
       getTranslated("Ismailia", context)!,
-      getTranslated( "Mansoura", context)!,
-      getTranslated( "Tanta", context)!,
-
+      getTranslated("Mansoura", context)!,
+      getTranslated("Tanta", context)!,
     ];
 
     return Scaffold(
@@ -51,7 +51,7 @@ class _Screen2State extends State<Screen3> {
               ),
               Center(
                 child: AppWidgets.defultTextRegister(
-                  text:getTranslated("address", context)!,
+                  text: getTranslated("address", context)!,
                 ),
               ),
               SizedBox(
@@ -59,8 +59,7 @@ class _Screen2State extends State<Screen3> {
               ),
               Center(
                 child: AppWidgets.defultdesrptionRegister(
-                    text:
-                        getTranslated("addressDesc", context)!),
+                    text: getTranslated("addressDesc", context)!),
               ),
               SizedBox(height: 50.h),
               Padding(
@@ -68,22 +67,25 @@ class _Screen2State extends State<Screen3> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    AppWidgets.defultText(text: getTranslated("governorate", context)!),
+                    AppWidgets.defultText(
+                        text: getTranslated("governorate", context)!),
                     SizedBox(
                       height: 10.h,
                     ),
                     CustomTextFormField(
-                        errorMassage: getTranslated("errorGovernorate", context)!,
+                        errorMassage:
+                            getTranslated("errorGovernorate", context)!,
                         hintText: getTranslated("chooseGovernorate", context)!,
                         helpText: getTranslated("helpGovernorate", context)!,
                         regEx: AppConst.governoratePattern,
-                        nameofController: idController,
+                        nameofController: governorateController,
                         keyBoredType: TextInputType.number,
                         isvisble: false),
                     SizedBox(
                       height: 15.h,
                     ),
-                    AppWidgets.defultText(text: getTranslated("city", context)!),
+                    AppWidgets.defultText(
+                        text: getTranslated("city", context)!),
                     SizedBox(
                       height: 10.h,
                     ),
@@ -100,7 +102,8 @@ class _Screen2State extends State<Screen3> {
                     SizedBox(
                       height: 10.h,
                     ),
-                    AppWidgets.defultText(text: getTranslated("center", context)!),
+                    AppWidgets.defultText(
+                        text: getTranslated("center", context)!),
                     SizedBox(
                       height: 10.h,
                     ),
@@ -122,9 +125,18 @@ class _Screen2State extends State<Screen3> {
               ),
               Center(
                 child: DefultButton(
-                  text:getTranslated("next", context)! ,
-                  onPressed: () {
-                    Navigator.pushNamed(context, Routes.registerRoute4);
+                  text: getTranslated("next", context)!,
+                  onPressed: () async {
+                    if (formKey.currentState!.validate()) {
+                      await CacheHelper.saveData(
+                          key: 'governorate',
+                          value: governorateController.text);
+                      await CacheHelper.saveData(
+                          key: 'city', value: cityController.text);
+                      await CacheHelper.saveData(
+                          key: 'center', value: centerController.text);
+                      Navigator.pushNamed(context, Routes.registerRoute4);
+                    }
                   },
                 ),
               ),

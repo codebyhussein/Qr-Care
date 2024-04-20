@@ -104,7 +104,7 @@
   "edit": "تعديل",
   "idCreated": "تم إنشاء معرف التطبيق الخاص بك وهو",
   "passWord": "كلمه السر",
-  "ConfirmPassWord": "Confirm Password",
+  "ConfirmPassWord": "تأكيد كلمة السر ",
   "confirm": "تاكيد",
   "Share": "مشاركه",
   "helperPassWord": "لا يقل عن 8 ويحتوي على ارقام وحروف ",
@@ -135,7 +135,7 @@
   "helpId": "username****.com :مثل",
   "PassWordHelp": "لا يقل عن 8 ويحتوي على ارقام وحروف ورموز",
   "errorMessagePassWord": "من فضلك ادخل الرقم صحيح",
-  "Forgetpassword": "هل نسيت كلمه المرور؟",
+  "Forgetpassword": "هل نسيت كلمه السر؟",
   "login": "تسجيل الدخول",
   "Donthaveanaccount": "ليس لديك حساب؟",
   "SignUp": "تسجيل الان",
@@ -144,7 +144,12 @@
   "Upload": "رفع",
   "IDNumber": "رقم الهويه",
   "validPassWord": "من فضلك ادخل الرقم صحيح",
-  "ScanQr": "مسح"
+  "ScanQr": "مسح",
+  "passwordTitlePage": "إنشاء كلمة سر؟ ",
+  "passwordDescPage":"ادخل كلمه السر الجديدة",
+  "password": "كلمه السر",
+  "confirmPassword": "تأكيد كلمه السر"
+
 
 
 

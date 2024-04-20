@@ -21,13 +21,13 @@
   "address": "What is Your address?",
   "addressDesc": "Please, for better experience provide us\nwith this further information",
   "governorate": "Governorate",
-  "chooseGovernorate": "choose governorate",
+  "chooseGovernorate": "governorate number",
   "selectCity": "Select city",
   "selectCenter": "Select center",
   "city": "City",
   "center": "Center",
   "emergencyContacts": "Emergency contacts",
-  "emergencyContact": "Emergency Contact",
+  "emergencyContact": "Emergency Name",
   "descEmergencyContact": "Please, for better experience provide us\nwith this further information",
   "name": "Name",
   "phone": "Phone",
@@ -138,5 +138,11 @@
   "IDNumber": "ID number",
   "validPassWord": "please enter vaild password",
   "ScanQr": "Scan",
-  "LogOut": "LogOut"
+  "LogOut": "LogOut",
+  "passwordTitlePage": "create password?",
+  "passwordDescPage":"please create a new password",
+  "password": "password",
+  "confirmPassword": "confirm password"
+
+
 }
