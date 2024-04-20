@@ -24,7 +24,9 @@ class LoginRepositoryImpl implements LoginRepository {
         localDataSource.write(key: 'user', value: null);
       }
 
-      return UserModel == null ? UserEntity.empty : UserModel.toJson();
+      return UserModel == null
+          ? UserEntity.empty
+          : UserEntity.fromJson(UserModel.toJson());
     });
   }
 
@@ -40,6 +42,6 @@ class LoginRepositoryImpl implements LoginRepository {
 
     localDataSource.write(key: 'user', value: userModel);
 
-    return userModel.toJson();
+    return UserEntity.fromJson(userModel.toJson());
   }
 }

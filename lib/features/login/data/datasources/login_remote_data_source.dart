@@ -2,7 +2,7 @@ import 'dart:convert';
 
 import 'package:http/http.dart' as http;
 import 'package:qr_care/core/Services/Api/app_url.dart';
-import 'package:qr_care/features/login/data/models/user_model.dart';
+import 'package:qr_care/features/register/data/models/user_model.dart';
 
 abstract class LoginRemoteDataSource {
   Stream<UserModel?> get user;
