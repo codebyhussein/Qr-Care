@@ -9,7 +9,7 @@ import 'package:qr_care/core/app_constant.dart';
 import 'package:qr_care/core/app_widgets.dart';
 import 'package:qr_care/features/forgetPassword/cubit/resetpassword_cubit.dart';
 import 'package:qr_care/features/forgetPassword/presentation/widgets/custom_appbar.dart';
-import 'package:qr_care/features/login/injection_container.dart';
+import 'package:qr_care/core/injection_container.dart';
 
 import 'package:qr_care/features/widgets/CustomTextFormField.dart';
 import 'package:qr_care/features/widgets/defult_button.dart';

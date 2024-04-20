@@ -11,7 +11,7 @@ import 'package:qr_care/features/forgetPassword/cubit/resetpassword_cubit.dart';
 import 'package:qr_care/features/forgetPassword/cubit/verificationpassword_cubit.dart';
 import 'package:qr_care/features/forgetPassword/presentation/widgets/custom_appbar.dart';
 import 'package:qr_care/features/forgetPassword/presentation/widgets/resend_code.dart';
-import 'package:qr_care/features/login/injection_container.dart';
+import 'package:qr_care/core/injection_container.dart';
 import 'package:qr_care/features/widgets/defult_button.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
