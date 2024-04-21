@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class AppConst {
   static const idPattern = r'^\d{14}$';
@@ -94,4 +95,22 @@ class AppConst {
       "link": "https://qr-link-eta.vercel.app/",
     },
   ];
+
+  static ScaffoldFeatureController<SnackBar, SnackBarClosedReason> showMessage(
+      {required String msg, required BuildContext context}) {
+    return ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        content: Text(
+          msg,
+          style: TextStyle(
+            color: Colors.white,
+            fontSize: 12.sp,
+            fontFamily: 'Montserrat meduim',
+          ),
+        ),
+        backgroundColor: Colors.black,
+        duration: const Duration(seconds: 3),
+      ),
+    );
+  }
 }
