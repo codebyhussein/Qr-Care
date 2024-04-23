@@ -40,7 +40,8 @@ class _Screen2State extends State<Screen5> {
           isLoading = true;
         }
         if (state is RegisterSuccess) {
-          AppConst.showMessage(msg: 'User Create Success..', context: context);
+          AppConst.showMessage(
+              msg: 'User Created Successfully', context: context);
           Navigator.pushNamed(context, Routes.registerRoute6,
               arguments: state.user);
         } else if (state is RegisterFailure) {
@@ -141,7 +142,7 @@ class _Screen2State extends State<Screen5> {
                       if (passwordController.text ==
                           confirmpasswordController.text) {
                         if (formKey.currentState!.validate()) {
-                          BlocProvider.of<RegisterCubit>(context).signUp(
+                          cubit.signUp(
                               nationalId: nationalId,
                               gender: gender,
                               job: job,
