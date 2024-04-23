@@ -4,6 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:iconly/iconly.dart';
 import 'package:qr_care/config/Localization/Constraine.dart';
+import 'package:qr_care/core/Services/LocalService/Cache_Helper.dart';
 
 import 'package:qr_care/core/app_color.dart';
 import 'package:qr_care/core/app_constant.dart';
@@ -179,6 +180,8 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                   if (state is ErrorEditUser) {
                     Get.snackbar("error", state.error.toString());
                   } else if (state is SuccessEditUser) {
+                    AppConst.showMessage(
+                        msg: ' Child Added Successfully', context: context);
                     Navigator.pop(context);
                   }
                 },
@@ -186,10 +189,12 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                   var cubit = PofileCubit.get(context);
                   return DefultButtonLayoutScreen(
                     text: getTranslated("save", context)!,
-                    onPressed: () {
+                    onPressed: () async {
+                      String accountId =
+                          await CacheHelper.getData(key: 'account_id');
                       if (formKey.currentState!.validate()) {
                         cubit.editAccount(
-                            accountId: "doctor_660877b5.com",
+                            accountId: accountId,
                             government: governmentController.text,
                             city: cityController.text,
                             governmentCenter: centerController.text,
