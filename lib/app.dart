@@ -15,6 +15,7 @@ import 'package:qr_care/features/home/features/chaildern/presentation/cubit/chai
 import 'package:qr_care/features/home/features/pofile/presentation/cubit/pofile_cubit.dart';
 import 'package:qr_care/core/injection_container.dart' as injection;
 import 'package:qr_care/config/themes/app_themes.dart';
+import 'package:qr_care/features/home/features/scan_qr/presentation/cubit/scan_qr_cubit.dart';
 import 'package:qr_care/features/login/presentation/cubit/login_cubit.dart';
 import 'package:qr_care/features/register/presentation/cubit/register_cubit.dart';
 import 'package:qr_care/features/splash/splash_screen.dart';
@@ -40,6 +41,9 @@ class QrCare extends StatelessWidget {
         ),
         BlocProvider<VerificationpasswordCubit>(
           create: (BuildContext context) => VerificationpasswordCubit(),
+        ),
+        BlocProvider<ScanQrCubit>(
+          create: (BuildContext context) => ScanQrCubit(),
         ),
         BlocProvider<ChangeLangCubit>(
           create: (context) =>
