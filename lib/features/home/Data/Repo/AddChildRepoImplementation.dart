@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'dart:io';
+import 'package:qr_care/core/Services/Api/api_services.dart';
 import 'package:qr_care/core/Services/Api/app_url.dart';
 import 'package:qr_care/features/home/Data/Repo/AddChildRepo.dart';
 import 'package:http/http.dart' as http;
@@ -14,8 +15,7 @@ class AddChildRepoImplementation extends AddChildRepo {
       {required String childId,
       required File childImageFile,
       required File idImageFile}) async {
-    var request = await ApiUrl.postData(
-        endPoint: ApiUrl.addChildUrl);
+    var request = await ApiService.postData(endPoint: ApiUrl.addChildUrl);
     var childImageMultipartFile =
         await http.MultipartFile.fromPath('child_image', childImageFile.path);
     var idImageMultipartFile =
@@ -50,7 +50,7 @@ class AddChildRepoImplementation extends AddChildRepo {
 
     int contentLength = utf8.encode(requestBody).length;
 
-    var response = await ApiUrl.postRequest(
+    var response = await ApiService.postRequest(
       endPoint: ApiUrl.editAccountUrl,
       header: {
         'Content-Type': 'application/json',
