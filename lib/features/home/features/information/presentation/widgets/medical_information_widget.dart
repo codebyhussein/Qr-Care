@@ -17,8 +17,8 @@ class MedicalInformationWidget extends StatelessWidget {
       required this.medical_analysis,
       required this.x_ray_image});
   ExpandedTileController controller = ExpandedTileController();
-  double height;
-  double width;
+  String height;
+  String width;
   String boold_type;
   String chronic_disease;
   String Allergies;
@@ -29,7 +29,7 @@ class MedicalInformationWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding:  EdgeInsetsDirectional.symmetric(horizontal: 15),
+      padding: const EdgeInsetsDirectional.symmetric(horizontal: 15),
       child: ExpandedTile(
         theme: ExpandedTileThemeData(
           headerColor: Colors.white,
@@ -126,10 +126,7 @@ class MedicalInformationWidget extends StatelessWidget {
                 SizedBox(
                   height: 250.h,
                   width: double.infinity,
-                  child: Image.asset(
-                    x_ray_image,
-                    fit: BoxFit.cover,
-                  ),
+                  child: Image.asset(x_ray_image, fit: BoxFit.cover),
                 ),
                 SizedBox(
                   height: 8.h,
