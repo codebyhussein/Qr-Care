@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:http/http.dart' as http;
 import 'package:qr_care/core/Services/Api/app_url.dart';
+import 'package:qr_care/core/Services/LocalService/Cache_Helper.dart';
 import 'package:qr_care/features/register/data/models/user_model.dart';
 
 abstract class LoginRemoteDataSource {
@@ -43,6 +44,10 @@ class LoginRemoteDataSourceImpl implements LoginRemoteDataSource {
         return Future.error(errorMessage);
       }
       final user = UserModel.fromJson(json);
+      CacheHelper.saveData(
+          key: 'account_id', value: json['entered_values']['account_id']);
+      CacheHelper.saveData(
+          key: 'nationalId', value: json['entered_values']['national_id']);
       return user;
     } else {
       return Future.error('Failed to sign in');
