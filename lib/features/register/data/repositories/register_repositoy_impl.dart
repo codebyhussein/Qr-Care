@@ -1,13 +1,11 @@
 import 'dart:convert';
 import 'dart:io';
-
 import 'package:http/http.dart' as http;
+import 'package:qr_care/core/Services/Api/api_services.dart';
 import 'package:qr_care/core/Services/Api/app_url.dart';
-
 import 'package:qr_care/features/login/domain/entities/user_entity.dart';
 import 'package:qr_care/features/register/data/datasources/register_local_data_source.dart';
 import 'package:qr_care/features/register/data/datasources/register_remote_data_source.dart';
-import 'package:qr_care/features/register/data/models/user_model.dart';
 import 'package:qr_care/features/register/domain/repositories/register_repository.dart';
 
 class RegisterRepositoryImpl implements RegisterRepository {
@@ -51,7 +49,7 @@ class RegisterRepositoryImpl implements RegisterRepository {
     required String city,
   }) async {
     try {
-      var request = await ApiUrl.postData(endPoint: ApiUrl.registerUrl);
+      var request = await ApiService.postData(endPoint: ApiUrl.registerUrl);
 
       request.fields['national_id'] = nationalId;
       request.fields['gender'] = gender;
