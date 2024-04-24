@@ -9,12 +9,12 @@ import 'dart:async';
 import 'package:qr_care/core/app_color.dart';
 
 class CustomUpload extends StatelessWidget {
-   CustomUpload({super.key,required this.onPressed});
+  CustomUpload({super.key, required this.onPressed});
   void Function()? onPressed;
   @override
   Widget build(BuildContext context) {
     return IconButton(
-      onPressed:onPressed,
+      onPressed: onPressed,
 
       //     () async {
       //   final ImagePicker picker = ImagePicker();
@@ -35,10 +35,10 @@ class CustomUpload extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               SizedBox(width: 20.w),
-               Text(
+              Text(
                 getTranslated("UploadID", context)!,
                 textAlign: TextAlign.center,
-                style:const TextStyle(
+                style: const TextStyle(
                     color: Color.fromRGBO(158, 158, 158, 0.800000011920929),
                     fontFamily: 'Montserrat',
                     fontSize: 12,
