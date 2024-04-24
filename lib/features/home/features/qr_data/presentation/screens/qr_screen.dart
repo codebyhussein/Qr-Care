@@ -7,6 +7,7 @@ import 'package:flutter/rendering.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:qr_care/config/Localization/Constraine.dart';
+import 'package:qr_care/core/Services/LocalService/Cache_Helper.dart';
 import 'package:qr_care/core/app_color.dart';
 import 'package:qr_care/features/home/features/scan_qr/presentation/widgets/defult_botton.dart';
 import 'package:qr_care/features/home/widgets/custom_appbar.dart';
@@ -24,12 +25,13 @@ class _QrScreenState extends State<QrScreen> {
   final _renderObjectKey = GlobalKey();
 
   Uint8List? capturedImage;
-
+  String? qr_data;
   @override
   void initState() {
     WidgetsBinding.instance.addPostFrameCallback((_) {
       _getWidgetImage();
     });
+    qr_data = CacheHelper.getData(key: 'nationalId');
     super.initState();
   }
 
@@ -76,7 +78,8 @@ class _QrScreenState extends State<QrScreen> {
                   RepaintBoundary(
                     key: _renderObjectKey,
                     child: QrImageView(
-                      data: "j8TkZwHx7pFQa6R3LY1EoI9GnC",
+                      // data: "j8TkZwHx7pFQa6R3LY1EoI9GnC",
+                      data: qr_data!,
                       version: QrVersions.auto,
                       size: 250.0,
                       backgroundColor: AppColors.mainColor,
