@@ -2,6 +2,8 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:qr_care/config/Localization/Constraine.dart';
+import 'package:qr_care/core/Services/Api/api_services.dart';
+import 'package:qr_care/core/Services/LocalService/Cache_Helper.dart';
 import 'package:qr_care/core/app_color.dart';
 import 'package:qr_care/core/app_constant.dart';
 import 'package:qr_care/features/home/features/information/presentation/widgets/item_builder.dart';
@@ -24,7 +26,6 @@ class _ScanScreenState extends State<ScanScreen> {
   late QRViewController controller;
   String qrResult = '';
   bool isScanning = false;
-  bool isDoctor = false;
   @override
   void dispose() {
     controller.dispose();
@@ -53,7 +54,6 @@ class _ScanScreenState extends State<ScanScreen> {
                       Container(
                         height: 366.h,
                         width: 337.w,
-                        // color: AppColors.mainColor,
                         decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(12),
                             color: AppColors.mainColor),
@@ -84,9 +84,6 @@ class _ScanScreenState extends State<ScanScreen> {
                                       width: 250.w,
                                       child: ScanQRWidget(onQRViewCreated:
                                           (QRViewController controller) async {
-                                        final SharedPreferences prefs =
-                                            await SharedPreferences
-                                                .getInstance();
                                         //  isDoctor = prefs.getBool('isDoctor')!;
                                         this.controller = controller;
                                         controller.scannedDataStream
@@ -116,69 +113,83 @@ class _ScanScreenState extends State<ScanScreen> {
                     ],
                   ),
                 )
-              : Column(
-                  children: [
-                    SizedBox(
-                      height: 40.h,
-                    ),
-                    if (qrResult == AppConst.data[0]['id'] && !isDoctor)
-                      Container(
-                          height: 700.h,
-                          width: double.infinity,
-                          decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(8),
-                              color: AppColors.backgroundColor),
-                          child: SingleChildScrollView(
-                              child: Column(
-                            children: [
-                              ItemBuilder(
-                                title: 'Name',
-                                response: AppConst.data[0]['name'],
+              : FutureBuilder<List<dynamic>>(
+                  future: ApiService().getData(qr_data: qrResult),
+                  builder: (context, snapshot) {
+                    if (snapshot.hasData) {
+                      String accountId = CacheHelper.getData(key: 'account_id');
+                      final data = snapshot.data!;
+                      return Column(
+                        children: [
+                          SizedBox(
+                            height: 40.h,
+                          ),
+                          if (!accountId.contains('doctor'))
+                            Container(
+                                height: 700.h,
                                 width: double.infinity,
-                              ),
-                              ItemBuilder(
-                                title: 'Emrgancy Number',
-                                response: AppConst.data[0]['emrgancy_number'],
+                                decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(8),
+                                    color: AppColors.backgroundColor),
+                                child: SingleChildScrollView(
+                                    child: Column(
+                                  children: [
+                                    ItemBuilder(
+                                      title: 'Name',
+                                      response: 'hussein',
+                                      width: double.infinity,
+                                    ),
+                                    ItemBuilder(
+                                      title: 'Emrgancy Number',
+                                      response: '01277532063',
+                                      width: double.infinity,
+                                    ),
+                                  ],
+                                ))),
+                          if (accountId.contains('doctor'))
+                            Container(
+                                height: 700.h,
                                 width: double.infinity,
-                              ),
-                            ],
-                          ))),
-                    if (qrResult == AppConst.data[0]['id'] && isDoctor)
-                      Container(
-                          height: 700.h,
-                          width: double.infinity,
-                          color: AppColors.backgroundColor,
-                          child: SingleChildScrollView(
-                              child: Column(
-                            children: [
-                              PersonalInformationWidget(
-                                data_of_birth: AppConst.data[0]
-                                    ['data_of_birth'],
-                                jop: AppConst.data[0]['jop'],
-                                national_id: AppConst.data[0]['national_id'],
-                                name: AppConst.data[0]['name'],
-                                phone_number: AppConst.data[0]['phone_number'],
-                              ),
-                              MedicalInformationWidget(
-                                height: AppConst.data[0]['height'],
-                                boold_type: AppConst.data[0]['blood_type'],
-                                chronic_disease: AppConst.data[0]
-                                    ['chronic_disease'],
-                                width: AppConst.data[0]['weight'],
-                                medical_analysis: AppConst.data[0]
-                                    ['medical_analysis'],
-                                Allergies: AppConst.data[0]['Allergies'],
-                                x_ray_image: AppConst.data[0]['x_ray_image'],
-                                Type_of_allergy: AppConst.data[0]
-                                    ['Type_of_allergy'],
-                              ),
-                            ],
-                          ))),
-                  ],
-                )
+                                color: AppColors.backgroundColor,
+                                child: SingleChildScrollView(
+                                    child: Column(
+                                  children: [
+                                    PersonalInformationWidget(
+                                      data_of_birth: '20/9/2002',
+                                      jop: AppConst.data[0]['jop'],
+                                      national_id: AppConst.data[0]
+                                          ['national_id'],
+                                      name: AppConst.data[0]['name'],
+                                      phone_number: AppConst.data[0]
+                                          ['phone_number'],
+                                    ),
+                                    MedicalInformationWidget(
+                                      height: data[0]['height'],
+                                      boold_type: AppConst.data[0]
+                                          ['blood_type'],
+                                      chronic_disease: AppConst.data[0]
+                                          ['chronic_disease'],
+                                      width: data[0]['weight'],
+                                      medical_analysis: data[0]
+                                          ['medical_analysis'],
+                                      Allergies: data[0]['allergies'],
+                                      x_ray_image: data[0]['x_ray_image'] ??
+                                          "assets/images/not-found.jpg",
+                                      Type_of_allergy: data[0]
+                                          ['type_of_allergy'],
+                                    ),
+                                  ],
+                                ))),
+                        ],
+                      );
+                    } else if (snapshot.hasError) {
+                      return Text('${snapshot.error}');
+                    }
+                    return const CircularProgressIndicator();
+                  },
+                ),
         ]),
       ),
     );
   }
 }
-
