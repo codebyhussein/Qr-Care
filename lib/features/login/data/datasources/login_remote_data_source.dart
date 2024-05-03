@@ -23,7 +23,6 @@ class LoginRemoteDataSourceImpl implements LoginRemoteDataSource {
 
   @override
   Stream<UserModel?> get user {
-    // TODO: Implement the get user stream.
     throw UnimplementedError();
   }
 

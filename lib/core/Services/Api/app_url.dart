@@ -15,4 +15,5 @@ class ApiUrl {
       '$baseUrl/medical_information.php';
   static const String forgetPasswordUrl = '$baseUrl/forgot_password.php';
   static const String resetPasswordUrl = '$baseUrl/reset_password.php';
+  static const String getUserData = '$baseUrl/user_data.php';
 }

@@ -3,25 +3,17 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:iconly/iconly.dart';
 import 'package:qr_care/config/Localization/Constraine.dart';
 import 'package:qr_care/core/app_color.dart';
-import 'package:qr_care/core/app_constant.dart';
+
 import 'package:qr_care/core/app_widgets.dart';
-import 'package:qr_care/features/widgets/CustomTextFormField.dart';
+import 'package:qr_care/features/home/features/scan_qr/presentation/widgets/defult_botton.dart';
 
-class DialogWidget extends StatefulWidget {
-  DialogWidget({super.key, required this.text});
-  TextEditingController passwordController = TextEditingController();
-  String text;
+class DialogWidget extends StatelessWidget {
+  DialogWidget({super.key, required this.accountId});
 
-  TextEditingController ConfirmPasswordController = TextEditingController();
-  bool passwordVisiable = false;
-  bool confirmPasswordVisiable = false;
-  bool isLoading = false;
-  @override
-  State<DialogWidget> createState() => _DialogWidgetState();
-}
+  String accountId;
 
-class _DialogWidgetState extends State<DialogWidget> {
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
+
   @override
   Widget build(BuildContext context) {
     return Form(
@@ -30,8 +22,8 @@ class _DialogWidgetState extends State<DialogWidget> {
         contentPadding: const EdgeInsets.all(0),
         iconColor: Colors.white,
         content: Container(
-          height: 366.h,
-          width: 335.w,
+          height: 200.h,
+          width: 170.w,
           decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(12.r),
               color: AppColors.mainColor),
@@ -40,7 +32,7 @@ class _DialogWidgetState extends State<DialogWidget> {
             child: Column(
               children: [
                 Padding(
-                  padding: EdgeInsets.only(left: 235.w),
+                  padding: EdgeInsets.only(left: 210.w),
                   child: IconButton(
                       onPressed: () {
                         Navigator.of(context).pop();
@@ -52,107 +44,18 @@ class _DialogWidgetState extends State<DialogWidget> {
                 ),
                 AppWidgets.titleDialog(
                     text: getTranslated("idCreated", context)!),
-                Text(widget.text,
+                Text(accountId,
                     style: const TextStyle(fontWeight: FontWeight.bold)),
                 SizedBox(
                   height: 30.h,
                 ),
-                AppWidgets.descriptionDialog(
-                    text: getTranslated("idCreated", context)!),
-                SizedBox(
-                  height: 20.h,
-                ),
-                CustomTextFormField(
-                  errorMassage: getTranslated("validPassWord", context)!,
-                  regEx: AppConst.passwordPattern,
-                  helpText: getTranslated("helperPassWord", context)!,
-                  hintText: getTranslated("passWord", context)!,
-                  nameofController: widget.passwordController,
-                  isvisble: !widget.passwordVisiable,
-                  keyBoredType: TextInputType.visiblePassword,
-                  suffixIcon: IconButton(
-                      color: AppColors.mainColor,
-                      onPressed: () {
-                        setState(() {
-                          widget.passwordVisiable = !widget.passwordVisiable;
-                        });
-                      },
-                      icon: widget.passwordVisiable
-                          ? const Icon(Icons.visibility_outlined)
-                          : const Icon(Icons.visibility_off_rounded)),
-                  prefixIcon: const Icon(IconlyBold.lock),
-                ),
-                SizedBox(
-                  height: 10.h,
-                ),
-                CustomTextFormField(
-                  errorMassage: getTranslated("errorConfirm", context)!,
-                  regEx: AppConst.passwordPattern,
-                  hintText: getTranslated("ConfirmPassword", context)!,
-                  nameofController: widget.ConfirmPasswordController,
-                  isvisble: !widget.confirmPasswordVisiable,
-                  keyBoredType: TextInputType.visiblePassword,
-                  prefixIcon: const Icon(IconlyBold.lock),
-                  suffixIcon: IconButton(
-                      color: AppColors.mainColor,
-                      onPressed: () {
-                        setState(() {
-                          widget.confirmPasswordVisiable =
-                              !widget.confirmPasswordVisiable;
-                        });
-                      },
-                      icon: widget.confirmPasswordVisiable
-                          ? const Icon(Icons.visibility_outlined)
-                          : const Icon(Icons.visibility_off_rounded)),
-                ),
-                SizedBox(
-                  height: 10.h,
-                ),
-                Center(
-                  child: Container(
-                    height: 38.h,
-                    width: 149.w,
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(12),
-                        boxShadow: const [AppColors.defaultBoxShadow],
-                        color: Colors.white),
-                    child: TextButton(
-                      onPressed: () {
-                        if (formKey.currentState!.validate()) {
-                          if (widget.passwordController.text ==
-                              widget.ConfirmPasswordController.text) {
-                            Navigator.of(context).pop();
-                            // Navigator.push(
-                            //     context,
-                            //     MaterialPageRoute(
-                            //         builder: (_) => LayoutScreen()));
-                            ScaffoldMessenger.of(context).showSnackBar(
-                              SnackBar(
-                                content: Text(
-                                    'App ID created with password ${widget.passwordController.text}'),
-                              ),
-                            );
-                          } else {
-                            ScaffoldMessenger.of(context).showSnackBar(
-                              const SnackBar(
-                                content: Text('Passwords do not match'),
-                              ),
-                            );
-                          }
-                        }
-                      },
-                      child: Text(
-                        getTranslated("confirm", context)!,
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                            color: const Color(0xff004854),
-                            fontFamily: 'Montserrat semibold',
-                            fontSize: 14.sp,
-                            fontWeight: FontWeight.w600,
-                            height: 1),
-                      ),
-                    ),
-                  ),
+                DefultButtonLayoutScreen(
+                  onPressed: () {
+                    Navigator.of(context).pop();
+                  },
+                  text: 'ok',
+                  colorButton: Colors.white,
+                  colorText: AppColors.primaryColor,
                 )
               ],
             ),

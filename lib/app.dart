@@ -13,7 +13,7 @@ import 'package:qr_care/features/forgetPassword/cubit/verificationpassword_cubit
 import 'package:qr_care/features/home/Data/Repo/AddChildRepoImplementation.dart';
 import 'package:qr_care/features/home/features/chaildern/cubit/chaildern_cubit.dart';
 import 'package:qr_care/features/home/features/information/cubit/information_cubit.dart';
-import 'package:qr_care/features/home/features/pofile/presentation/cubit/pofile_cubit.dart';
+import 'package:qr_care/features/home/features/pofile/cubit/pofile_cubit.dart';
 import 'package:qr_care/core/injection_container.dart' as injection;
 import 'package:qr_care/config/themes/app_themes.dart';
 import 'package:qr_care/features/home/features/scan_qr/cubit/scan_qr_cubit.dart';
@@ -57,8 +57,8 @@ class QrCare extends StatelessWidget {
             create: (context) => ChaildernCubit(
                 addChildRepo:
                     ServicesLocator.getIt.get<AddChildRepoImplementation>())),
-        BlocProvider<PofileCubit>(
-            create: (context) => PofileCubit(
+        BlocProvider<ProfileCubit>(
+            create: (context) => ProfileCubit(
                 addChildRepo:
                     ServicesLocator.getIt.get<AddChildRepoImplementation>())),
       ],

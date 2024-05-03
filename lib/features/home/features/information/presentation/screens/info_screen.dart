@@ -1,12 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_expanded_tile/flutter_expanded_tile.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:qr_care/config/Localization/Constraine.dart';
-import 'package:qr_care/core/Services/LocalService/Cache_Helper.dart';
 import 'package:qr_care/core/app_color.dart';
-import 'package:qr_care/core/app_constant.dart';
 import 'package:qr_care/core/assets/assets_manager.dart';
 import 'package:qr_care/features/home/features/information/cubit/information_cubit.dart';
 import 'package:qr_care/features/home/features/information/presentation/widgets/medical_information_widget.dart';
@@ -21,19 +18,6 @@ class InfoScreen extends StatefulWidget {
 }
 
 class _InfoScreenState extends State<InfoScreen> {
-  String name = '';
-  String dateOfBirth = '';
-  String jop = '';
-  String nationalId = '';
-  String phoneNumber = '';
-
-  @override
-  void initState() {
-    // BlocProvider.of<InformationCubit>(context).getPersonalData();
-    // getPersonaldataFromCahe();
-    super.initState();
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -55,14 +39,24 @@ class _InfoScreenState extends State<InfoScreen> {
                 height: 27.h,
               ),
 
-              // PersonalInformationWidget(
-              //   data_of_birth: dateOfBirth,
-              //   jop: jop,
-              //   national_id: nationalId,
-              //   name: name,
-              //   phone_number: phoneNumber,
-              // ),
-
+              FutureBuilder(
+                  future: BlocProvider.of<InformationCubit>(context)
+                      .getPersonalData(),
+                  builder: (context, snapshot) {
+                    if (snapshot.hasData) {
+                      final data = snapshot.data!;
+                      return PersonalInformationWidget(
+                        jop: data['job'],
+                        national_id: data['national_id'],
+                        name: data['name'],
+                        phone_number: data['contact'],
+                        data_of_birth: data['date_of_birth'] ?? '2002/9/20',
+                      );
+                    } else if (snapshot.hasError) {
+                      return Text('${snapshot.error}');
+                    }
+                    return const Text('');
+                  }),
               FutureBuilder(
                   future: BlocProvider.of<InformationCubit>(context)
                       .getMedicalData(),
@@ -85,20 +79,12 @@ class _InfoScreenState extends State<InfoScreen> {
                     } else if (snapshot.hasError) {
                       return Text('${snapshot.error}');
                     }
-                    return const CircularProgressIndicator();
-                  })
+                    return const Text('');
+                  }),
 
               // EmergencyInformationWidget(),
             ],
           ),
         ));
   }
-
-  // Future getPersonaldataFromCahe() async {
-  //   name = await CacheHelper.getData(key: 'nameh');
-  //   nationalId = await CacheHelper.getData(key: 'national_id');
-  //   dateOfBirth = await CacheHelper.getData(key: 'date_of_birth');
-  //   jop = await CacheHelper.getData(key: 'jop');
-  //   phoneNumber = await CacheHelper.getData(key: 'contact');
-  // }
 }

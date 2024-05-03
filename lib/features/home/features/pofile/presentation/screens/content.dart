@@ -1,9 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:iconly/iconly.dart';
 import 'package:qr_care/config/Localization/Constraine.dart';
 import 'package:qr_care/config/routes/app_routes.dart';
 import 'package:qr_care/core/animation.dart';
+import 'package:qr_care/core/app_color.dart';
+import 'package:qr_care/core/app_constant.dart';
+import 'package:qr_care/features/home/features/pofile/cubit/pofile_cubit.dart';
 import 'package:qr_care/features/home/features/pofile/presentation/screens/AboutApp.dart';
 import 'package:qr_care/features/home/features/pofile/presentation/screens/AccountSetting.dart';
 
@@ -19,11 +23,25 @@ class ContentProfile extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        CustomCard(
-          ageValue: "70",
-          textId: "1589281071982",
-          text: "Phone No:",
-        ),
+        FutureBuilder(
+            future: BlocProvider.of<ProfileCubit>(context).getUserData(),
+            builder: (context, snapshot) {
+              if (snapshot.hasData) {
+                var user = snapshot.data;
+                return CustomCard(
+                  ageValue:
+                      AppConst.calculateAge(user!['data']['date_of_birth'])
+                          .toString(),
+                  textId: user['data']['national_id'],
+                  text: user['data']['emergency_name'],
+                );
+              }
+              return Container(
+                height: 179.h,
+                width: 307.w,
+                color: AppColors.backgroundColor,
+              );
+            }),
         SizedBox(
           height: 35.h,
         ),

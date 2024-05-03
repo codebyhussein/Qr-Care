@@ -9,7 +9,7 @@ import 'package:qr_care/core/Services/LocalService/Cache_Helper.dart';
 import 'package:qr_care/core/app_color.dart';
 import 'package:qr_care/core/app_constant.dart';
 import 'package:qr_care/features/forgetPassword/presentation/widgets/custom_appbar.dart';
-import 'package:qr_care/features/home/features/pofile/presentation/cubit/pofile_cubit.dart';
+import 'package:qr_care/features/home/features/pofile/cubit/pofile_cubit.dart';
 import 'package:qr_care/features/home/features/pofile/presentation/widgets/textWidget.dart';
 import 'package:qr_care/features/home/features/scan_qr/presentation/widgets/defult_botton.dart';
 import 'package:qr_care/features/widgets/CustomTextFormField.dart';
@@ -175,7 +175,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
               SizedBox(
                 height: 25.h,
               ),
-              BlocConsumer<PofileCubit, PofileState>(
+              BlocConsumer<ProfileCubit, ProfileState>(
                 listener: (context, state) {
                   if (state is ErrorEditUser) {
                     Get.snackbar("error", state.error.toString());
@@ -186,7 +186,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                   }
                 },
                 builder: (context, state) {
-                  var cubit = PofileCubit.get(context);
+                  var cubit = ProfileCubit.get(context);
                   return DefultButtonLayoutScreen(
                     text: getTranslated("save", context)!,
                     onPressed: () async {
