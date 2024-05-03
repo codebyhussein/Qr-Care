@@ -5,13 +5,15 @@ import 'package:image_picker/image_picker.dart';
 import 'package:qr_care/config/Localization/Constraine.dart';
 import 'package:qr_care/core/app_color.dart';
 import 'package:qr_care/core/app_widgets.dart';
+import 'package:qr_care/core/assets/assets_manager.dart';
 
 class CustomCard extends StatefulWidget {
-  CustomCard(
-      {super.key,
-      required this.textId,
-      required this.ageValue,
-      required this.text});
+  CustomCard({
+    super.key,
+    required this.textId,
+    required this.ageValue,
+    required this.text,
+  });
 
   String textId;
   String ageValue;
@@ -42,7 +44,7 @@ class _CustomCardState extends State<CustomCard> {
                 SizedBox(
                   height: 10.h,
                 ),
-                AppWidgets.defultText(text: 'Mohamed Mohamed'),
+                AppWidgets.defultText(text: widget.text),
                 SizedBox(
                   height: 25.h,
                 ),
@@ -69,7 +71,6 @@ class _CustomCardState extends State<CustomCard> {
                     width: 120.w,
                     child: AppWidgets.description(
                       alignmentDirectional: AlignmentDirectional.topStart,
-
                       colorText: Colors.grey,
                       textAlign: TextAlign.left,
                       text: widget.ageValue,
@@ -78,34 +79,40 @@ class _CustomCardState extends State<CustomCard> {
               ],
             ),
           ),
-          InkWell(
-            onTap: () async {
-              final pickedFile =
-                  await ImagePicker().pickImage(source: ImageSource.gallery);
-              if (pickedFile != null) {
-                setState(() {
-                  value = File(pickedFile.path);
-                });
-              }
-            },
-            child: Padding(
-              padding:  EdgeInsetsDirectional.only(start: 5.w),
-              child: CircleAvatar(
-                radius: 60,
-                backgroundColor: const Color(0xffD9D9D9),
-                child: value == null
-                    ? CircleAvatar(
-                        radius: 60,
-                        backgroundColor: Colors.grey[400],
-                        // backgroundImage:
-                        //     AssetImage("assets/images/child_one.webp"),
-                      )
-                    : CircleAvatar(
-                        radius: 60,
-                        backgroundImage: FileImage(File(value!.path)),
-                      ),
-              ),
-            ),
+          Padding(
+            padding: EdgeInsets.only(left: 40.w),
+            // child: InkWell(
+            //   onTap: () async {
+            //     final pickedFile =
+            //         await ImagePicker().pickImage(source: ImageSource.gallery);
+            //     if (pickedFile != null) {
+            //       setState(() {
+            //         value = File(pickedFile.path);
+            //       });
+            //     }
+            //   },
+            //   child: Padding(
+            //     padding: EdgeInsetsDirectional.only(
+            //       start: 5.w,
+            //     ),
+            //     child: CircleAvatar(
+            //       radius: 60,
+            //       backgroundColor: const Color(0xffD9D9D9),
+            //       child: value == null
+            //           ? CircleAvatar(
+            //               radius: 60,
+            //               backgroundColor: Colors.grey[400],
+            //               // backgroundImage:
+            //               //     AssetImage("assets/images/child_one.webp"),
+            //             )
+            //           : CircleAvatar(
+            //               radius: 60,
+            //               backgroundImage: FileImage(File(value!.path)),
+            //             ),
+            //     ),
+            //   ),
+            // ),
+            child: Image.asset(AppAssets.female),
           ),
         ],
       ),

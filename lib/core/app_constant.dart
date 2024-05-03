@@ -113,4 +113,22 @@ class AppConst {
       ),
     );
   }
+
+  static int calculateAge(String birthDate) {
+    DateTime birthDateTime = DateTime.parse(birthDate);
+    DateTime currentDateTime = DateTime.now();
+    int age = currentDateTime.year - birthDateTime.year;
+    int month1 = currentDateTime.month;
+    int month2 = birthDateTime.month;
+    if (month2 > month1) {
+      age--;
+    } else if (month1 == month2) {
+      int day1 = currentDateTime.day;
+      int day2 = birthDateTime.day;
+      if (day2 > day1) {
+        age--;
+      }
+    }
+    return age;
+  }
 }

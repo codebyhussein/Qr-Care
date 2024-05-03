@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:qr_care/config/Localization/Constraine.dart';
 import 'package:qr_care/config/routes/app_routes.dart';
+import 'package:qr_care/core/Services/LocalService/Cache_Helper.dart';
 import 'package:qr_care/core/app_widgets.dart';
 import 'package:qr_care/core/assets/assets_manager.dart';
 import 'package:qr_care/features/register/presentation/widgets/custom_appbar_register_screen.dart';
@@ -11,12 +12,18 @@ import 'package:qr_care/features/register/presentation/widgets/parent_builder.da
 class Screen6 extends StatefulWidget {
   Screen6({super.key});
   bool isparent = true;
+  String accountId = '';
   @override
   State<Screen6> createState() => _Screen6State();
 }
 
 class _Screen6State extends State<Screen6> {
-  bool isDoctor = false;
+  @override
+  void initState() {
+    widget.accountId = CacheHelper.getData(key: 'account_id');
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -60,14 +67,12 @@ class _Screen6State extends State<Screen6> {
                       widget.isparent = !widget.isparent;
                     });
                     Navigator.pushNamed(context, Routes.homeScreenRoute);
-                    // final SharedPreferences prefs =
-                    //     await SharedPreferences.getInstance();
-                    // isDoctor = prefs.getBool('isDoctor')!;
+
                     showDialog(
                       context: context,
                       builder: (BuildContext context) {
                         return DialogWidget(
-                          text: isDoctor ? 'doc1234.com' : 'hussein1234.com',
+                          accountId: widget.accountId,
                         );
                       },
                     );

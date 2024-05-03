@@ -6,13 +6,16 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:qr_care/core/Services/LocalService/Cache_Helper.dart';
 import 'package:qr_care/features/home/Data/Repo/AddChildRepo.dart';
 
+import 'package:http/http.dart' as http;
+import '../../../../../core/Services/Api/app_url.dart';
+
 part 'pofile_state.dart';
 
-class PofileCubit extends Cubit<PofileState> {
-  PofileCubit({required this.addChildRepo}) : super(PofileInitial());
+class ProfileCubit extends Cubit<ProfileState> {
+  ProfileCubit({required this.addChildRepo}) : super(PofileInitial());
   AddChildRepo addChildRepo;
-static PofileCubit get(context)=>BlocProvider.of(context);
- editAccount({
+  static ProfileCubit get(context) => BlocProvider.of(context);
+  editAccount({
     required String accountId,
     required String government,
     required String city,
@@ -28,8 +31,9 @@ static PofileCubit get(context)=>BlocProvider.of(context);
           governmentCenter: governmentCenter,
           job: job,
           contact: contact,
-          emergencyContact: emergencyContact, accountId:accountId );
-      print(response.statusCode);
+          emergencyContact: emergencyContact,
+          accountId: accountId);
+
       if (response.statusCode == 200) {
         var responseBody = jsonDecode(response.body);
         if (responseBody["status"] == "success") {
@@ -41,12 +45,9 @@ static PofileCubit get(context)=>BlocProvider.of(context);
               value: responseBody["modified_values"]["account_id"]);
           await CacheHelper.saveData(
               key: "ma", value: responseBody["modified_values"]["job"]);
-          print("the data is ${CacheHelper.getData(key: "city")}");
-          print("the data is ${CacheHelper.getData(key: "ma")}");
-          print("the data is ${CacheHelper.getData(key: "account_id")}");
+
           emit(SuccessEditUser());
         } else {
-          print("the error meassage${responseBody["message"]}");
           emit(ErrorEditUser(error: responseBody["message"]));
         }
       } else {
@@ -62,4 +63,29 @@ static PofileCubit get(context)=>BlocProvider.of(context);
     }
   }
 
+  Future<Map?> getUserData() async {
+    emit(ProfileLoading());
+
+    try {
+      String nationalId = await CacheHelper.getData(key: 'nationalId');
+
+      var url = Uri.parse('${ApiUrl.getUserData}?national_id=30205101324567');
+
+      final response = await http.get(url);
+
+      if (response.statusCode == 200) {
+        final jsonData = json.decode(response.body);
+
+        emit(ProfileSuccess());
+
+        return jsonData;
+      } else {
+        emit(const ProfileError('Failed to load data:  '));
+      }
+    } catch (e) {
+      emit(ProfileError('Failed to load data: $e'));
+    }
+
+    return null;
+  }
 }
