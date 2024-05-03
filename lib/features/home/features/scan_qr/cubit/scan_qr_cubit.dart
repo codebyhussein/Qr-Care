@@ -40,6 +40,7 @@ class ScanQrCubit extends Cubit<ScanQrState> {
 
         emit(ScanQrSuccess(jsonData));
 
+
         return jsonData;
 
       } else {
@@ -87,6 +88,9 @@ class ScanQrCubit extends Cubit<ScanQrState> {
 
         emit(ScanQrSuccess(jsonData));
 
+
+        return jsonData;
+
       } else {
 
         throw Exception('Failed to load data');
@@ -98,7 +102,6 @@ class ScanQrCubit extends Cubit<ScanQrState> {
       emit(ScanQrError('Failed to load data: $e'));
 
     }
-
 
     return null;
 

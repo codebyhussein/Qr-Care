@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import '../../../core/assets/assets_manager.dart';
+
 class NotificationBuilder extends StatelessWidget {
   NotificationBuilder({super.key, required this.title, required this.dec});
   String title;
@@ -17,9 +19,7 @@ class NotificationBuilder extends StatelessWidget {
           // const SizedBox(),
           Padding(
             padding: const EdgeInsets.only(left: 10),
-            child: Image.asset(
-              'assets/images/notification.png',
-            ),
+            child: Image.asset(AppAssets.notificationBath),
           ),
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,

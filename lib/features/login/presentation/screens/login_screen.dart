@@ -63,7 +63,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     ),
                     Center(
                       child: SvgPicture.asset(
-                        AppAssets.logo_Path,
+                        AppAssets.logoBath,
                         height: 192.h,
                         width: 192.w,
                       ),
