@@ -13,9 +13,6 @@ abstract class ScanQrState extends Equatable {
 }
 
 
-// Define the initial state class
-
-
 class ScanQrInitial extends ScanQrState {
 
   @override
@@ -23,9 +20,6 @@ class ScanQrInitial extends ScanQrState {
   List<Object> get props => [];
 
 }
-
-
-// Define loading state
 
 
 class ScanQrLoading extends ScanQrState {}
@@ -44,9 +38,6 @@ class ScanQrSuccess extends ScanQrState {
   List<Object> get props => [qrData];
 
 }
-
-
-// Define state when an error occurs while scanning QR code
 
 
 class ScanQrError extends ScanQrState {

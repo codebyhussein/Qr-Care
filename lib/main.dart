@@ -14,6 +14,5 @@ void main() async {
   injection.setup();
   await NotificationService().initNotification();
   ServicesLocator.setupServiceLocator();
-  //print("the image is ${CacheHelper.getData(key: "image")}");
   runApp(const QrCare());
 }

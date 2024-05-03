@@ -27,7 +27,7 @@ class CustomAppBarRegister extends StatelessWidget {
                 )),
             Center(
                 child: SvgPicture.asset(
-              AppAssets.logo_Path_register,
+              AppAssets.logoBathRegister,
               width: 112.w,
               height: 112.h,
             ))

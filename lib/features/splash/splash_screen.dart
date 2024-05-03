@@ -26,7 +26,7 @@ class _SplahScreenState extends State<SplahScreen> {
       decoration: const BoxDecoration(
         image: DecorationImage(
             image: AssetImage(
-              AppAssets.logo_background_path,
+              AppAssets.logoBackgroundBath,
             ),
             fit: BoxFit.cover),
       ),

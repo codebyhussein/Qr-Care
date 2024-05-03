@@ -4,15 +4,7 @@ import 'package:qr_care/core/app_color.dart';
 import 'package:qr_care/features/forgetPassword/presentation/widgets/custom_appbar.dart';
 
 class NotificationsPage extends StatelessWidget {
-  final List<Map<String, String>> notifications = [
-    {"title": 'New Scan - 10:30 AM', "body": 'Scan - 10:30 AM - person XYZ'},
-    // {"title": 'New Scan - 11:15 AM', "body": 'Scan - 11:15 AM - person ABC'},
-    // {"title": 'New Scan - 1:45 PM', "body": 'Scan - 1:45 PM - person DEF'},
-    // {"title": 'New Scan - 3:20 PM', "body": 'Scan - 3:20 PM - person GHI'},
-    // {"title": 'New Scan - 5:50 PM', "body": 'Scan - 5:50 PM - person JKL'},
-  ];
-
-  NotificationsPage({
+  const NotificationsPage({
     super.key,
   });
 
@@ -30,24 +22,8 @@ class NotificationsPage extends StatelessWidget {
                     height: 30.h,
                   ),
                   CustomAppBar(title: 'Notifications'),
-                  // SizedBox(
-                  //   height: 20.h,
-                  // ),
-                  // Expanded(
-                  //   child: ListView.builder(
-                  //       scrollDirection: Axis.vertical,
-                  //       itemCount: notifications.length,
-                  //       itemBuilder: (BuildContext context, index) {
-                  //         return NotificationBuilder(
-                  //           title: notifications[index]['title']!,
-                  //           dec: notifications[index]['body']!,
-                  //         );
-                  //       }),
-                  // )
                   const Spacer(),
-
                   Image.asset('assets/images/meassage.png'),
-                  // Figma Flutter Generator NonotificationsWidget - TEXT
                   const Text(
                     'No Notifications',
                     textAlign: TextAlign.center,
@@ -61,7 +37,7 @@ class NotificationsPage extends StatelessWidget {
                   ),
                   SizedBox(
                     height: 10.h,
-                  ), // Figma Flutter Generator WellletyouknowwhentherewillbesomethingtoupdateyouWidget - TEXT
+                  ),
                   const Text(
                     'We’ll let you know when there will be something to update you.',
                     textAlign: TextAlign.center,

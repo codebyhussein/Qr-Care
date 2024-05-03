@@ -10,7 +10,7 @@ import 'package:qr_care/config/routes/app_routes.dart';
 import 'package:qr_care/core/app_constant.dart';
 import 'package:qr_care/core/app_widgets.dart';
 import 'package:qr_care/features/forgetPassword/presentation/widgets/custom_appbar.dart';
-import 'package:qr_care/features/home/features/chaildern/presentation/cubit/chaildern_cubit.dart';
+import 'package:qr_care/features/home/features/chaildern/cubit/chaildern_cubit.dart';
 import 'package:qr_care/features/register/presentation/widgets/CustomUpload.dart';
 import 'package:qr_care/features/widgets/CustomTextFormField.dart';
 import '../../../../../widgets/defult_button.dart';
@@ -36,15 +36,14 @@ class _AddChildScreenState extends State<AddChildScreen> {
       body: SingleChildScrollView(
         child: BlocConsumer<ChaildernCubit, ChaildernState>(
           listener: (context, state) {
-            if(state is ErrorAddChild){
-           Get.snackbar("error", state.error.toString());
-            }
-          else  if(state is SuccessAddChild){
+            if (state is ErrorAddChild) {
+              Get.snackbar("error", state.error.toString());
+            } else if (state is SuccessAddChild) {
               Navigator.pushNamed(context, Routes.childernInfoRoute);
             }
           },
           builder: (context, state) {
-            var cubit=ChaildernCubit.get(context);
+            var cubit = ChaildernCubit.get(context);
             return Form(
               key: formKey,
               child: Column(
@@ -71,18 +70,19 @@ class _AddChildScreenState extends State<AddChildScreen> {
                       backgroundColor: const Color(0xffD9D9D9),
                       child: cubit.childImage == null
                           ? Center(
-                        child: Text(
-                          getTranslated("Upload", context)!,
-                          style: const TextStyle(
-                            fontWeight: FontWeight.bold,
-                            fontFamily: 'Montserrat medium',
-                          ),
-                        ),
-                      )
+                              child: Text(
+                                getTranslated("Upload", context)!,
+                                style: const TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  fontFamily: 'Montserrat medium',
+                                ),
+                              ),
+                            )
                           : CircleAvatar(
-                        radius: 75,
-                        backgroundImage: FileImage(File(cubit.childImage!.path)),
-                      ),
+                              radius: 75,
+                              backgroundImage:
+                                  FileImage(File(cubit.childImage!.path)),
+                            ),
                     ),
                   ),
                   Padding(
@@ -113,19 +113,20 @@ class _AddChildScreenState extends State<AddChildScreen> {
                       prefixIcon: const Icon(IconlyLight.profile),
                     ),
                   ),
-                   CustomUpload(
-                     onPressed: () {
-                       cubit.getImageIdImage();
-                     },
-                   ),
+                  CustomUpload(
+                    onPressed: () {
+                      cubit.getImageIdImage();
+                    },
+                  ),
                   SizedBox(
                     height: 140.h,
                   ),
                   DefultButton(
                       onPressed: () {
-
-                        if(formKey.currentState!.validate()){
-                          if (cubit.childImage != null && cubit.idImage !=null&&idController.text.isNotEmpty) {
+                        if (formKey.currentState!.validate()) {
+                          if (cubit.childImage != null &&
+                              cubit.idImage != null &&
+                              idController.text.isNotEmpty) {
                             cubit.addChild(
                               childId: idController.text,
                               childImageFile: cubit.childImage!,
@@ -133,7 +134,6 @@ class _AddChildScreenState extends State<AddChildScreen> {
                             );
                           }
                         }
-
                       },
                       text: getTranslated("save", context)!),
                   SizedBox(
