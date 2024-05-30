@@ -126,7 +126,7 @@ class MedicalInformationWidget extends StatelessWidget {
                 SizedBox(
                   height: 250.h,
                   width: double.infinity,
-                  child: Image.asset(x_ray_image, fit: BoxFit.cover),
+                  child: Image.network(x_ray_image, fit: BoxFit.cover),
                 ),
                 SizedBox(
                   height: 8.h,

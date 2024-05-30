@@ -115,15 +115,19 @@ class AppConst {
   }
 
   static int calculateAge(String birthDate) {
-    DateTime birthDateTime = DateTime.parse(birthDate);
-    DateTime currentDateTime = DateTime.now();
-    int age = currentDateTime.year - birthDateTime.year;
-    int month1 = currentDateTime.month;
+    DateTime currentDate = DateTime.now();
+    List<String> birthDateParts = birthDate.split('-');
+    int day = int.parse(birthDateParts[0]);
+    int month = int.parse(birthDateParts[1]);
+    int year = int.parse(birthDateParts[2]);
+    DateTime birthDateTime = DateTime(year, month, day);
+    int age = currentDate.year - birthDateTime.year;
+    int month1 = currentDate.month;
     int month2 = birthDateTime.month;
     if (month2 > month1) {
       age--;
     } else if (month1 == month2) {
-      int day1 = currentDateTime.day;
+      int day1 = currentDate.day;
       int day2 = birthDateTime.day;
       if (day2 > day1) {
         age--;

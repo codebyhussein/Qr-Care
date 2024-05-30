@@ -27,7 +27,7 @@ class InformationCubit extends Cubit<InformationState> {
   InformationCubit() : super(InformationInitial());
 
 
-  Future<List<dynamic>?> getMedicalData() async {
+  Future<Map<String, dynamic>> getMedicalData() async {
 
     emit(InfoScreenLoading());
 
@@ -37,8 +37,8 @@ class InformationCubit extends Cubit<InformationState> {
 
     try {
 
-      final response = await http.get(
-          Uri.parse('${ApiUrl.medicalInforamationUrl}?user_id=30205101324567'));
+      final response = await http.get(Uri.parse(
+          '${ApiUrl.medicalInforamationUrl}?national_id=30215115516'));
 
 
       if (response.statusCode == 200) {
@@ -64,7 +64,7 @@ class InformationCubit extends Cubit<InformationState> {
     }
 
 
-    return null;
+    return {};
 
   }
 
@@ -76,12 +76,12 @@ class InformationCubit extends Cubit<InformationState> {
 
     try {
 
-      String accountId = await CacheHelper.getData(key: 'account_id');
+      String nationalId = await CacheHelper.getData(key: 'nationalId');
 
 
-      var url =
+      var url = Uri.parse(
 
-          Uri.parse('${ApiUrl.personalInforamationUrl}?account_id=$accountId');
+          '${ApiUrl.personalInforamationUrl}?national_id=30215115516');
 
 
       final response = await http.get(url);

@@ -2,14 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:qr_care/config/Localization/Constraine.dart';
 import 'package:qr_care/config/routes/app_routes.dart';
-import 'package:qr_care/features/login/presentation/screens/login_screen.dart';
-
 import 'package:qr_care/features/onboarding/screens/onboarding1.dart';
 import 'package:qr_care/features/onboarding/screens/onboarding2.dart';
 import 'package:qr_care/features/onboarding/screens/onboarding3.dart';
 import 'package:qr_care/features/onboarding/widgets/smooth_page_indicator.dart';
 import 'package:qr_care/features/widgets/defult_button.dart';
-
 import 'widgets/custom_appbar.dart';
 
 class OnBoradingScreen extends StatefulWidget {
