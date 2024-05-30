@@ -30,7 +30,7 @@ class _SplahScreenState extends State<SplahScreen> {
             ),
             fit: BoxFit.cover),
       ),
-      child: Center(child: SvgPicture.asset('assets/svg/logo.svg')),
+      child: Center(child: SvgPicture.asset(AppAssets.logoBath)),
     ));
   }
 

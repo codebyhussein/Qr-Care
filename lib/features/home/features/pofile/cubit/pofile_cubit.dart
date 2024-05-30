@@ -69,7 +69,8 @@ class ProfileCubit extends Cubit<ProfileState> {
     try {
       String nationalId = await CacheHelper.getData(key: 'nationalId');
 
-      var url = Uri.parse('${ApiUrl.getUserData}?national_id=30205101324567');
+      var url = Uri.parse(
+          '${ApiUrl.personalInforamationUrl}?national_id=30215115516');
 
       final response = await http.get(url);
 

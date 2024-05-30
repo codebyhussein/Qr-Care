@@ -27,13 +27,13 @@ class ContentProfile extends StatelessWidget {
             future: BlocProvider.of<ProfileCubit>(context).getUserData(),
             builder: (context, snapshot) {
               if (snapshot.hasData) {
-                var user = snapshot.data;
+                var data = snapshot.data!["data"]['user'];
                 return CustomCard(
-                  ageValue:
-                      AppConst.calculateAge(user!['data']['date_of_birth'])
-                          .toString(),
-                  textId: user['data']['national_id'],
-                  text: user['data']['emergency_name'],
+                  ageValue: AppConst.calculateAge(
+                          data['date_of_birth'] ?? "20-09-2002")
+                      .toString(),
+                  textId: data['national_id'],
+                  text: data['emergency_name'],
                 );
               }
               return Container(

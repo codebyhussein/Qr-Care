@@ -46,11 +46,12 @@ class _InfoScreenState extends State<InfoScreen> {
                     if (snapshot.hasData) {
                       final data = snapshot.data!;
                       return PersonalInformationWidget(
-                        jop: data['job'],
-                        national_id: data['national_id'],
-                        name: data['name'],
-                        phone_number: data['contact'],
-                        data_of_birth: data['date_of_birth'] ?? '2002/9/20',
+                        jop: data['data']['user']['job'],
+                        national_id: data['data']['user']['national_id'],
+                        name: data['data']['user']['emergency_name'],
+                        phone_number: data['data']['user']['contact'],
+                        data_of_birth: data['data']['user']['date_of_birth'] ??
+                            '20/2/2002',
                       );
                     } else if (snapshot.hasError) {
                       return Text('${snapshot.error}');
@@ -62,19 +63,22 @@ class _InfoScreenState extends State<InfoScreen> {
                       .getMedicalData(),
                   builder: (context, snapshot) {
                     if (snapshot.hasData) {
-                      final data = snapshot.data!;
+                      final data = snapshot.data!['data'];
                       return MedicalInformationWidget(
-                        height: data[0]['height'].toString(),
-                        boold_type: data[0]['blood_type'] ?? 'A',
-                        chronic_disease: data[0]['chronic_disease'],
-                        width: data[0]['weight'].toString(),
-                        medical_analysis:
-                            data[0]['medical_analysis'] ?? 'not found',
-                        Allergies: data[0]['Allergies'] ?? 'Anaphylaxis',
-                        x_ray_image: data[0]['x_ray_image'] ??
-                            "assets/images/not-found.jpg",
-                        Type_of_allergy:
-                            data[0]['Type_of_allergy'] ?? 'cytotoxic reactions',
+                        height: data['medical_tests'][0]['height'],
+                        boold_type: data['medical_tests'][0]['blood_type'],
+                        chronic_disease: data['medical_tests'][0]
+                            ['chronic_disease'],
+                        width: data['medical_tests'][0]['weight'],
+                        medical_analysis: data['medical_analysis'][0]
+                            ['analysis_text'],
+                        Allergies: data['user_allergies'][0]['allergen_name'],
+                        Type_of_allergy: data['user_allergies'][0]['reaction'],
+                        // x_ray_image: data['medical_tests'][0]
+                        //         ['x_ray_image'] ??
+                        //     "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSpG0xwjiIHyvGSCIJDOCZ_VEzEntS0LHnhCQ&s",
+                        x_ray_image:
+                            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSpG0xwjiIHyvGSCIJDOCZ_VEzEntS0LHnhCQ&s",
                       );
                     } else if (snapshot.hasError) {
                       return Text('${snapshot.error}');
