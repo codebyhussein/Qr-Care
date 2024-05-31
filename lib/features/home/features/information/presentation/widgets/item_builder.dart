@@ -26,20 +26,42 @@ class ItemBuilder extends StatelessWidget {
             fontWeight: FontWeight.w600,
           ),
         ),
-        Container(
-          height: 40.h,
-          width: width,
-          decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(12),
-              border: Border.all(color: AppColors.mainColor),
-              color: const Color.fromARGB(255, 232, 232, 232)),
-          child: Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Text(
-              response,
-              style: const TextStyle(color: Colors.black),
-            ),
-          ),
+        // Container(
+        //   height: 40.h,
+        //   width: width,
+        //   decoration: BoxDecoration(
+        //       borderRadius: BorderRadius.circular(12),
+        //       border: Border.all(color: AppColors.mainColor),
+        //       color: const Color.fromARGB(255, 232, 232, 232)),
+        //   child: Padding(
+        //     padding: const EdgeInsets.all(8.0),
+        //     child: Text(
+        //       response,
+        //       style: const TextStyle(color: Colors.black),
+        //     ),
+        //   ),
+        // )
+        LayoutBuilder(
+          builder: (context, constraints) {
+            return ConstrainedBox(
+              constraints: const BoxConstraints(maxHeight: double.infinity),
+              child: Container(
+                width: width,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(12),
+                  border: Border.all(color: AppColors.mainColor),
+                  color: const Color.fromARGB(255, 232, 232, 232),
+                ),
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Text(
+                    response,
+                    style: const TextStyle(color: Colors.black),
+                  ),
+                ),
+              ),
+            );
+          },
         )
       ],
     );

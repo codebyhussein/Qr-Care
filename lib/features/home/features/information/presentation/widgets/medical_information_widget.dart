@@ -70,28 +70,6 @@ class MedicalInformationWidget extends StatelessWidget {
                   ],
                 ),
                 SizedBox(height: 6.h),
-                // Row(
-                //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                //   children: [
-                //     ItemBuilder(
-                //         title: 'Blood Type', response: 'A+', width: 100.w),
-                //     ItemBuilder(
-                //         title: 'Blood Suger',
-                //         response: 'Not Known ',
-                //         width: 100.w),
-                //   ],
-                // ),
-                // Row(
-                //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                //   children: [
-                //     ItemBuilder(
-                //         title: 'Heart Rate',
-                //         response: 'Not Known',
-                //         width: 100.w),
-                //     ItemBuilder(
-                //         title: 'blood', response: 'Not Known', width: 100.w),
-                //   ],
-                // ),
                 ItemBuilder(
                   title: 'chronic disease',
                   response: chronic_disease,
@@ -102,17 +80,11 @@ class MedicalInformationWidget extends StatelessWidget {
                   response: Allergies,
                   width: double.infinity,
                 ),
-                // ItemBuilder(
-                //   title: 'X-Ray Report',
-                //   response: 'Not Found',
-                //   width: double.infinity,
-                // ),
                 ItemBuilder(
                   title: 'Type of allergy',
                   response: Type_of_allergy,
                   width: double.infinity,
                 ),
-
                 Text(
                   "X-Ray Image",
                   style: TextStyle(
@@ -122,11 +94,14 @@ class MedicalInformationWidget extends StatelessWidget {
                     fontWeight: FontWeight.w600,
                   ),
                 ),
-
-                SizedBox(
-                  height: 250.h,
-                  width: double.infinity,
-                  child: Image.network(x_ray_image, fit: BoxFit.cover),
+                Container(
+                  decoration:
+                      BoxDecoration(borderRadius: BorderRadius.circular(25)),
+                  child: SizedBox(
+                    height: 250.h,
+                    width: double.infinity,
+                    child: Image.network(x_ray_image, fit: BoxFit.cover),
+                  ),
                 ),
                 SizedBox(
                   height: 8.h,
