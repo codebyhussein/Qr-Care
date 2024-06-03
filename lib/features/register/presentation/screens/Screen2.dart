@@ -42,7 +42,7 @@ class _Screen2State extends State<Screen2> {
       getTranslated("Doctor", context)!,
       getTranslated("AdministrativeServices", context)!,
       getTranslated("OfficeServices", context)!,
-      getTranslated("Others", context)!,
+      getTranslated("other", context)!,
     ];
     return Scaffold(
       body: SingleChildScrollView(
