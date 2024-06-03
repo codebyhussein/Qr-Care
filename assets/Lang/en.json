@@ -89,7 +89,7 @@
   "Doctor": "doctor",
   "AdministrativeServices": "administrative services ",
   "OfficeServices": "police officer",
-  "Others": "others",
+  "other": "other",
   "errorMessageCity": "Please Choose City",
   "errorMessageCenter": "Please Choose a Center",
   "PhoneHome": "Phone-Home",

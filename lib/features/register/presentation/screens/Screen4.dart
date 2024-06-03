@@ -77,7 +77,7 @@ class _Screen2State extends State<Screen4> {
                       height: 6.h,
                     ),
                     CustomTextFormField(
-                        regEx: r'^[A-Za-z]+$',
+                        regEx: r'^[A-Za-z]+(\s[A-Za-z]+)?$',
                         prefixIcon: const Icon(IconlyLight.profile),
                         hintText: getTranslated("name", context)!,
                         errorMassage:
