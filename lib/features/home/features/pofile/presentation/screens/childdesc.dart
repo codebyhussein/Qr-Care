@@ -7,6 +7,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:qr_care/config/Localization/Constraine.dart';
 import 'package:qr_care/core/app_color.dart';
+import 'package:qr_care/features/home/features/chaildern/Model/ChildInfoModel.dart';
 import 'package:qr_care/features/home/features/pofile/presentation/widgets/CustomCard.dart';
 import 'package:qr_care/features/home/features/scan_qr/presentation/widgets/defult_botton.dart';
 import 'package:qr_flutter/qr_flutter.dart';
@@ -15,8 +16,8 @@ import 'dart:ui' as ui;
 import '../../../../../forgetPassword/presentation/widgets/custom_appbar.dart';
 
 class ChildDescription extends StatefulWidget {
-  const ChildDescription({super.key});
-
+   ChildDescription({super.key,@required this.childInfoModel});
+   ChildInfoModel? childInfoModel;
   @override
   State<ChildDescription> createState() => _ChildDescriptionState();
 }
@@ -49,8 +50,8 @@ class _ChildDescriptionState extends State<ChildDescription> {
             height: 35.h,
           ),
           CustomCard(
-            textId: "1589281071982",
-            ageValue: "8",
+            textId: widget.childInfoModel?.nationalId!=null?widget.childInfoModel!.nationalId.toString():"1589281071982",
+            ageValue:widget.childInfoModel?.age!=null?widget.childInfoModel!.age.toString():"6",
             text: "Age :",
           ),
           SizedBox(
@@ -66,7 +67,7 @@ class _ChildDescriptionState extends State<ChildDescription> {
               child: RepaintBoundary(
                 key: _renderObjectKey,
                 child: QrImageView(
-                  data: "j8TkZwHx7pFQa6R3LY1EoI9GnC",
+                  data: widget.childInfoModel!.nationalId.toString(),
                   version: QrVersions.auto,
                   size: 50.0,
                   backgroundColor: AppColors.mainColor,

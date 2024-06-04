@@ -22,3 +22,12 @@ class ErrorAddChild extends ChaildernState {
 class SuccessSelectChildImage extends ChaildernState {}
 
 class SuccessSelectIdImage extends ChaildernState {}
+class LoadingGetChild extends ChaildernState {}
+class SuccessGetChild extends ChaildernState {
+
+}
+class ErrorGetChild extends ChaildernState {
+  final String error;
+
+  const ErrorGetChild({required this.error});
+}

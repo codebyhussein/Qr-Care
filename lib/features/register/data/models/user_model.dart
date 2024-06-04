@@ -51,7 +51,7 @@ class UserModel extends UserEntity {
 }
 
 class EnteredValues {
-  final int? id;
+  final dynamic id;
   final String? accountId;
   final String? nationalId;
   final String? confirmPassword;
