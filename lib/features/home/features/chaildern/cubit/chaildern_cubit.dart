@@ -1,10 +1,12 @@
 import 'dart:convert';
+import 'dart:ffi';
 import 'dart:io';
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:qr_care/core/Services/LocalService/Cache_Helper.dart';
 import 'package:qr_care/features/home/Data/Repo/AddChildRepo.dart';
+import 'package:qr_care/features/home/features/chaildern/Model/ChildInfoModel.dart';
 
 part 'chaildern_state.dart';
 
@@ -49,6 +51,16 @@ class ChaildernCubit extends Cubit<ChaildernState> {
       emit(ErrorAddChild(error: 'Error: $e'));
     }
   }
+  Future<void> getChildInfo() async {
+    emit(LoadingGetChild());
+    try {
+      childInfoModel = await addChildRepo.getDataChild();
+      print(childInfoModel);
+      emit(SuccessGetChild());
+    } catch (e) {
+      emit(ErrorGetChild(error: e.toString()));
+    }
+  }
 
   final ImagePicker imagePicker = ImagePicker();
   File? childImage;
@@ -71,4 +83,6 @@ class ChaildernCubit extends Cubit<ChaildernState> {
       emit(SuccessSelectIdImage());
     }
   }
+ChildInfoModel ?childInfoModel;
+
 }

@@ -1,5 +1,6 @@
 import 'dart:io';
 import "package:http/http.dart" as http;
+import 'package:qr_care/features/home/features/chaildern/Model/ChildInfoModel.dart';
 
 abstract class AddChildRepo {
   Future<http.Response> addChild(
@@ -16,4 +17,5 @@ abstract class AddChildRepo {
     required String contact,
     required String emergencyContact,
   });
+  Future<ChildInfoModel>getDataChild();
 }

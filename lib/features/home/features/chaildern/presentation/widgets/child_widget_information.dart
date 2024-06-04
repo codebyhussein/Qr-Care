@@ -24,7 +24,7 @@ class ChildWidgetInformation extends StatelessWidget {
                 Navigator.push(
                     context,
                     MaterialPageRoute(
-                        builder: (context) => const ChildDescription()));
+                        builder: (context) =>  ChildDescription()));
               },
               icon: SizedBox(
                 height: 50.h,

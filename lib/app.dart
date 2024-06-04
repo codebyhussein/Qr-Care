@@ -56,11 +56,12 @@ class QrCare extends StatelessWidget {
         BlocProvider<ChaildernCubit>(
             create: (context) => ChaildernCubit(
                 addChildRepo:
-                    ServicesLocator.getIt.get<AddChildRepoImplementation>())),
+                    ServicesLocator.getIt.get<AddChildRepoImplementation>())..getChildInfo()),
+
         BlocProvider<ProfileCubit>(
             create: (context) => ProfileCubit(
                 addChildRepo:
-                    ServicesLocator.getIt.get<AddChildRepoImplementation>())),
+                    ServicesLocator.getIt.get<AddChildRepoImplementation>())..getUserData()),
       ],
       child: BlocBuilder<ChangeLangCubit, ChangeLangState>(
         builder: (context, state) {

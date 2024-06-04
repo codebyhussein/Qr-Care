@@ -1,5 +1,5 @@
 class UserEntity {
-  final int? id;
+  final dynamic id;
   final String? accountId;
   final String? nationalId;
   final String? confirmPassword;

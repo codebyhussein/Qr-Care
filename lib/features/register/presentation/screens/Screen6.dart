@@ -12,7 +12,6 @@ import 'package:qr_care/features/register/presentation/widgets/parent_builder.da
 class Screen6 extends StatefulWidget {
   Screen6({super.key});
   bool isparent = true;
-  String accountId = '';
   @override
   State<Screen6> createState() => _Screen6State();
 }
@@ -20,7 +19,7 @@ class Screen6 extends StatefulWidget {
 class _Screen6State extends State<Screen6> {
   @override
   void initState() {
-    widget.accountId = CacheHelper.getData(key: 'account_id');
+   CacheHelper.getData(key: 'account_id');
     super.initState();
   }
 
@@ -72,7 +71,7 @@ class _Screen6State extends State<Screen6> {
                       context: context,
                       builder: (BuildContext context) {
                         return DialogWidget(
-                          accountId: widget.accountId,
+                          accountId: CacheHelper.getData(key: "account_id"),
                         );
                       },
                     );

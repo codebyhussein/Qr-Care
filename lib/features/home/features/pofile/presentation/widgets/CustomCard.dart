@@ -19,7 +19,7 @@ class CustomCard extends StatefulWidget {
   String textId;
   String ageValue;
   String text;
-  bool isMale = CacheHelper.getData(key: 'gender');
+  String isMale = CacheHelper.getData(key: 'gender');
 
   @override
   State<CustomCard> createState() => _CustomCardState();
@@ -83,9 +83,9 @@ class _CustomCardState extends State<CustomCard> {
           ),
           Padding(
             padding: EdgeInsets.only(left: 40.w),
-            child: widget.isMale
-                ? Image.asset(AppAssets.male)
-                : Image.asset(AppAssets.female),
+            child: CacheHelper.getData(key: "gender")=="female"
+                ? Image.asset(AppAssets.female)
+                : Image.asset(AppAssets.male),
           ),
         ],
       ),

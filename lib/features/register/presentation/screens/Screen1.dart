@@ -95,6 +95,7 @@ class _Screen1State extends State<Screen1> {
                 if (formKey.currentState!.validate()) {
                   await CacheHelper.saveData(
                       key: 'gender', value: widget.isMale ? 'male' : 'female');
+                  print(CacheHelper.getData(key: "gender"));
                   Navigator.pushNamed(context, Routes.registerRoute2);
                 }
               },

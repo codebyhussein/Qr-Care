@@ -7,6 +7,7 @@ import 'package:qr_care/core/Services/LocalService/Cache_Helper.dart';
 import 'package:qr_care/features/home/Data/Repo/AddChildRepo.dart';
 
 import 'package:http/http.dart' as http;
+import 'package:qr_care/features/home/features/pofile/Model/PersonalModel.dart';
 import '../../../../../core/Services/Api/app_url.dart';
 
 part 'pofile_state.dart';
@@ -62,7 +63,6 @@ class ProfileCubit extends Cubit<ProfileState> {
       emit(ErrorEditUser(error: 'Error: $e'));
     }
   }
-
   Future<Map?> getUserData() async {
     emit(ProfileLoading());
 
