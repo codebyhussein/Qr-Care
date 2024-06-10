@@ -28,41 +28,7 @@ class AddChildRepoImplementation extends AddChildRepo {
     return response;
   }
 
-  @override
-  Future<http.Response> editAccount({
-    required String accountId,
-    required String government,
-    required String city,
-    required String governmentCenter,
-    required String job,
-    required String contact,
-    required String emergencyContact,
-  }) async {
-    String requestBody = jsonEncode({
-      "account_id": accountId,
-      "government": government,
-      "city": city,
-      "government_center": governmentCenter,
-      "job": job,
-      "contact": contact,
-      "emergency_contact": emergencyContact,
-    });
 
-    int contentLength = utf8
-        .encode(requestBody)
-        .length;
-
-    var response = await ApiService.postRequest(
-      endPoint: ApiUrl.editAccountUrl,
-      header: {
-        'Content-Type': 'application/json',
-        'Content-Length': '$contentLength',
-      },
-      body: requestBody,
-    );
-
-    return response;
-  }
 
   @override
   Future<ChildInfoModel> getDataChild() async {

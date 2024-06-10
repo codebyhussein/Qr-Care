@@ -7,6 +7,7 @@ import 'package:qr_care/config/routes/app_routes.dart';
 import 'package:qr_care/core/animation.dart';
 import 'package:qr_care/core/app_color.dart';
 import 'package:qr_care/core/app_constant.dart';
+import 'package:qr_care/features/home/features/chaildern/cubit/chaildern_cubit.dart';
 import 'package:qr_care/features/home/features/pofile/cubit/pofile_cubit.dart';
 import 'package:qr_care/features/home/features/pofile/presentation/screens/AboutApp.dart';
 import 'package:qr_care/features/home/features/pofile/presentation/screens/AccountSetting.dart';
@@ -75,6 +76,7 @@ class ContentProfile extends StatelessWidget {
             text: getTranslated("ChildrenInformation", context)!,
             onPressed: () {
               Navigator.pushNamed(context, Routes.childernInfoRoute);
+              ChaildernCubit.get(context).getChildInfo();
             }),
         SizedBox(
           height: 10.h,

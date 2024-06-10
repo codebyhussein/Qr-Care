@@ -14,5 +14,6 @@ void main() async {
   injection.setup();
   await NotificationService().initNotification();
   ServicesLocator.setupServiceLocator();
+  ServicesLocator.setupServicesData();
   runApp(const QrCare());
 }

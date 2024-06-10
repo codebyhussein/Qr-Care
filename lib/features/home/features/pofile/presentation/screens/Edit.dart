@@ -9,6 +9,7 @@ import 'package:qr_care/core/Services/LocalService/Cache_Helper.dart';
 import 'package:qr_care/core/app_color.dart';
 import 'package:qr_care/core/app_constant.dart';
 import 'package:qr_care/features/forgetPassword/presentation/widgets/custom_appbar.dart';
+import 'package:qr_care/features/home/features/pofile/cubit/EditAccount/edit_account_cubit.dart';
 import 'package:qr_care/features/home/features/pofile/cubit/pofile_cubit.dart';
 import 'package:qr_care/features/home/features/pofile/presentation/widgets/textWidget.dart';
 import 'package:qr_care/features/home/features/scan_qr/presentation/widgets/defult_botton.dart';
@@ -175,7 +176,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
               SizedBox(
                 height: 25.h,
               ),
-              BlocConsumer<ProfileCubit, ProfileState>(
+              BlocConsumer<EditAccountCubit, EditAccountState>(
                 listener: (context, state) {
                   if (state is ErrorEditUser) {
                     Get.snackbar("error", state.error.toString());
@@ -186,7 +187,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                   }
                 },
                 builder: (context, state) {
-                  var cubit = ProfileCubit.get(context);
+                  var cubit = EditAccountCubit.get(context);
                   return DefultButtonLayoutScreen(
                     text: getTranslated("save", context)!,
                     onPressed: () async {
@@ -194,7 +195,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                           await CacheHelper.getData(key: 'account_id');
                       if (formKey.currentState!.validate()) {
                         cubit.editAccount(
-                            accountId: accountId,
+                            // accountId: accountId,
                             government: governmentController.text,
                             city: cityController.text,
                             governmentCenter: centerController.text,

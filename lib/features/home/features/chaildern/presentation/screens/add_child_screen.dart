@@ -39,7 +39,7 @@ class _AddChildScreenState extends State<AddChildScreen> {
             if (state is ErrorAddChild) {
               Get.snackbar("error", state.error.toString());
             } else if (state is SuccessAddChild) {
-              Navigator.pushNamed(context, Routes.childernInfoRoute);
+ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text("Success Add Child"),backgroundColor: Colors.green,));
             }
           },
           builder: (context, state) {
