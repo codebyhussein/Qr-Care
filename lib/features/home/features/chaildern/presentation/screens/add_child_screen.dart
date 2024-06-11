@@ -11,6 +11,7 @@ import 'package:qr_care/core/app_constant.dart';
 import 'package:qr_care/core/app_widgets.dart';
 import 'package:qr_care/features/forgetPassword/presentation/widgets/custom_appbar.dart';
 import 'package:qr_care/features/home/features/chaildern/cubit/chaildern_cubit.dart';
+import 'package:qr_care/features/home/layout_screen.dart';
 import 'package:qr_care/features/register/presentation/widgets/CustomUpload.dart';
 import 'package:qr_care/features/widgets/CustomTextFormField.dart';
 import '../../../../../widgets/defult_button.dart';
@@ -40,6 +41,9 @@ class _AddChildScreenState extends State<AddChildScreen> {
               Get.snackbar("error", state.error.toString());
             } else if (state is SuccessAddChild) {
 ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text("Success Add Child"),backgroundColor: Colors.green,));
+Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (context) {
+  return LayoutScreen();
+},), (route) => false);
             }
           },
           builder: (context, state) {

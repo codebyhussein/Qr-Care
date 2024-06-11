@@ -6,6 +6,7 @@ import 'package:get/get.dart';
 import 'package:qr_care/config/Localization/AppLocalizations.dart';
 import 'package:qr_care/config/Localization/cubit/change_lang_cubit.dart';
 import 'package:qr_care/config/routes/app_routes.dart';
+import 'package:qr_care/core/Services/LocalService/Cache_Helper.dart';
 import 'package:qr_care/core/ServicesLocator.dart';
 import 'package:qr_care/features/forgetPassword/cubit/forgetpassword_cubit.dart';
 import 'package:qr_care/features/forgetPassword/cubit/resetpassword_cubit.dart';
@@ -19,6 +20,7 @@ import 'package:qr_care/features/home/features/pofile/cubit/pofile_cubit.dart';
 import 'package:qr_care/core/injection_container.dart' as injection;
 import 'package:qr_care/config/themes/app_themes.dart';
 import 'package:qr_care/features/home/features/scan_qr/cubit/scan_qr_cubit.dart';
+import 'package:qr_care/features/home/layout_screen.dart';
 import 'package:qr_care/features/login/presentation/cubit/login_cubit.dart';
 import 'package:qr_care/features/register/presentation/cubit/register_cubit.dart';
 import 'package:qr_care/features/splash/splash_screen.dart';
@@ -103,7 +105,7 @@ class QrCare extends StatelessWidget {
                   },
                   onGenerateRoute: AppRoutes.onGenerateRoute,
                   debugShowCheckedModeBanner: false,
-                  home: const SplahScreen(),
+                  home:CacheHelper.getData(key: "account_id")!=null?LayoutScreen(): const SplahScreen(),
                   theme: appthemes(),
                 );
               },
@@ -137,7 +139,7 @@ class QrCare extends StatelessWidget {
                 },
                 onGenerateRoute: AppRoutes.onGenerateRoute,
                 debugShowCheckedModeBanner: false,
-                home: const SplahScreen(),
+                home: CacheHelper.getData(key: "account_id")!=null?LayoutScreen(): const SplahScreen(),
                 theme: appthemes(),
               );
             },

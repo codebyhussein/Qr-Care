@@ -20,6 +20,7 @@ class _Screen6State extends State<Screen6> {
   @override
   void initState() {
    CacheHelper.getData(key: 'account_id');
+   print( "the new account id is ${  CacheHelper.getData(key: 'account_id')}");
     super.initState();
   }
 

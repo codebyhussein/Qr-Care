@@ -195,7 +195,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                           await CacheHelper.getData(key: 'account_id');
                       if (formKey.currentState!.validate()) {
                         cubit.editAccount(
-                            // accountId: accountId,
+                            accountId: CacheHelper.getData(key: 'account_id'),
                             government: governmentController.text,
                             city: cityController.text,
                             governmentCenter: centerController.text,

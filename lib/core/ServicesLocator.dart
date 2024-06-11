@@ -13,6 +13,7 @@ class ServicesLocator {
     getIt.registerSingleton<AddChildRepoImplementation>(AddChildRepoImplementation(
       apiUrl: getIt.get<ApiUrl>(),
     ));
+
   }
   static void setupServicesData() {
     getIt.registerSingleton<EditDataRepo>(EditDataRepo());

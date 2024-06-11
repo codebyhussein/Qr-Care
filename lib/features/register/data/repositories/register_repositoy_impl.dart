@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:http/http.dart' as http;
 import 'package:qr_care/core/Services/Api/api_services.dart';
 import 'package:qr_care/core/Services/Api/app_url.dart';
+import 'package:qr_care/core/Services/LocalService/Cache_Helper.dart';
 import 'package:qr_care/features/login/domain/entities/user_entity.dart';
 import 'package:qr_care/features/register/data/datasources/register_local_data_source.dart';
 import 'package:qr_care/features/register/data/datasources/register_remote_data_source.dart';
@@ -72,8 +73,10 @@ class RegisterRepositoryImpl implements RegisterRepository {
       var response = await http.Response.fromStream(streamedResponse);
 
       if (response.statusCode == 200) {
-        final json = response.body;
-        final user = UserEntity.fromJson(jsonDecode(json));
+        final json = jsonDecode(response.body);
+        final user = UserEntity.fromJson(json);
+        await CacheHelper.saveData(
+            key: 'account_id', value: json['entered_values']['account_id']);
         return user;
       } else {
         throw Exception(
