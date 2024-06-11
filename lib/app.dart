@@ -13,6 +13,8 @@ import 'package:qr_care/features/forgetPassword/cubit/verificationpassword_cubit
 import 'package:qr_care/features/home/Data/Repo/AddChildRepoImplementation.dart';
 import 'package:qr_care/features/home/features/chaildern/cubit/chaildern_cubit.dart';
 import 'package:qr_care/features/home/features/information/cubit/information_cubit.dart';
+import 'package:qr_care/features/home/features/pofile/Repo/RepoImplementation.dart';
+import 'package:qr_care/features/home/features/pofile/cubit/EditAccount/edit_account_cubit.dart';
 import 'package:qr_care/features/home/features/pofile/cubit/pofile_cubit.dart';
 import 'package:qr_care/core/injection_container.dart' as injection;
 import 'package:qr_care/config/themes/app_themes.dart';
@@ -62,6 +64,10 @@ class QrCare extends StatelessWidget {
             create: (context) => ProfileCubit(
                 addChildRepo:
                     ServicesLocator.getIt.get<AddChildRepoImplementation>())..getUserData()),
+        BlocProvider<EditAccountCubit>(
+            create: (context) => EditAccountCubit(
+                editData:ServicesLocator.getIt.get<EditDataRepo>()
+            )..getDataEdit()),
       ],
       child: BlocBuilder<ChangeLangCubit, ChangeLangState>(
         builder: (context, state) {

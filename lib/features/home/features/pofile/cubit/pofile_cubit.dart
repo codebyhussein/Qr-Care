@@ -16,53 +16,53 @@ class ProfileCubit extends Cubit<ProfileState> {
   ProfileCubit({required this.addChildRepo}) : super(PofileInitial());
   AddChildRepo addChildRepo;
   static ProfileCubit get(context) => BlocProvider.of(context);
-  editAccount({
-    required String accountId,
-    required String government,
-    required String city,
-    required String governmentCenter,
-    required String job,
-    required String contact,
-    required String emergencyContact,
-  }) async {
-    try {
-      var response = await addChildRepo.editAccount(
-          government: government,
-          city: city,
-          governmentCenter: governmentCenter,
-          job: job,
-          contact: contact,
-          emergencyContact: emergencyContact,
-          accountId: accountId);
-
-      if (response.statusCode == 200) {
-        var responseBody = jsonDecode(response.body);
-        if (responseBody["status"] == "success") {
-          await CacheHelper.saveData(
-              key: "city",
-              value: responseBody["modified_values"]["government_center"]);
-          await CacheHelper.saveData(
-              key: "account_id",
-              value: responseBody["modified_values"]["account_id"]);
-          await CacheHelper.saveData(
-              key: "ma", value: responseBody["modified_values"]["job"]);
-
-          emit(SuccessEditUser());
-        } else {
-          emit(ErrorEditUser(error: responseBody["message"]));
-        }
-      } else {
-        print("the error meassage${response.statusCode}");
-
-        emit(ErrorEditUser(
-            error: 'Failed to add child. Status code: ${response.statusCode}'));
-      }
-    } catch (e) {
-      print("the error meassage${e.toString()}");
-
-      emit(ErrorEditUser(error: 'Error: $e'));
-    }
-  }
+  // editAccount({
+  //   required String accountId,
+  //   required String government,
+  //   required String city,
+  //   required String governmentCenter,
+  //   required String job,
+  //   required String contact,
+  //   required String emergencyContact,
+  // }) async {
+  //   try {
+  //     var response = await addChildRepo.editAccount(
+  //         government: government,
+  //         city: city,
+  //         governmentCenter: governmentCenter,
+  //         job: job,
+  //         contact: contact,
+  //         emergencyContact: emergencyContact,
+  //         accountId: accountId);
+  //
+  //     if (response.statusCode == 200) {
+  //       var responseBody = jsonDecode(response.body);
+  //       if (responseBody["status"] == "success") {
+  //         await CacheHelper.saveData(
+  //             key: "city",
+  //             value: responseBody["modified_values"]["government_center"]);
+  //         await CacheHelper.saveData(
+  //             key: "account_id",
+  //             value: responseBody["modified_values"]["account_id"]);
+  //         await CacheHelper.saveData(
+  //             key: "ma", value: responseBody["modified_values"]["job"]);
+  //
+  //         emit(SuccessEditUser());
+  //       } else {
+  //         emit(ErrorEditUser(error: responseBody["message"]));
+  //       }
+  //     } else {
+  //       print("the error meassage${response.statusCode}");
+  //
+  //       emit(ErrorEditUser(
+  //           error: 'Failed to add child. Status code: ${response.statusCode}'));
+  //     }
+  //   } catch (e) {
+  //     print("the error meassage${e.toString()}");
+  //
+  //     emit(ErrorEditUser(error: 'Error: $e'));
+  //   }
+  // }
   Future<Map?> getUserData() async {
     emit(ProfileLoading());
 

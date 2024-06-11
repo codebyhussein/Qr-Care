@@ -24,12 +24,4 @@ class ProfileError extends ProfileState {
   List<Object> get props => [errorMessage];
 }
 
-class SuccessEditUser extends ProfileState {}
 
-class LoadingEditUser extends ProfileState {}
-
-class ErrorEditUser extends ProfileState {
-  final String error;
-
-  const ErrorEditUser({required this.error});
-}
