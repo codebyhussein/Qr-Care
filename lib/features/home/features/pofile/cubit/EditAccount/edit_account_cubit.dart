@@ -17,7 +17,7 @@ class EditAccountCubit extends Cubit<EditAccountState> {
   AccountDataModel? accountDataModel;
 
   void editAccount({
-    // required String accountId,
+    required String accountId,
     required String government,
     required String city,
     required String governmentCenter,
@@ -27,6 +27,7 @@ class EditAccountCubit extends Cubit<EditAccountState> {
   }) async {
     try {
       var response = await editData.updateDataPerson(
+        accountId: accountId,
         government: government,
         city: city,
         governmentCenter: governmentCenter,

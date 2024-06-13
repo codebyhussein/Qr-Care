@@ -182,7 +182,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                     Get.snackbar("error", state.error.toString());
                   } else if (state is SuccessEditUser) {
                     AppConst.showMessage(
-                        msg: ' Child Added Successfully', context: context);
+                        msg: ' Edit Data Successfully', context: context);
                     Navigator.pop(context);
                   }
                 },
@@ -195,7 +195,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                           await CacheHelper.getData(key: 'account_id');
                       if (formKey.currentState!.validate()) {
                         cubit.editAccount(
-                            // accountId: accountId,
+                            accountId: CacheHelper.getData(key: 'account_id'),
                             government: governmentController.text,
                             city: cityController.text,
                             governmentCenter: centerController.text,

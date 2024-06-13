@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:qr_care/config/Localization/Constraine.dart';
 import 'package:qr_care/config/routes/app_routes.dart';
+import 'package:qr_care/core/Services/LocalService/Cache_Helper.dart';
 import 'package:qr_care/core/app_color.dart';
 import 'package:qr_care/features/home/features/scan_qr/presentation/widgets/defult_botton.dart';
 import 'package:qr_care/features/home/widgets/CustomText.dart';
@@ -57,10 +58,11 @@ class LogOut extends StatelessWidget {
                     fontSize: 12.sp),
                 DefultButtonLayoutScreen(
                     onPressed: () async {
-                      //  final SharedPreferences prefs =
-                      //     await SharedPreferences.getInstance();
-                      // await prefs.clear();
+                      final SharedPreferences prefs =
+                          await SharedPreferences.getInstance();
+                      await prefs.clear();
                       Navigator.pushNamed(context, Routes.loginRoute);
+                      CacheHelper.removeData(key: "account_id");
                     },
                     text: getTranslated("LogOut", context)!,
                     colorButton: Colors.red,

@@ -39,25 +39,27 @@ class OfficerResponseWidget extends StatelessWidget {
                       ),
                       ConscritionInformationWidget(
                         service_start_date: data['data']
-                                    ['user_conscription_status']
-                                ['service_start_date'] ??
+                                        ['user_conscription_status'][0]
+                                    ['service_start_date']
+                                .toString() ??
                             "--------------------",
                         service_end_date: data['data']
-                                    ['user_conscription_status']
-                                ['service_end_date'] ??
+                                        ['user_conscription_status'][0]
+                                    ['service_end_date']
+                                .toString() ??
                             "--------------------",
-                        notes: data['data']['user_conscription_status']
+                        notes: data['data']['user_conscription_status'][0]
                                 ['notes'] ??
                             "--------------------",
-                        national_id: data['data']['user_conscription_status']
+                        national_id: data['data']['user_conscription_status'][0]
                                 ['national_id'] ??
                             "--------------------",
                         exemption_reason: data['data']
-                                    ['user_conscription_status']
+                                    ['user_conscription_status'][0]
                                 ['exemption_reason'] ??
                             "--------------------",
                         conscription_status: data['data']
-                                    ['user_conscription_status']
+                                    ['user_conscription_status'][0]
                                 ['conscription_status'] ??
                             "--------------------",
                       )

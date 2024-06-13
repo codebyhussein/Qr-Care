@@ -4,6 +4,7 @@ abstract class EditData{
   Future<AccountDataModel> getDataUpdate();
   Future<http.Response>updateDataPerson({
     required String government ,
+    required String accountId ,
     required String city,
     required String governmentCenter,
     required String job,
