@@ -58,9 +58,9 @@ class LogOut extends StatelessWidget {
                     fontSize: 12.sp),
                 DefultButtonLayoutScreen(
                     onPressed: () async {
-                      //  final SharedPreferences prefs =
-                      //     await SharedPreferences.getInstance();
-                      // await prefs.clear();
+                      final SharedPreferences prefs =
+                          await SharedPreferences.getInstance();
+                      await prefs.clear();
                       Navigator.pushNamed(context, Routes.loginRoute);
                       CacheHelper.removeData(key: "account_id");
                     },

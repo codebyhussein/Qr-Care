@@ -10,14 +10,15 @@ import 'package:http/http.dart' as http;
 class EditDataRepo extends EditData {
   @override
   Future<AccountDataModel> getDataUpdate() async {
-    http.Response response = await http.get(Uri.parse("http://192.168.1.4/grd/edit_Accounttt.php?account_id=${CacheHelper.getData(key: 'account_id')}"));
+    // http.Response response = await http.get(Uri.parse("http://192.168.1.4/grd/edit_Accounttt.php?account_id=${CacheHelper.getData(key: 'account_id')}"));
+    http.Response response = await http.get(Uri.parse(
+        "http://192.168.1.17/grd/edit_Accounttt.php?account_id=${CacheHelper.getData(key: 'account_id')}"));
     var responseBody = jsonDecode(response.body);
     return AccountDataModel.fromJson(responseBody);
   }
 
   @override
   Future<http.Response> updateDataPerson({
-
     required String government,
     required String accountId,
     required String city,
@@ -27,7 +28,8 @@ class EditDataRepo extends EditData {
     required String emergencyContact,
   }) async {
     String requestBody = jsonEncode({
-      "account_id": "doctor_6606de58.com",
+      //"account_id": "doctor_6606de58.com",
+      "account_id": CacheHelper.getData(key: 'account_id'),
       "government": government,
       "city": city,
       "government_center": governmentCenter,
@@ -36,9 +38,7 @@ class EditDataRepo extends EditData {
       "emergency_contact": emergencyContact,
     });
 
-    int contentLength = utf8
-        .encode(requestBody)
-        .length;
+    int contentLength = utf8.encode(requestBody).length;
 
     var response = await ApiService.postRequest(
       endPoint: ApiUrl.editAccountUrl,

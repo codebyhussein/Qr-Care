@@ -182,7 +182,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                     Get.snackbar("error", state.error.toString());
                   } else if (state is SuccessEditUser) {
                     AppConst.showMessage(
-                        msg: ' Child Added Successfully', context: context);
+                        msg: ' Edit Data Successfully', context: context);
                     Navigator.pop(context);
                   }
                 },
