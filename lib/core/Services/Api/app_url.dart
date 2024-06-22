@@ -9,7 +9,8 @@ class ApiUrl {
   //hussein
 
   //static const String baseUrl = 'http://192.168.1.17/grd';
-  static const String baseUrl = 'http://172.20.10.10/grd';
+  // static const String baseUrl = 'http://172.20.10.10/grd';
+  static const String baseUrl = 'https://qrlinkk.000webhostapp.com';
   static const String loginUrl = '$baseUrl/auth/login.php';
   static const String registerUrl = '$baseUrl/auth/signup.php';
   static const String addChildUrl = '$baseUrl/add_Child.php';
