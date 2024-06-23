@@ -35,6 +35,7 @@ class ContentProfile extends StatelessWidget {
                       .toString(),
                   textId: data['national_id'],
                   text: data['emergency_name'],
+                  isMale: data['gender'],
                 );
               }
               return Container(

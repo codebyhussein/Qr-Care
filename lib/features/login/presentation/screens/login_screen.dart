@@ -21,6 +21,7 @@ class LoginScreen extends StatefulWidget {
 
   bool isvisable = false;
   bool isLoading = false;
+
   @override
   State<LoginScreen> createState() => _LoginScreenState();
 }
@@ -29,6 +30,7 @@ class _LoginScreenState extends State<LoginScreen> {
   TextEditingController idController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
   GlobalKey<FormState> formKey = GlobalKey<FormState>();
+  String errorMessage = '';
 
   @override
   Widget build(BuildContext context) {
@@ -42,7 +44,15 @@ class _LoginScreenState extends State<LoginScreen> {
           Navigator.pushNamed(context, Routes.homeScreenRoute,
               arguments: state.user);
         } else if (state is LoginFailure) {
-          AppConst.showMessage(msg: state.errorMessage, context: context);
+          if (state.errorMessage == "كلمة المرور غير صحيحة") {
+            errorMessage = "incorrect password";
+          } else if (state.errorMessage == "حساب المستخدم غير موجود") {
+            errorMessage = "account id is not found";
+          } else {
+            errorMessage =
+                state.errorMessage; // default to original error message
+          }
+          AppConst.showMessage(msg: errorMessage, context: context);
           widget.isLoading = false;
         }
       }, builder: (context, state) {

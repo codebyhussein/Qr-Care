@@ -12,7 +12,7 @@ class EditDataRepo extends EditData {
   Future<AccountDataModel> getDataUpdate() async {
     // http.Response response = await http.get(Uri.parse("http://192.168.1.4/grd/edit_Accounttt.php?account_id=${CacheHelper.getData(key: 'account_id')}"));
     http.Response response = await http.get(Uri.parse(
-        "http://192.168.1.17/grd/edit_Accounttt.php?account_id=${CacheHelper.getData(key: 'account_id')}"));
+        "https://qrlink.icu/edit_Accounttt.php?account_id=${CacheHelper.getData(key: 'account_id')}"));
     var responseBody = jsonDecode(response.body);
     return AccountDataModel.fromJson(responseBody);
   }
