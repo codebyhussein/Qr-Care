@@ -103,10 +103,9 @@ class RegisterRemoteDataSourceImpl implements RegisterRemoteDataSource {
         return Future.error(errorMessage);
       }
       final user = UserModel.fromJson(json);
-      // await CacheHelper.saveData(
-      //     key: 'account_id', value: json['entered_values']['account_id']);
-      // CacheHelper.saveData(
-      //     key: 'gender', value: json['entered_values']['gender']);
+      CacheHelper.saveData(
+          key: 'account_id', value: json["entered_values"]["account_id"]);
+
       return user;
     } else {
       return Future.error('Failed to register. Please try again.');

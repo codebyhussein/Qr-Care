@@ -9,18 +9,18 @@ import 'package:qr_care/core/app_widgets.dart';
 import 'package:qr_care/core/assets/assets_manager.dart';
 
 class CustomCard extends StatefulWidget {
-  CustomCard({
-    super.key,
-    required this.textId,
-    required this.ageValue,
-    required this.text,
-  });
+  CustomCard(
+      {super.key,
+      required this.textId,
+      required this.ageValue,
+      required this.text,
+      this.isMale});
 
   String textId;
   String ageValue;
   String text;
   // bool isMale = CacheHelper.getData(key: 'gender');
-
+  String? isMale;
   @override
   State<CustomCard> createState() => _CustomCardState();
 }
@@ -83,7 +83,7 @@ class _CustomCardState extends State<CustomCard> {
           ),
           Padding(
             padding: EdgeInsets.only(left: 40.w),
-            child: CacheHelper.getData(key: 'gender')=="male"
+            child: widget.isMale == "Male"
                 ? Image.asset(AppAssets.male)
                 : Image.asset(AppAssets.female),
           ),
