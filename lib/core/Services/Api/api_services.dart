@@ -6,7 +6,7 @@ import 'package:qr_care/core/Services/Api/app_url.dart';
 class ApiService {
   static Future<http.MultipartRequest> postData(
       {required String endPoint}) async {
-    var response = http.MultipartRequest("Post", Uri.parse(endPoint));
+    var response = http.MultipartRequest("POST", Uri.parse(endPoint));
     return response;
   }
 

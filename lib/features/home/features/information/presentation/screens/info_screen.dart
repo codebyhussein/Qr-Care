@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:qr_care/config/Localization/Constraine.dart';
+import 'package:qr_care/core/Services/LocalService/Cache_Helper.dart';
 import 'package:qr_care/core/app_color.dart';
 import 'package:qr_care/core/assets/assets_manager.dart';
 import 'package:qr_care/features/home/features/information/cubit/information_cubit.dart';
@@ -61,29 +62,76 @@ class _InfoScreenState extends State<InfoScreen> {
                             height: 15.h,
                           ),
                           ConscritionInformationWidget(
-                            service_start_date: data['data']
-                                        ['user_conscription_status'][0]
-                                    ['service_start_date'] ??
-                                "--------------------",
-                            service_end_date: data['data']
-                                        ['user_conscription_status'][0]
-                                    ['service_end_date'] ??
-                                "--------------------",
-                            notes: data['data']['user_conscription_status'][0]
-                                    ['notes'] ??
-                                "--------------------",
-                            national_id: data['data']
-                                        ['user_conscription_status'][0]
-                                    ['national_id'] ??
-                                "--------------------",
-                            exemption_reason: data['data']
-                                        ['user_conscription_status'][0]
-                                    ['exemption_reason'] ??
-                                "--------------------",
-                            conscription_status: data['data']
-                                        ['user_conscription_status'][0]
-                                    ['conscription_status'] ??
-                                "--------------------",
+                            service_start_date: (CacheHelper.getData(
+                                            key: 'gender') ==
+                                        'male' &&
+                                    data['data']['user_conscription_status'] ==
+                                        null)
+                                ? 'Waiting until data is updated from server'
+                                : data['data']['user_conscription_status']
+                                            .length >
+                                        0
+                                    ? data['data']['user_conscription_status']
+                                        [0]['service_start_date']
+                                    : 'Waiting until data is updated from server',
+                            service_end_date: (CacheHelper.getData(
+                                            key: 'gender') ==
+                                        'male' &&
+                                    data['data']['user_conscription_status'] ==
+                                        null)
+                                ? 'Waiting until data is updated from server'
+                                : data['data']['user_conscription_status']
+                                            .length >
+                                        0
+                                    ? data['data']['user_conscription_status']
+                                        [0]['service_end_date']
+                                    : 'Waiting until data is updated from server',
+                            notes: (CacheHelper.getData(key: 'gender') ==
+                                        'male' &&
+                                    data['data']['user_conscription_status'] ==
+                                        null)
+                                ? 'Waiting until data is updated from server'
+                                : data['data']['user_conscription_status']
+                                            .length >
+                                        0
+                                    ? data['data']['user_conscription_status']
+                                        [0]['notes']
+                                    : 'Waiting until data is updated from server',
+                            national_id: (CacheHelper.getData(key: 'gender') ==
+                                        'male' &&
+                                    data['data']['user_conscription_status'] ==
+                                        null)
+                                ? 'Waiting until data is updated from server'
+                                : data['data']['user_conscription_status']
+                                            .length >
+                                        0
+                                    ? data['data']['user_conscription_status']
+                                        [0]['national_id']
+                                    : 'Waiting until data is updated from server',
+                            exemption_reason: (CacheHelper.getData(
+                                            key: 'gender') ==
+                                        'male' &&
+                                    data['data']['user_conscription_status'] ==
+                                        null)
+                                ? 'Waiting until data is updated from server'
+                                : data['data']['user_conscription_status']
+                                            .length >
+                                        0
+                                    ? data['data']['user_conscription_status']
+                                        [0]['exemption_reason']
+                                    : 'Waiting until data is updated from server',
+                            conscription_status: (CacheHelper.getData(
+                                            key: 'gender') ==
+                                        'male' &&
+                                    data['data']['user_conscription_status'] ==
+                                        null)
+                                ? 'Waiting until data is updated from server'
+                                : data['data']['user_conscription_status']
+                                            .length >
+                                        0
+                                    ? data['data']['user_conscription_status']
+                                        [0]['conscription_status']
+                                    : 'Waiting until data is updated from server',
                           )
                         ],
                       );
@@ -100,31 +148,56 @@ class _InfoScreenState extends State<InfoScreen> {
                       .getMedicalData(),
                   builder: (context, snapshot) {
                     if (snapshot.hasData) {
-                      final data = snapshot.data!['data'];
-                      return MedicalInformationWidget(
-                        height: data['medical_tests'][0]['height'] ??
-                            "-----------------",
-                        boold_type: data['medical_tests'][0]['blood_type'] ??
-                            "-----------------",
-                        chronic_disease: data['medical_tests'][0]
-                                ['chronic_disease'] ??
-                            "-----------------",
-                        width: data['medical_tests'][0]['weight'] ??
-                            "-----------------",
-                        medical_analysis: data['medical_analysis'][0]
-                                ['analysis_text'] ??
-                            "-----------------",
-                        Allergies: data['user_allergies'][0]['allergen_name'] ??
-                            "-----------------",
-                        Type_of_allergy: data['user_allergies'][0]
-                                ['reaction'] ??
-                            "-----------------",
-                        // x_ray_image: data['medical_tests'][0]
-                        //         ['x_ray_image'] ??
-                        //     "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSpG0xwjiIHyvGSCIJDOCZ_VEzEntS0LHnhCQ&s",
-                        x_ray_image:
-                            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSpG0xwjiIHyvGSCIJDOCZ_VEzEntS0LHnhCQ&s",
-                      );
+                      final data = snapshot.data!;
+                      if (data['status'] == "fail") {
+                        return MedicalInformationWidget(
+                          Allergies:
+                              'Waiting until data is updated from server',
+                          height: '---',
+                          boold_type:
+                              'Waiting until data is updated from server',
+                          chronic_disease:
+                              'Waiting until data is updated from server',
+                          width: '---',
+                          medical_analysis:
+                              'Waiting until data is updated from server',
+                          Type_of_allergy:
+                              'Waiting until data is updated from server',
+
+                          // x_ray_image: data['medical_tests'][0]
+                          //         ['x_ray_image'] ??
+                          //     "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSpG0xwjiIHyvGSCIJDOCZ_VEzEntS0LHnhCQ&s",
+                          x_ray_image:
+                              "https://feniuniversity.ac.bd/public/images/nodatafound.png",
+                        );
+                      } else {
+                        return MedicalInformationWidget(
+                          height: data['data']['medical_tests'][0]['height'] ??
+                              "-----------------",
+                          boold_type: data['data']['medical_tests'][0]
+                                  ['blood_type'] ??
+                              "-----------------",
+                          chronic_disease: data['data']['medical_tests'][0]
+                                  ['chronic_disease'] ??
+                              "-----------------",
+                          width: data['data']['medical_tests'][0]['weight'] ??
+                              "-----------------",
+                          medical_analysis: data['data']['medical_analysis'][0]
+                                  ['analysis_text'] ??
+                              "-----------------",
+                          Allergies: data['data']['user_allergies'][0]
+                                  ['allergen_name'] ??
+                              "-----------------",
+                          Type_of_allergy: data['data']['user_allergies'][0]
+                                  ['reaction'] ??
+                              "-----------------",
+                          // x_ray_image: data['medical_tests'][0]
+                          //         ['x_ray_image'] ??
+                          //     "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSpG0xwjiIHyvGSCIJDOCZ_VEzEntS0LHnhCQ&s",
+                          x_ray_image:
+                              "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSpG0xwjiIHyvGSCIJDOCZ_VEzEntS0LHnhCQ&s",
+                        );
+                      }
                     } else if (snapshot.hasError) {
                       return Text('${snapshot.error}');
                     }
