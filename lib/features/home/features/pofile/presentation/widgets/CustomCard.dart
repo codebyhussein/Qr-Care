@@ -83,7 +83,7 @@ class _CustomCardState extends State<CustomCard> {
           ),
           Padding(
             padding: EdgeInsets.only(left: 40.w),
-            child: widget.isMale == "Male"
+            child: widget.isMale == "male"
                 ? Image.asset(AppAssets.male)
                 : Image.asset(AppAssets.female),
           ),
