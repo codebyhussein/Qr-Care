@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:developer';
 
 import 'package:bloc/bloc.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -53,13 +54,13 @@ class EditAccountCubit extends Cubit<EditAccountState> {
           emit(ErrorEditUser(error: responseBody["message"]));
         }
       } else {
-        print("the error meassage${response.statusCode}");
+        log("the error meassage${response.statusCode}");
 
         emit(ErrorEditUser(
             error: 'Failed to add child. Status code: ${response.statusCode}'));
       }
     } catch (e) {
-      print("the error meassage${e.toString()}");
+      log("the error meassage${e.toString()}");
 
       emit(ErrorEditUser(error: 'Error: $e'));
     }
@@ -69,10 +70,10 @@ class EditAccountCubit extends Cubit<EditAccountState> {
     emit(EditAccountLoading());
     try {
       accountDataModel = await editData.getDataUpdate();
-      print(accountDataModel!.status.toString());
+      log(accountDataModel!.status.toString());
       emit(EditAccountSuccess());
     } catch (e) {
-      print(e.toString());
+      log(e.toString());
       emit(EditAccountError(error: e.toString()));
     }
   }

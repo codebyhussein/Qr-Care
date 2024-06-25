@@ -61,87 +61,106 @@ class _InfoScreenState extends State<InfoScreen> {
                           SizedBox(
                             height: 15.h,
                           ),
-                          ConscritionInformationWidget(
-                            service_start_date: (CacheHelper.getData(
-                                            key: 'gender') ==
-                                        'male' &&
-                                    data['data']['user_conscription_status'] ==
-                                        null)
-                                ? 'Waiting until data is updated from server'
-                                : data['data']['user_conscription_status']
-                                            .length >
-                                        0
-                                    ? data['data']['user_conscription_status']
-                                        [0]['service_start_date']
-                                    : 'Waiting until data is updated from server',
-                            service_end_date: (CacheHelper.getData(
-                                            key: 'gender') ==
-                                        'male' &&
-                                    data['data']['user_conscription_status'] ==
-                                        null)
-                                ? 'Waiting until data is updated from server'
-                                : data['data']['user_conscription_status']
-                                            .length >
-                                        0
-                                    ? data['data']['user_conscription_status']
-                                        [0]['service_end_date']
-                                    : 'Waiting until data is updated from server',
-                            notes: (CacheHelper.getData(key: 'gender') ==
-                                        'male' &&
-                                    data['data']['user_conscription_status'] ==
-                                        null)
-                                ? 'Waiting until data is updated from server'
-                                : data['data']['user_conscription_status']
-                                            .length >
-                                        0
-                                    ? data['data']['user_conscription_status']
-                                        [0]['notes']
-                                    : 'Waiting until data is updated from server',
-                            national_id: (CacheHelper.getData(key: 'gender') ==
-                                        'male' &&
-                                    data['data']['user_conscription_status'] ==
-                                        null)
-                                ? 'Waiting until data is updated from server'
-                                : data['data']['user_conscription_status']
-                                            .length >
-                                        0
-                                    ? data['data']['user_conscription_status']
-                                        [0]['national_id']
-                                    : 'Waiting until data is updated from server',
-                            exemption_reason: (CacheHelper.getData(
-                                            key: 'gender') ==
-                                        'male' &&
-                                    data['data']['user_conscription_status'] ==
-                                        null)
-                                ? 'Waiting until data is updated from server'
-                                : data['data']['user_conscription_status']
-                                            .length >
-                                        0
-                                    ? data['data']['user_conscription_status']
-                                        [0]['exemption_reason']
-                                    : 'Waiting until data is updated from server',
-                            conscription_status: (CacheHelper.getData(
-                                            key: 'gender') ==
-                                        'male' &&
-                                    data['data']['user_conscription_status'] ==
-                                        null)
-                                ? 'Waiting until data is updated from server'
-                                : data['data']['user_conscription_status']
-                                            .length >
-                                        0
-                                    ? data['data']['user_conscription_status']
-                                        [0]['conscription_status']
-                                    : 'Waiting until data is updated from server',
-                          )
+                          (CacheHelper.getData(key: 'gender') == 'male')
+                              ? ConscritionInformationWidget(
+                                  service_start_date: (CacheHelper.getData(
+                                                  key: 'gender') ==
+                                              'male' &&
+                                          data['data'][
+                                                  'user_conscription_status'] ==
+                                              null)
+                                      ? 'Waiting until data is updated from server'
+                                      : data['data']['user_conscription_status']
+                                                  .length >
+                                              0
+                                          ? data['data']
+                                                  ['user_conscription_status']
+                                              [0]['service_start_date']
+                                          : 'Waiting until data is updated from server',
+                                  service_end_date: (CacheHelper.getData(
+                                                  key: 'gender') ==
+                                              'male' &&
+                                          data['data'][
+                                                  'user_conscription_status'] ==
+                                              null)
+                                      ? 'Waiting until data is updated from server'
+                                      : data['data']['user_conscription_status']
+                                                  .length >
+                                              0
+                                          ? data['data']
+                                                  ['user_conscription_status']
+                                              [0]['service_end_date']
+                                          : 'Waiting until data is updated from server',
+                                  notes: (CacheHelper.getData(key: 'gender') ==
+                                              'male' &&
+                                          data['data'][
+                                                  'user_conscription_status'] ==
+                                              null)
+                                      ? 'Waiting until data is updated from server'
+                                      : data['data']['user_conscription_status']
+                                                  .length >
+                                              0
+                                          ? data['data']
+                                                  ['user_conscription_status']
+                                              [0]['notes']
+                                          : 'Waiting until data is updated from server',
+                                  national_id: (CacheHelper.getData(
+                                                  key: 'gender') ==
+                                              'male' &&
+                                          data['data'][
+                                                  'user_conscription_status'] ==
+                                              null)
+                                      ? 'Waiting until data is updated from server'
+                                      : data['data']['user_conscription_status']
+                                                  .length >
+                                              0
+                                          ? data['data']
+                                                  ['user_conscription_status']
+                                              [0]['national_id']
+                                          : 'Waiting until data is updated from server',
+                                  exemption_reason: (CacheHelper.getData(
+                                                  key: 'gender') ==
+                                              'male' &&
+                                          data['data'][
+                                                  'user_conscription_status'] ==
+                                              null)
+                                      ? 'Waiting until data is updated from server'
+                                      : data['data']['user_conscription_status']
+                                                  .length >
+                                              0
+                                          ? data['data']
+                                                  ['user_conscription_status']
+                                              [0]['exemption_reason']
+                                          : 'Waiting until data is updated from server',
+                                  conscription_status: (CacheHelper.getData(
+                                                  key: 'gender') ==
+                                              'male' &&
+                                          data['data'][
+                                                  'user_conscription_status'] ==
+                                              null)
+                                      ? 'Waiting until data is updated from server'
+                                      : data['data']['user_conscription_status']
+                                                  .length >
+                                              0
+                                          ? data['data']
+                                                  ['user_conscription_status']
+                                              [0]['conscription_status']
+                                          : 'Waiting until data is updated from server',
+                                )
+                              : SizedBox(
+                                  height: 1.sp,
+                                )
                         ],
                       );
                     } else if (snapshot.hasError) {
                       return Text('${snapshot.error}');
                     }
-                    return const Text('');
+                    return SizedBox(
+                      height: 1.sp,
+                    );
                   }),
               SizedBox(
-                height: 15.h,
+                height: 10.h,
               ),
               FutureBuilder(
                   future: BlocProvider.of<InformationCubit>(context)

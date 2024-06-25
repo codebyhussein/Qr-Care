@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:developer';
 
 import 'package:http/http.dart' as http;
 import 'package:qr_care/core/Services/Api/app_url.dart';
@@ -24,7 +25,7 @@ class ApiService {
         Uri.parse('${ApiUrl.medicalInforamationUrl}?national_id=$qr_data'));
 
     if (response.statusCode == 200) {
-      print(json.decode(response.body));
+      log(json.decode(response.body));
       return json.decode(response.body);
     } else {
       throw Exception('Failed to load data');
