@@ -61,90 +61,95 @@ class _InfoScreenState extends State<InfoScreen> {
                           SizedBox(
                             height: 15.h,
                           ),
-                          (CacheHelper.getData(key: 'gender') == 'male')
+                          (data['data']['user']['gender'] == 'male')
                               ? ConscritionInformationWidget(
-                                  service_start_date: (CacheHelper.getData(
-                                                  key: 'gender') ==
+                                  service_start_date: data['data']['user']
+                                                  ['gender'] ==
                                               'male' &&
                                           data['data'][
                                                   'user_conscription_status'] ==
-                                              null)
+                                              null
                                       ? 'Waiting until data is updated from server'
                                       : data['data']['user_conscription_status']
                                                   .length >
                                               0
-                                          ? data['data']
-                                                  ['user_conscription_status']
-                                              [0]['service_start_date']
+                                          ? data['data'][
+                                                      'user_conscription_status']
+                                                  [0]['service_start_date'] ??
+                                              'Not available'
                                           : 'Waiting until data is updated from server',
-                                  service_end_date: (CacheHelper.getData(
-                                                  key: 'gender') ==
+                                  service_end_date: data['data']['user']
+                                                  ['gender'] ==
                                               'male' &&
                                           data['data'][
                                                   'user_conscription_status'] ==
-                                              null)
+                                              null
                                       ? 'Waiting until data is updated from server'
                                       : data['data']['user_conscription_status']
                                                   .length >
                                               0
-                                          ? data['data']
-                                                  ['user_conscription_status']
-                                              [0]['service_end_date']
+                                          ? data['data'][
+                                                      'user_conscription_status']
+                                                  [0]['service_end_date'] ??
+                                              'Not available'
                                           : 'Waiting until data is updated from server',
-                                  notes: (CacheHelper.getData(key: 'gender') ==
+                                  notes: data['data']['user']['gender'] ==
                                               'male' &&
                                           data['data'][
                                                   'user_conscription_status'] ==
-                                              null)
+                                              null
                                       ? 'Waiting until data is updated from server'
                                       : data['data']['user_conscription_status']
                                                   .length >
                                               0
-                                          ? data['data']
-                                                  ['user_conscription_status']
-                                              [0]['notes']
+                                          ? data['data'][
+                                                      'user_conscription_status']
+                                                  [0]['notes'] ??
+                                              'Not available'
                                           : 'Waiting until data is updated from server',
-                                  national_id: (CacheHelper.getData(
-                                                  key: 'gender') ==
+                                  national_id: data['data']['user']['gender'] ==
                                               'male' &&
                                           data['data'][
                                                   'user_conscription_status'] ==
-                                              null)
+                                              null
                                       ? 'Waiting until data is updated from server'
                                       : data['data']['user_conscription_status']
                                                   .length >
                                               0
-                                          ? data['data']
-                                                  ['user_conscription_status']
-                                              [0]['national_id']
+                                          ? data['data'][
+                                                      'user_conscription_status']
+                                                  [0]['national_id'] ??
+                                              'Not available'
                                           : 'Waiting until data is updated from server',
-                                  exemption_reason: (CacheHelper.getData(
-                                                  key: 'gender') ==
+                                  exemption_reason: data['data']['user']
+                                                  ['gender'] ==
                                               'male' &&
                                           data['data'][
                                                   'user_conscription_status'] ==
-                                              null)
+                                              null
                                       ? 'Waiting until data is updated from server'
                                       : data['data']['user_conscription_status']
                                                   .length >
                                               0
-                                          ? data['data']
-                                                  ['user_conscription_status']
-                                              [0]['exemption_reason']
+                                          ? data['data'][
+                                                      'user_conscription_status']
+                                                  [0]['exemption_reason'] ??
+                                              'Not available'
                                           : 'Waiting until data is updated from server',
-                                  conscription_status: (CacheHelper.getData(
-                                                  key: 'gender') ==
+                                  conscription_status: data['data']['user']
+                                                  ['gender'] ==
                                               'male' &&
                                           data['data'][
                                                   'user_conscription_status'] ==
-                                              null)
+                                              null
                                       ? 'Waiting until data is updated from server'
                                       : data['data']['user_conscription_status']
                                                   .length >
                                               0
-                                          ? data['data']
-                                                  ['user_conscription_status']
-                                              [0]['conscription_status']
+                                          ? data['data'][
+                                                      'user_conscription_status']
+                                                  [0]['conscription_status'] ??
+                                              'Not available'
                                           : 'Waiting until data is updated from server',
                                 )
                               : SizedBox(
