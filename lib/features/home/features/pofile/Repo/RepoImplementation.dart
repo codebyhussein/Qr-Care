@@ -28,7 +28,6 @@ class EditDataRepo extends EditData {
     required String emergencyContact,
   }) async {
     String requestBody = jsonEncode({
-      //"account_id": "doctor_6606de58.com",
       "account_id": CacheHelper.getData(key: 'account_id'),
       "government": government,
       "city": city,

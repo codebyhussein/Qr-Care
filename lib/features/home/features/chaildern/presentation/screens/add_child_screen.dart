@@ -40,10 +40,15 @@ class _AddChildScreenState extends State<AddChildScreen> {
             if (state is ErrorAddChild) {
               Get.snackbar("error", state.error.toString());
             } else if (state is SuccessAddChild) {
-ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text("Success Add Child"),backgroundColor: Colors.green,));
-Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (context) {
-  return LayoutScreen();
-},), (route) => false);
+              ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+                content: Text("Success Add Child"),
+                backgroundColor: Colors.green,
+              ));
+              Navigator.pushAndRemoveUntil(context, MaterialPageRoute(
+                builder: (context) {
+                  return LayoutScreen();
+                },
+              ), (route) => false);
             }
           },
           builder: (context, state) {
