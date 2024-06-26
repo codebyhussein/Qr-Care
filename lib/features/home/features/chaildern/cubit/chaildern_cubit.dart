@@ -51,11 +51,12 @@ class ChaildernCubit extends Cubit<ChaildernState> {
       emit(ErrorAddChild(error: 'Error: $e'));
     }
   }
+
   Future<void> getChildInfo() async {
     emit(LoadingGetChild());
     try {
       childInfoModel = await addChildRepo.getDataChild();
-      print(childInfoModel);
+      //print(childInfoModel);
       emit(SuccessGetChild());
     } catch (e) {
       emit(ErrorGetChild(error: e.toString()));
@@ -83,6 +84,6 @@ class ChaildernCubit extends Cubit<ChaildernState> {
       emit(SuccessSelectIdImage());
     }
   }
-ChildInfoModel ?childInfoModel;
 
+  ChildInfoModel? childInfoModel;
 }

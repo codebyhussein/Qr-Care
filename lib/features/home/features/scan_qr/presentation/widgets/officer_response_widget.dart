@@ -39,14 +39,12 @@ class OfficerResponseWidget extends StatelessWidget {
                       ),
                       ConscritionInformationWidget(
                         service_start_date: data['data']
-                                        ['user_conscription_status'][0]
-                                    ['service_start_date']
-                                .toString() ??
+                                    ['user_conscription_status'][0]
+                                ['service_start_date'] ??
                             "--------------------",
                         service_end_date: data['data']
-                                        ['user_conscription_status'][0]
-                                    ['service_end_date']
-                                .toString() ??
+                                    ['user_conscription_status'][0]
+                                ['service_end_date'] ??
                             "--------------------",
                         notes: data['data']['user_conscription_status'][0]
                                 ['notes'] ??

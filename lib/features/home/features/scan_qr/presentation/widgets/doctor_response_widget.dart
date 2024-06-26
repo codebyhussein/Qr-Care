@@ -24,10 +24,13 @@ class DoctorResponseWidget extends StatelessWidget {
                           text: data['message']));
                 } else {
                   return PersonalInformationWidget(
-                    jop: data['data']['user']['job'],
-                    national_id: data['data']['user']['national_id'],
-                    name: data['data']['user']['emergency_name'],
-                    phone_number: data['data']['user']['contact'],
+                    jop: data['data']['user']['job'] ?? "----------",
+                    national_id:
+                        data['data']['user']['national_id'] ?? "----------",
+                    name:
+                        data['data']['user']['emergency_name'] ?? "----------",
+                    phone_number:
+                        data['data']['user']['contact'] ?? "----------",
                     data_of_birth:
                         data['data']['user']['date_of_birth'] ?? '20/2/2002',
                   );
@@ -43,7 +46,7 @@ class DoctorResponseWidget extends StatelessWidget {
           height: 15.h,
         ),
         FutureBuilder(
-          future: ApiService().getMedicalData(qr_data: qr_data),
+          future: ApiService().getPersonlaData(qr_data: qr_data),
           builder: (context, snapshot) {
             if (snapshot.hasData) {
               final data = snapshot.data!;
@@ -53,16 +56,36 @@ class DoctorResponseWidget extends StatelessWidget {
                         text: data['message']));
               } else {
                 return MedicalInformationWidget(
-                  height: data['data']['medical_tests'][0]['height'],
-                  boold_type: data['data']['medical_tests'][0]['blood_type'],
-                  chronic_disease: data['data']['medical_tests'][0]
-                      ['chronic_disease'],
-                  width: data['data']['medical_tests'][0]['weight'],
-                  medical_analysis: data['data']['medical_analysis'][0]
-                      ['analysis_text'],
-                  Allergies: data['data']['user_allergies'][0]['allergen_name'],
-                  Type_of_allergy: data['data']['user_allergies'][0]
-                      ['reaction'],
+                  height: data['data']['medical_tests']?.isNotEmpty == true
+                      ? data['data']['medical_tests'][0]['height'] ?? "----"
+                      : "No data found",
+                  boold_type: data['data']['medical_tests']?.isNotEmpty == true
+                      ? data['data']['medical_tests'][0]['blood_type'] ??
+                          "----------"
+                      : "No data found",
+                  chronic_disease: data['data']['medical_tests']?.isNotEmpty ==
+                          true
+                      ? data['data']['medical_tests'][0]['chronic_disease'] ??
+                          "----------"
+                      : "No data found",
+                  width: data['data']['medical_tests']?.isNotEmpty == true
+                      ? data['data']['medical_tests'][0]['weight'] ?? "----"
+                      : "No data found",
+                  medical_analysis:
+                      data['data']['medical_analysis']?.isNotEmpty == true
+                          ? data['data']['medical_analysis'][0]
+                                  ['analysis_text'] ??
+                              "----------"
+                          : "No data found",
+                  Allergies: data['data']['user_allergies']?.isNotEmpty == true
+                      ? data['data']['user_allergies'][0]['allergen_name'] ??
+                          "----------"
+                      : "No data found",
+                  Type_of_allergy:
+                      data['data']['user_allergies']?.isNotEmpty == true
+                          ? data['data']['user_allergies'][0]['reaction'] ??
+                              "----------"
+                          : "No data found",
                   x_ray_image:
                       "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSpG0xwjiIHyvGSCIJDOCZ_VEzEntS0LHnhCQ&s",
                 );

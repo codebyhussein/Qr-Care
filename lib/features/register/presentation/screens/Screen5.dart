@@ -144,7 +144,7 @@ class _Screen2State extends State<Screen5> {
                               gender: gender,
                               job: job,
                               governmentCity: city,
-                              governmentCenter: center,
+                              governmentCenter: "center",
                               contact: contact,
                               emergencyContact: mobile,
                               password: passwordController.text,

@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:qr_care/config/Localization/Constraine.dart';
@@ -19,8 +21,8 @@ class Screen6 extends StatefulWidget {
 class _Screen6State extends State<Screen6> {
   @override
   void initState() {
-   CacheHelper.getData(key: 'account_id');
-   print( "the new account id is ${  CacheHelper.getData(key: 'account_id')}");
+    CacheHelper.getData(key: 'account_id');
+    log("the new account id is ${CacheHelper.getData(key: 'account_id')}");
     super.initState();
   }
 

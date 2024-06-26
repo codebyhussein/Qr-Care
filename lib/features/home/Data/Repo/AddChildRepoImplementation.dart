@@ -33,7 +33,7 @@ class AddChildRepoImplementation extends AddChildRepo {
   @override
   Future<ChildInfoModel> getDataChild() async {
     final response = await http.get(Uri.parse(
-        "http://192.168.1.4/grd/personal_child.php?national_id=12345678901234"));
+        "https://qrlink.icu/personal_child.php?national_id=12345678901234"));
 
     if (response.statusCode == 200) {
       final responseBody = jsonDecode(response.body);

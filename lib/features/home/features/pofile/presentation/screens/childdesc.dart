@@ -16,8 +16,8 @@ import 'dart:ui' as ui;
 import '../../../../../forgetPassword/presentation/widgets/custom_appbar.dart';
 
 class ChildDescription extends StatefulWidget {
-   ChildDescription({super.key,@required this.childInfoModel});
-   ChildInfoModel? childInfoModel;
+  ChildDescription({super.key, @required this.childInfoModel});
+  ChildInfoModel? childInfoModel;
   @override
   State<ChildDescription> createState() => _ChildDescriptionState();
 }
@@ -50,8 +50,12 @@ class _ChildDescriptionState extends State<ChildDescription> {
             height: 35.h,
           ),
           CustomCard(
-            textId: widget.childInfoModel?.nationalId!=null?widget.childInfoModel!.nationalId.toString():"1589281071982",
-            ageValue:widget.childInfoModel?.age!=null?widget.childInfoModel!.age.toString():"6",
+            textId: widget.childInfoModel?.nationalId != null
+                ? widget.childInfoModel!.nationalId.toString()
+                : "1589281071982",
+            ageValue: widget.childInfoModel?.age != null
+                ? widget.childInfoModel!.age.toString()
+                : "6",
             text: "Age :",
           ),
           SizedBox(
@@ -106,7 +110,7 @@ class _ChildDescriptionState extends State<ChildDescription> {
         capturedImage = pngBytes;
       });
     } catch (exception) {
-      print(exception);
+      //print(exception);
       // Handle the error as needed
     }
   }
